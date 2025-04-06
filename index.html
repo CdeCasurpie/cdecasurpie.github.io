@@ -3,713 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>César Perales | Portfolio</title>
+    <title>César Perales - Blog Personal</title>
+    <meta name="description" content="Blog personal de César Perales sobre programación, algoritmos, simulaciones y pensamientos digitales.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --color-bg: #F5EFED;
-            --color-accent-light: #E9C6BE;
-            --color-accent-mid: #D5A89E;
-            --color-text-soft: #B99289;
-            --color-text-strong: #2D2A2A;
-            --color-title: #1D1B1B;
-            --transition: all 0.3s ease;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --radius: 12px;
-        }
-
-        /* Dark Mode Colors */
-        [data-theme="dark"] {
-            --color-bg: #1D1B1B;
-            --color-accent-light: #2D2A2A;
-            --color-accent-mid: #B99289;
-            --color-text-soft: #D5A89E;
-            --color-text-strong: #E9C6BE;
-            --color-title: #F5EFED;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--color-bg);
-            color: var(--color-text-strong);
-            line-height: 1.6;
-            transition: var(--transition);
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5 {
-            color: var(--color-title);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        a {
-            text-decoration: none;
-            color: var(--color-accent-mid);
-            transition: var(--transition);
-        }
-
-        a:hover {
-            color: var(--color-text-strong);
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header Styles */
-        header {
-            padding: 1.5rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background-color: var(--color-bg);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--color-title);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            font-weight: 500;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--color-accent-mid);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--color-text-strong);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .theme-toggle:hover {
-            color: var(--color-accent-mid);
-            transform: rotate(360deg);
-            transition: transform 0.7s ease;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--color-text-strong);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: calc(100vh - 80px);
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 1.5rem;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            color: var(--color-text-soft);
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.8rem 1.5rem;
-            border-radius: var(--radius);
-            font-weight: 500;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background-color: var(--color-accent-mid);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-text-soft);
-            transform: translateY(-3px);
-        }
-
-        .btn-outline {
-            border: 2px solid var(--color-accent-mid);
-            color: var(--color-text-strong);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--color-accent-light);
-            transform: translateY(-3px);
-        }
-
-        .hero-image {
-            position: relative;
-            text-align: center;
-        }
-
-        .profile-img {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 8px solid var(--color-accent-light);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .profile-img:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--color-accent-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-text-strong);
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-
-        .social-icon:hover {
-            background-color: var(--color-accent-mid);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* About Section */
-        .section {
-            padding: 6rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2rem;
-            display: inline-block;
-            position: relative;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--color-accent-mid);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 1.5rem;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 2rem;
-        }
-
-        .skill-tag {
-            padding: 0.5rem 1rem;
-            background-color: var(--color-accent-light);
-            border-radius: var(--radius);
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .skill-tag:hover {
-            background-color: var(--color-accent-mid);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background-color: var(--color-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .project-tag {
-            padding: 0.3rem 0.8rem;
-            background-color: var(--color-accent-light);
-            border-radius: var(--radius);
-            font-size: 0.8rem;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        /* Teaching Section */
-        .teaching-content {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-        }
-
-        .teaching-item {
-            background-color: var(--color-bg);
-            border-radius: var(--radius);
-            padding: 2rem;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .teaching-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .teaching-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .teaching-icon {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--color-accent-light);
-            border-radius: 50%;
-            font-size: 1.5rem;
-            color: var(--color-text-strong);
-        }
-
-        .testimonials {
-            margin-top: 4rem;
-        }
-
-        .testimonial-slider {
-            display: flex;
-            gap: 2rem;
-            overflow-x: auto;
-            padding: 1rem 0.5rem;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-        }
-
-        .testimonial-slider::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .testimonial-slider::-webkit-scrollbar-track {
-            background: var(--color-accent-light);
-            border-radius: 10px;
-        }
-
-        .testimonial-slider::-webkit-scrollbar-thumb {
-            background: var(--color-accent-mid);
-            border-radius: 10px;
-        }
-
-        .testimonial-card {
-            min-width: 300px;
-            scroll-snap-align: start;
-            background-color: var(--color-bg);
-            padding: 1.5rem;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-        }
-
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            background-color: var(--color-bg);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .blog-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-        }
-
-        .blog-date {
-            color: var(--color-text-soft);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .contact-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--color-accent-light);
-            border-radius: 50%;
-            font-size: 1.2rem;
-            color: var(--color-text-strong);
-        }
-
-        .contact-form {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group label {
-            font-weight: 500;
-        }
-
-        .form-control {
-            padding: 0.8rem 1rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--color-accent-light);
-            background-color: var(--color-bg);
-            color: var(--color-text-strong);
-            font-family: inherit;
-            resize: vertical;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--color-accent-mid);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--color-title);
-            color: var(--color-bg);
-            padding: 4rem 0 2rem;
-            margin-top: 6rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .footer-info h3 {
-            color: var(--color-accent-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links h4 {
-            color: var(--color-accent-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-links a {
-            color: var(--color-bg);
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--color-accent-light);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            margin-top: 3rem;
-            text-align: center;
-            font-size: 0.9rem;
-            color: var(--color-accent-light);
-        }
-
-        /* Easter Egg */
-        .easter-egg {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 40px;
-            height: 40px;
-            background-color: transparent;
-            border: none;
-            cursor: pointer;
-            opacity: 0.2;
-            transition: var(--transition);
-        }
-        
-        .easter-egg:hover {
-            opacity: 1;
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero-content, .about-content, .contact-container, .footer-content {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-content {
-                gap: 2rem;
-                text-align: center;
-            }
-
-            .cta-buttons {
-                justify-content: center;
-            }
-
-            .social-links {
-                justify-content: center;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background-color: var(--color-bg);
-                flex-direction: column;
-                align-items: center;
-                padding: 2rem;
-                gap: 1.5rem;
-                box-shadow: var(--shadow);
-                transform: translateY(-100%);
-                opacity: 0;
-                transition: var(--transition);
-                pointer-events: none;
-            }
-
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                pointer-events: all;
-            }
-
-            .projects-grid, .blog-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Utility Classes */
-        .text-center { text-align: center; }
-        .mb-1 { margin-bottom: 1rem; }
-        .mb-2 { margin-bottom: 2rem; }
-        .mb-3 { margin-bottom: 3rem; }
-        .hidden { display: none; }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/images/favicon.ico">
 </head>
 <body>
+    <!-- Barra de progreso de lectura -->
+    <div class="reading-progress"></div>
+    
     <header>
         <div class="container">
             <nav>
                 <a href="#" class="logo">CP</a>
                 <div class="nav-links">
-                    <a href="#inicio">Inicio</a>
+                    <a href="#">Inicio</a>
+                    <a href="#blog">Blog</a>
                     <a href="#sobre-mi">Sobre mí</a>
                     <a href="#proyectos">Proyectos</a>
-                    <a href="#clases">Clases</a>
-                    <a href="#blog">Blog</a>
                     <a href="#contacto">Contacto</a>
                 </div>
                 <div class="nav-actions">
@@ -730,7 +45,7 @@
             <div class="container">
                 <div class="hero-content">
                     <div class="hero-text animate-fade-in-up">
-                        <h1>César Perales</h1>
+                        <h1 id="typewriter-name">César Perales</h1>
                         <p class="mb-3">"Creo código que simula vida. Y enseño a otros a hacerlo."</p>
                         <div class="cta-buttons">
                             <a href="#contacto" class="btn btn-primary">
@@ -741,9 +56,7 @@
                             </a>
                         </div>
                         <div class="social-links">
-                            <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                            <!-- Se llenará dinámicamente con JS -->
                         </div>
                     </div>
                     <div class="hero-image animate-fade-in-up">
@@ -753,35 +66,59 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- Blog Section -->
+        <section id="blog" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Blog Reciente</h2>
+                </div>
+
+                <div class="categories-list">
+                    <button class="category-button active" data-category="all">Todas las categorías</button>
+                    <button class="category-button" data-category="programacion">Programación</button>
+                    <button class="category-button" data-category="tutoriales">Tutoriales</button>
+                    <button class="category-button" data-category="pensamientos">Pensamientos</button>
+                </div>
+
+                <div id="blog-grid" class="blog-grid">
+                    <!-- Se cargará dinámicamente desde blog-articles.json -->
+                    <div class="loading-spinner">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <p>Cargando artículos...</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mb-3">
+                    <a href="blog/index.html" class="btn btn-primary">
+                        <i class="fas fa-book-open"></i> Ver todos los artículos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
         <section id="sobre-mi" class="section">
             <div class="container">
                 <div class="section-title">
                     <h2>Sobre Mí</h2>
                 </div>
+                
                 <div class="about-content">
                     <div class="about-text">
-                        <p>Soy estudiante de Computer Science en Perú, apasionado por la programación, algoritmos, simulaciones gráficas y matemáticas aplicadas a biología y videojuegos.</p>
-                        
-                        <p>Mi fascinación por el código comenzó cuando descubrí que podía crear pequeños mundos virtuales con comportamientos que imitaban la realidad. Desde entonces, he estado explorando las interacciones entre matemáticas, física y programación para crear experiencias digitales significativas.</p>
-                        
-                        <p>Cuando no estoy programando, me encontrarás disfrutando de la comida peruana, andando en skate o escuchando música de Ed Maverick, Josean Log o Kevin Karla.</p>
+                        <!-- Se llenará dinámicamente con JS -->
                     </div>
-                    <div>
-                        <h3>¿Por qué enseño?</h3>
-                        <p>Creo firmemente que aprender a programar es como adquirir un superpoder: te permite transformar ideas en realidad. Como profesor particular, me enfoco en un enfoque didáctico y práctico, asegurándome de que mis estudiantes no solo entiendan los conceptos, sino que puedan aplicarlos creativamente.</p>
+                    
+                    <div class="skills-section">
+                        <div class="teaching-section">
+                            <h3 class="section-title">¿Por qué enseño?</h3>
+                            <p class="teaching-text"><!-- Se llenará dinámicamente con JS con efecto de escritura --></p>
+                        </div>
                         
-                        <h3>Mis habilidades</h3>
-                        <div class="skills">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">React.js</span>
-                            <span class="skill-tag">Next.js</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">Algoritmos</span>
-                            <span class="skill-tag">Simulaciones</span>
-                            <span class="skill-tag">Inteligencia Artificial</span>
-                            <span class="skill-tag">Visualización de datos</span>
+                        <h3 class="section-title mt-4">Skills</h3>
+                        <div class="skills-carousel">
+                            <div class="skills-track">
+                                <!-- Se llenará dinámicamente con JS -->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -794,220 +131,19 @@
                 <div class="section-title">
                     <h2>Proyectos</h2>
                 </div>
-                <div class="projects-grid">
-                    <!-- Project 1 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3>Haramara</h3>
-                            <p>Web conectada a Google Calendar con un gatito motivacional que te ayuda a organizar tu día y mantener la productividad.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React</span>
-                                <span class="project-tag">Google API</span>
-                                <span class="project-tag">CSS Animation</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 2 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3>Simulación de articulación 2D</h3>
-                            <p>Modelo de articulación que utiliza algoritmos evolutivos para encontrar patrones de movimiento óptimos en un entorno virtual.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">Python</span>
-                                <span class="project-tag">Algoritmos Evolutivos</span>
-                                <span class="project-tag">Física</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 3 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3>Simulación de partículas</h3>
-                            <p>Sistema que simula vida artificial mediante partículas que interactúan siguiendo reglas simples, creando comportamientos emergentes complejos.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">JavaScript</span>
-                                <span class="project-tag">Canvas</span>
-                                <span class="project-tag">Vida Artificial</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 4 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3>Termómetro de amor</h3>
-                            <p>Aplicación web interactiva que genera un "termómetro de amor" personalizado y una carta PDF romántica basada en las respuestas del usuario.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">HTML/CSS</span>
-                                <span class="project-tag">JavaScript</span>
-                                <span class="project-tag">PDF Generation</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 5 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3>Lector de papers estilo TikTok</h3>
-                            <p>Aplicación que presenta fragmentos de papers científicos en formato de scroll vertical similar a TikTok, haciendo la lectura académica más accesible y atractiva.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">React Native</span>
-                                <span class="project-tag">API REST</span>
-                                <span class="project-tag">UX Design</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Project 6 -->
-                    <div class="project-card">
-                        <div class="project-content">
-                            <h3>Reproductor musical</h3>
-                            <p>Reproductor de música inspirado en la estética y atmosfera de las canciones de Josean Log, con visualizaciones personalizadas que responden a las frecuencias sonoras.</p>
-                            <div class="project-tags">
-                                <span class="project-tag">JavaScript</span>
-                                <span class="project-tag">Web Audio API</span>
-                                <span class="project-tag">Canvas</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
-                                <a href="#"><i class="fab fa-github"></i> Código</a>
-                            </div>
-                        </div>
+                
+                <div id="projects-grid" class="projects-grid">
+                    <!-- Se cargará dinámicamente desde projects.json -->
+                    <div class="loading-spinner">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <p>Cargando proyectos...</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Teaching Section -->
-        <section id="clases" class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Clases</h2>
-                </div>
-                <div class="teaching-content">
-                    <div class="teaching-item">
-                        <div class="teaching-header">
-                            <div class="teaching-icon">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3>Programación desde cero</h3>
-                        </div>
-                        <p>Curso introductorio que lleva a estudiantes sin experiencia previa a construir sus primeros programas. Enfocado en lógica de programación, estructuras de datos fundamentales y resolución de problemas.</p>
-                        <a href="#" class="btn btn-outline mt-2">Ver ejercicios</a>
-                    </div>
-                    
-                    <div class="teaching-item">
-                        <div class="teaching-header">
-                            <div class="teaching-icon">
-                                <i class="fas fa-sitemap"></i>
-                            </div>
-                            <h3>Estructuras de datos avanzadas</h3>
-                        </div>
-                        <p>Profundización en estructuras de datos complejas y algoritmos, con análisis de eficiencia y aplicaciones prácticas. Ideal para quienes quieren perfeccionar sus habilidades algorítmicas.</p>
-                        <a href="#" class="btn btn-outline mt-2">Ver material</a>
-                    </div>
-                    
-                    <div class="teaching-item">
-                        <div class="teaching-header">
-                            <div class="teaching-icon">
-                                <i class="fas fa-laptop-code"></i>
-                            </div>
-                            <h3>Frontend con JavaScript</h3>
-                        </div>
-                        <p>Curso que enseña a crear interfaces web interactivas con JavaScript moderno, incluyendo fundamentos de React y manipulación del DOM. Enfoque en proyectos prácticos y atractivos.</p>
-                        <a href="#" class="btn btn-outline mt-2">Ver proyectos</a>
-                    </div>
-
-                    <div class="teaching-item">
-                        <div class="teaching-header">
-                            <div class="teaching-icon">
-                                <i class="fas fa-heart"></i>
-                            </div>
-                            <h3>CódigoCausa</h3>
-                        </div>
-                        <p>Proyecto educativo sin fines de lucro para acercar la programación a jóvenes con recursos limitados. A través de talleres gratuitos, buscamos democratizar el acceso a la educación en tecnología.</p>
-                        <a href="#" class="btn btn-primary mt-2">Conocer más</a>
-                    </div>
-                </div>
-
-                <div class="testimonials">
-                    <h3 class="text-center mb-3">Lo que dicen mis estudiantes</h3>
-                    <div class="testimonial-slider">
-                        <div class="testimonial-card">
-                            <p class="testimonial-text">"La forma en que César explica conceptos complejos con analogías simples hizo que finalmente entendiera recursividad después de meses intentándolo."</p>
-                            <p class="testimonial-author">- María González</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text">"Pasé de no saber nada de programación a tener mi propio sitio web en menos de dos meses. Su metodología es clara y su paciencia infinita."</p>
-                            <p class="testimonial-author">- Carlos Benites</p>
-                        </div>
-                        <div class="testimonial-card">
-                            <p class="testimonial-text">"Lo que más valoro es cómo César conecta la teoría con aplicaciones del mundo real. Cada clase tiene un propósito y se siente útil."</p>
-                            <p class="testimonial-author">- Ana Ruiz</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Blog Section -->
-        <section id="blog" class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Blog</h2>
-                </div>
-                <div class="blog-grid">
-                    <!-- Blog Post 1 -->
-                    <div class="blog-card">
-                        <div class="blog-content">
-                            <div class="blog-date">6 de abril, 2025</div>
-                            <h3>La poesía oculta en los algoritmos</h3>
-                            <p>Reflexiones sobre cómo el diseño de algoritmos puede ser tan creativo y expresivo como la escritura de poesía, con patrones y estructuras que reflejan belleza matemática.</p>
-                            <a href="#" class="btn btn-outline">Leer más</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Blog Post 2 -->
-                    <div class="blog-card">
-                        <div class="blog-content">
-                            <div class="blog-date">28 de marzo, 2025</div>
-                            <h3>Simulando ecosistemas digitales</h3>
-                            <p>Un análisis de cómo las simulaciones basadas en reglas simples pueden generar comportamientos complejos que imitan sistemas naturales, desde colonias de hormigas hasta patrones climáticos.</p>
-                            <a href="#" class="btn btn-outline">Leer más</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Blog Post 3 -->
-                    <div class="blog-card">
-                        <div class="blog-content">
-                            <div class="blog-date">15 de febrero, 2025</div>
-                            <h3>Enseñando a programar: lecciones aprendidas</h3>
-                            <p>Mis experiencias como profesor de programación y cómo he adaptado mis métodos para diferentes tipos de aprendices, desde niños hasta adultos cambiando de carrera.</p>
-                            <a href="#" class="btn btn-outline">Leer más</a>
-                        </div>
-                    </div>
+                
+                <div class="text-center mt-4">
+                    <a href="proyectos/index.html" class="btn btn-primary">
+                        <i class="fas fa-project-diagram"></i> Ver todos los proyectos
+                    </a>
                 </div>
             </div>
         </section>
@@ -1018,63 +154,18 @@
                 <div class="section-title">
                     <h2>Contacto</h2>
                 </div>
+                
                 <div class="contact-container">
                     <div class="contact-info">
                         <h3>¡Hablemos!</h3>
                         <p>¿Tienes un proyecto en mente? ¿Buscas un profesor particular? ¿O simplemente quieres conversar sobre algoritmos y vida artificial? Escríbeme y responderé lo antes posible.</p>
                         
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>contacto@cesarperales.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <div>
-                                <h4>Instagram</h4>
-                                <p>@causa_code</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div>
-                                <h4>Ubicación</h4>
-                                <p>Lima, Perú</p>
-                            </div>
-                        </div>
+                        <!-- Los contact-item se llenarán dinámicamente con JS -->
                     </div>
                     
-                    <div class="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nombre</label>
-                            <input type="text" id="name" class="form-control" placeholder="Tu nombre">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="tu@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Asunto</label>
-                            <input type="text" id="subject" class="form-control" placeholder="¿De qué quieres hablar?">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensaje</label>
-                            <textarea id="message" rows="5" class="form-control" placeholder="Tu mensaje..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-paper-plane"></i> Enviar mensaje
-                        </button>
-                    </div>
+                    <form class="contact-form">
+                        <!-- Se llenará dinámicamente con JS -->
+                    </form>
                 </div>
             </div>
         </section>
@@ -1088,31 +179,27 @@
                     <p>Programador, profesor y entusiasta de las simulaciones. Creando código con propósito y compartiendo conocimiento con pasión.</p>
                     
                     <div class="social-links">
-                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fas fa-coffee"></i></a>
+                        <!-- Se llenará dinámicamente con JS -->
                     </div>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Enlaces rápidos</h4>
+                    <h4>Secciones</h4>
                     <ul>
-                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
                         <li><a href="#sobre-mi">Sobre mí</a></li>
-                        <li><a href="#proyectos">Proyectos</a></li>
-                        <li><a href="#clases">Clases</a></li>
-                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="proyectos/index.html">Proyectos</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-links">
-                    <h4>Recursos</h4>
+                    <h4>Enlaces Rápidos</h4>
                     <ul>
-                        <li><a href="#">Tutoriales</a></li>
-                        <li><a href="#">Recursos de aprendizaje</a></li>
-                        <li><a href="#">Código abierto</a></li>
+                        <li><a href="blog/index.html">Blog</a></li>
+                        <li><a href="proyectos/index.html">Proyectos</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </div>
             </div>
@@ -1125,145 +212,131 @@
     </footer>
     
     <!-- Easter Egg Button -->
-    <button class="easter-egg" aria-label="Easter Egg">🎮</button>
-
-    <!-- Scripts -->
+    <button class="easter-egg" aria-label="Easter Egg"></button>
+    
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        
-        // Theme Toggle
-        const themeToggle = document.querySelector('.theme-toggle');
-        const body = document.body;
-        
-        themeToggle.addEventListener('click', () => {
-            body.dataset.theme = body.dataset.theme === 'dark' ? 'light' : 'dark';
-            themeToggle.innerHTML = body.dataset.theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            localStorage.setItem('theme', body.dataset.theme);
-        });
-        
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            body.dataset.theme = savedTheme;
-            themeToggle.innerHTML = savedTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-        }
-        
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Animation on Scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.project-card, .teaching-item, .blog-card, .testimonial-card');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
+        // Función para cargar los artículos del blog en la página principal
+        async function loadRecentBlogArticles() {
+            try {
+                const response = await fetch('blog/blog-articles.json');
+                const data = await response.json();
                 
-                if (elementPosition < screenPosition) {
-                    element.classList.add('animate-fade-in-up');
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
-        // Easter Egg
-        const easterEgg = document.querySelector('.easter-egg');
-        let clickCount = 0;
-        
-        easterEgg.addEventListener('click', () => {
-            clickCount++;
-            
-            if (clickCount === 5) {
-                console.log('%c¡Felicidades! Encontraste el huevo de pascua', 'color: #D5A89E; font-size: 20px; font-weight: bold;');
-                console.log('%cCódigo secreto: CausaCode2025', 'color: #B99289; font-size: 16px;');
+                // Tomar los 3 artículos más recientes
+                const recentArticles = data.articles.slice(0, 3);
                 
-                // Create a small game or animation
-                const game = document.createElement('div');
-                game.style.position = 'fixed';
-                game.style.top = '0';
-                game.style.left = '0';
-                game.style.width = '100%';
-                game.style.height = '100%';
-                game.style.backgroundColor = 'rgba(0,0,0,0.8)';
-                game.style.zIndex = '9999';
-                game.style.display = 'flex';
-                game.style.alignItems = 'center';
-                game.style.justifyContent = 'center';
-                game.style.flexDirection = 'column';
-                game.style.color = '#F5EFED';
+                const blogGrid = document.getElementById('blog-grid');
+                blogGrid.innerHTML = '';
                 
-                game.innerHTML = `
-                    <h2>¡Modo Secreto Activado!</h2>
-                    <p>César también es un gran fan de los videojuegos retro y la música electrónica.</p>
-                    <div id="pixel-art" style="width: 200px; height: 200px; margin: 2rem 0; background: repeating-linear-gradient(45deg, #D5A89E, #D5A89E 10px, #B99289 10px, #B99289 20px);"></div>
-                    <button id="close-game" style="padding: 10px 20px; background: #E9C6BE; border: none; border-radius: 8px; cursor: pointer;">Cerrar</button>
-                `;
-                
-                document.body.appendChild(game);
-                
-                document.getElementById('close-game').addEventListener('click', () => {
-                    game.remove();
-                    clickCount = 0;
-                });
-            }
-        });
-        
-        // Form Submission
-        const contactForm = document.querySelector('.contact-form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Here you would normally handle the form submission with AJAX
-            // For this static version, we'll just show a success message
-            
-            const formElements = contactForm.elements;
-            let isValid = true;
-            
-            // Simple validation
-            for (let i = 0; i < formElements.length; i++) {
-                if (formElements[i].tagName === 'INPUT' || formElements[i].tagName === 'TEXTAREA') {
-                    if (!formElements[i].value.trim()) {
-                        isValid = false;
-                        formElements[i].style.borderColor = '#ff6b6b';
-                    } else {
-                        formElements[i].style.borderColor = '';
-                    }
-                }
-            }
-            
-            if (isValid) {
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerHTML;
-                
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
-                
-                // Simulate sending (would be replaced with actual AJAX)
-                setTimeout(() => {
-                    contactForm.innerHTML = `
-                        <div style="text-align: center;">
-                            <i class="fas fa-check-circle" style="font-size: 3rem; color: var(--color-accent-mid); margin-bottom: 1rem;"></i>
-                            <h3>¡Mensaje enviado!</h3>
-                            <p>Gracias por contactarme. Te responderé lo antes posible.</p>
+                // Crear las tarjetas para los artículos recientes
+                recentArticles.forEach(article => {
+                    const articleCard = document.createElement('article');
+                    articleCard.className = 'blog-card';
+                    articleCard.dataset.category = article.category;
+                    
+                    articleCard.innerHTML = `
+                        <div class="blog-content">
+                            <span class="blog-category">${getCategoryName(article.category)}</span>
+                            <div class="blog-date">${article.date}</div>
+                            <h3>${article.title}</h3>
+                            <p class="blog-excerpt">${article.excerpt}</p>
+                            <a href="blog/index.html?article=${article.jsonFile}" class="btn btn-outline read-more">Leer más</a>
                         </div>
                     `;
-                }, 1500);
+                    
+                    blogGrid.appendChild(articleCard);
+                });
+                
+                // Configurar filtrado de categorías
+                document.querySelectorAll('.category-button').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const category = this.dataset.category;
+                        
+                        // Actualizar el estado activo del botón
+                        document.querySelectorAll('.category-button').forEach(btn => {
+                            btn.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                        
+                        // Filtrar los artículos
+                        document.querySelectorAll('.blog-card').forEach(card => {
+                            if (category === 'all' || card.dataset.category === category) {
+                                card.style.display = 'block';
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+                
+            } catch (error) {
+                console.error('Error al cargar los artículos del blog:', error);
+                document.getElementById('blog-grid').innerHTML = '<div class="error-message">Error al cargar los artículos recientes.</div>';
             }
+        }
+        
+        // Función para cargar los proyectos en la página principal
+        async function loadRecentProjects() {
+            try {
+                const response = await fetch('proyectos/projects.json');
+                const data = await response.json();
+                
+                // Tomar los 3 proyectos más recientes
+                const recentProjects = data.projects.slice(0, 3);
+                
+                const projectsGrid = document.getElementById('projects-grid');
+                projectsGrid.innerHTML = '';
+                
+                // Crear las tarjetas para los proyectos recientes
+                recentProjects.forEach(project => {
+                    const projectCard = document.createElement('article');
+                    projectCard.className = 'project-card';
+                    
+                    // Construir el HTML para las etiquetas de habilidades
+                    const skillsHTML = project.skills.slice(0, 3).map(skill => 
+                        `<span class="skill-tag">${skill}</span>`
+                    ).join('');
+                    
+                    projectCard.innerHTML = `
+                        <div class="project-content">
+                            <div class="project-date">${project.date}</div>
+                            <h3>${project.title}</h3>
+                            <p class="project-excerpt">${project.excerpt}</p>
+                            <div class="project-skills">
+                                ${skillsHTML}
+                            </div>
+                            <a href="proyectos/index.html?project=${project.jsonFile}" class="btn btn-outline read-more">Ver proyecto</a>
+                        </div>
+                    `;
+                    
+                    projectsGrid.appendChild(projectCard);
+                });
+                
+            } catch (error) {
+                console.error('Error al cargar los proyectos:', error);
+                document.getElementById('projects-grid').innerHTML = '<div class="error-message">Error al cargar los proyectos recientes.</div>';
+            }
+        }
+        
+        // Función auxiliar para obtener el nombre de la categoría
+        function getCategoryName(categorySlug) {
+            const categories = {
+                'programacion': 'Programación',
+                'tutoriales': 'Tutoriales',
+                'pensamientos': 'Pensamientos'
+            };
+            
+            return categories[categorySlug] || categorySlug;
+        }
+        
+        // Cargar los contenidos dinámicos cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            loadRecentBlogArticles();
+            loadRecentProjects();
+            
+            // Otras funciones de inicialización que ya tengas...
         });
     </script>
+    
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

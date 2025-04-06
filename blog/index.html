@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | César Perales</title>
+    <meta name="description" content="Blog personal de César Perales sobre programación, algoritmos, simulaciones y pensamientos digitales.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+</head>
+<body>
+    <!-- Barra de progreso de lectura -->
+    <div class="reading-progress"></div>
+    
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../index.html" class="logo">CP</a>
+                <div class="nav-links">
+                    <a href="../index.html">Inicio</a>
+                    <a href="../index.html#blog">Blog</a>
+                    <a href="../index.html#sobre-mi">Sobre mí</a>
+                    <a href="../index.html#proyectos">Proyectos</a>
+                    <a href="../index.html#contacto">Contacto</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="theme-toggle" aria-label="Cambiar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="mobile-menu-btn" aria-label="Menú">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="post-header text-center">
+                    <h1>Blog</h1>
+                    <p class="mb-3">Pensamientos, tutoriales y artículos sobre programación y tecnología</p>
+                </div>
+
+                <!-- Barra de búsqueda -->
+                <div class="search-container">
+                    <div class="search-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="blog-search" class="search-input" placeholder="Buscar artículos...">
+                        <button id="clear-search" class="clear-search"><i class="fas fa-times"></i></button>
+                    </div>
+                </div>
+
+                <div class="categories-list">
+                    <button class="category-button active" data-category="all">Todas las categorías</button>
+                    <button class="category-button" data-category="programacion">Programación</button>
+                    <button class="category-button" data-category="tutoriales">Tutoriales</button>
+                    <button class="category-button" data-category="pensamientos">Pensamientos</button>
+                </div>
+
+                <div id="blog-grid" class="blog-grid">
+                    <!-- Los artículos se cargarán dinámicamente desde blog-articles.json -->
+                    <div class="loading-spinner">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <p>Cargando artículos...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>César Perales</h3>
+                    <p>Programador, profesor y entusiasta de las simulaciones. Creando código con propósito y compartiendo conocimiento con pasión.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://github.com/cdecasurpie" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/cesar-perales/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/causa_code/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fas fa-coffee"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Secciones</h4>
+                    <ul>
+                        <li><a href="../index.html">Inicio</a></li>
+                        <li><a href="../index.html#blog">Blog</a></li>
+                        <li><a href="../index.html#sobre-mi">Sobre mí</a></li>
+                        <li><a href="../index.html#proyectos">Proyectos</a></li>
+                        <li><a href="../index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Categorías</h4>
+                    <ul>
+                        <li><a href="#" data-category="programacion">Programación</a></li>
+                        <li><a href="#" data-category="tutoriales">Tutoriales</a></li>
+                        <li><a href="#" data-category="pensamientos">Pensamientos</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 César Perales. Todos los derechos reservados.</p>
+                <p class="mb-0">Hecho con <i class="fas fa-heart"></i> y muchas líneas de código.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Función para cargar los artículos del blog desde el JSON
+        async function loadBlogArticles() {
+            try {
+                const response = await fetch('../blog/blog-articles.json');
+                const data = await response.json();
+                const urlParams = new URLSearchParams(window.location.search);
+                const articleId = urlParams.get('article');
+                const categoryFilter = urlParams.get('category');
+                
+                if (articleId) {
+                    // Si hay un ID de artículo en la URL, carga el artículo específico
+                    loadSingleArticle(articleId);
+                } else {
+                    // Si no hay ID, carga la lista de artículos (filtrando por categoría si es necesario)
+                    displayBlogList(data.articles, categoryFilter);
+                }
+            } catch (error) {
+                console.error('Error al cargar los artículos del blog:', error);
+                document.getElementById('blog-grid').innerHTML = '<div class="error-message">Error al cargar los artículos. Por favor, intenta de nuevo más tarde.</div>';
+            }
+        }
+        
+        // Función para mostrar la lista de artículos del blog
+        function displayBlogList(articles, categoryFilter) {
+            const blogGrid = document.getElementById('blog-grid');
+            blogGrid.innerHTML = '';
+            
+            // Filtrar artículos por categoría si es necesario
+            let filteredArticles = articles;
+            if (categoryFilter && categoryFilter !== 'all') {
+                filteredArticles = articles.filter(article => article.category === categoryFilter);
+                
+                // Actualiza los botones de categoría para reflejar el filtro activo
+                document.querySelectorAll('.category-button').forEach(button => {
+                    button.classList.remove('active');
+                    if (button.dataset.category === categoryFilter) {
+                        button.classList.add('active');
+                    }
+                });
+            }
+            
+            if (filteredArticles.length === 0) {
+                blogGrid.innerHTML = '<div class="no-results">No hay artículos en esta categoría.</div>';
+                return;
+            }
+            
+            // Crear las tarjetas de artículos
+            filteredArticles.forEach(article => {
+                const articleCard = document.createElement('article');
+                articleCard.className = 'blog-card';
+                articleCard.dataset.category = article.category;
+                articleCard.dataset.title = article.title.toLowerCase();
+                articleCard.dataset.content = `${article.title} ${article.excerpt}`.toLowerCase();
+                
+                articleCard.innerHTML = `
+                    <div class="blog-content">
+                        <span class="blog-category">${getCategoryName(article.category)}</span>
+                        <div class="blog-date">${article.date}</div>
+                        <h3>${article.title}</h3>
+                        <p class="blog-excerpt">${article.excerpt}</p>
+                        <a href="?article=${article.jsonFile}" class="btn btn-outline read-more">Leer más</a>
+                    </div>
+                `;
+                
+                blogGrid.appendChild(articleCard);
+            });
+            
+            // Configurar los botones de filtro por categoría
+            document.querySelectorAll('.category-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const category = this.dataset.category;
+                    
+                    // Actualizar la URL con el filtro seleccionado
+                    const url = new URL(window.location);
+                    if (category === 'all') {
+                        url.searchParams.delete('category');
+                    } else {
+                        url.searchParams.set('category', category);
+                    }
+                    url.searchParams.delete('article'); // Limpiar el artículo si estaba seleccionado
+                    window.history.pushState({}, '', url);
+                    
+                    // Cargar los artículos con el nuevo filtro
+                    loadBlogArticles();
+                    
+                    // Limpiar la búsqueda si hay alguna
+                    document.getElementById('blog-search').value = '';
+                });
+            });
+            
+            // Configurar la funcionalidad de búsqueda
+            setupSearch();
+        }
+        
+        // Configurar la funcionalidad de búsqueda
+        function setupSearch() {
+            const searchInput = document.getElementById('blog-search');
+            const clearButton = document.getElementById('clear-search');
+            
+            if (!searchInput || !clearButton) return;
+            
+            // Mostrar/ocultar el botón de limpiar
+            searchInput.addEventListener('input', function() {
+                clearButton.style.display = this.value ? 'block' : 'none';
+                filterArticlesBySearch(this.value);
+            });
+            
+            // Limpiar la búsqueda
+            clearButton.addEventListener('click', function() {
+                searchInput.value = '';
+                clearButton.style.display = 'none';
+                filterArticlesBySearch('');
+            });
+            
+            // Ocultar inicialmente el botón de limpiar
+            clearButton.style.display = 'none';
+        }
+        
+        // Filtrar artículos por término de búsqueda
+        function filterArticlesBySearch(searchTerm) {
+            const articles = document.querySelectorAll('.blog-card');
+            const normalizedSearchTerm = searchTerm.toLowerCase().trim();
+            let matchCount = 0;
+            
+            articles.forEach(article => {
+                const articleContent = article.dataset.content;
+                const articleTitle = article.dataset.title;
+                const isVisible = article.style.display !== 'none';
+                
+                // Verificar si el artículo ya está oculto por filtro de categoría
+                if (normalizedSearchTerm === '' && isVisible) {
+                    article.classList.remove('hidden');
+                    matchCount++;
+                } else if (isVisible) {
+                    const matchesSearch = articleContent.includes(normalizedSearchTerm) || 
+                                          articleTitle.includes(normalizedSearchTerm);
+                    
+                    if (matchesSearch) {
+                        article.classList.remove('hidden');
+                        matchCount++;
+                    } else {
+                        article.classList.add('hidden');
+                    }
+                }
+            });
+            
+            // Mostrar mensaje si no hay resultados
+            const noResultsElement = document.querySelector('.no-search-results');
+            
+            if (matchCount === 0 && searchTerm !== '') {
+                if (!noResultsElement) {
+                    const noResults = document.createElement('div');
+                    noResults.className = 'no-results no-search-results';
+                    noResults.innerHTML = `No se encontraron artículos que coincidan con "${searchTerm}"`;
+                    document.getElementById('blog-grid').appendChild(noResults);
+                }
+            } else if (noResultsElement) {
+                noResultsElement.remove();
+            }
+        }
+        
+        // Función para cargar un artículo específico
+        async function loadSingleArticle(jsonFile) {
+            try {
+                // Quitar la extensión .json si está presente en la URL
+                const articleFile = jsonFile.endsWith('.json') ? jsonFile : jsonFile + '.json';
+                const folderPaths = ['articulos/', 'programacion/', 'tutoriales/', 'pensamientos/'];
+                
+                // Intentar encontrar el archivo en alguna de las carpetas
+                let articleData = null;
+                let foundPath = null;
+                
+                for (const folderPath of folderPaths) {
+                    try {
+                        const response = await fetch(`${folderPath}${articleFile}`);
+                        if (response.ok) {
+                            articleData = await response.json();
+                            foundPath = folderPath;
+                            break;
+                        }
+                    } catch (e) {
+                        // Continuar intentando con la siguiente carpeta
+                    }
+                }
+                
+                if (!articleData) {
+                    throw new Error('No se pudo encontrar el artículo');
+                }
+                
+                displaySingleArticle(articleData, foundPath + articleFile);
+                
+            } catch (error) {
+                console.error('Error al cargar el artículo:', error);
+                document.getElementById('blog-grid').innerHTML = `
+                    <div class="error-message">
+                        <h2>Artículo no encontrado</h2>
+                        <p>Lo sentimos, el artículo que buscas no existe o no está disponible.</p>
+                        <a href="index.html" class="btn btn-primary">Volver al blog</a>
+                    </div>
+                `;
+            }
+        }
+        
+        // Función para mostrar un artículo individual
+        function displaySingleArticle(article, jsonPath) {
+            // Cambiar el título de la página
+            document.title = `${article.title} | César Perales Blog`;
+            
+            // Actualizar la sección del encabezado
+            const postHeader = document.querySelector('.post-header');
+            postHeader.innerHTML = `
+                <h1>${article.title}</h1>
+                <div class="article-meta">
+                    <span class="article-date">${article.date}</span>
+                    <span class="article-category">${getCategoryName(article.category)}</span>
+                </div>
+            `;
+            
+            // Ocultar los filtros de categoría
+            document.querySelector('.categories-list').style.display = 'none';
+            
+            // Mostrar el contenido del artículo
+            const blogGrid = document.getElementById('blog-grid');
+            blogGrid.className = 'blog-article';
+            blogGrid.innerHTML = '';
+            
+            // Crear un contenedor para el artículo
+            const articleContainer = document.createElement('div');
+            articleContainer.className = 'article-content';
+            
+            // Procesar cada elemento del contenido del artículo
+            article.content.forEach(item => {
+                let element;
+                
+                switch (item.type) {
+                    case 'text':
+                        element = document.createElement('p');
+                        element.textContent = item.content;
+                        break;
+                        
+                    case 'header':
+                        element = document.createElement(`h${item.level}`);
+                        element.textContent = item.content;
+                        break;
+                        
+                    case 'image':
+                        element = document.createElement('figure');
+                        element.innerHTML = `
+                            <img src="${item.url}" alt="${item.alt || ''}" loading="lazy">
+                            ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ''}
+                        `;
+                        break;
+                        
+                    case 'code':
+                        element = document.createElement('pre');
+                        element.innerHTML = `<code class="language-${item.language || 'plaintext'}">${escapeHtml(item.content)}</code>`;
+                        element.className = `code-block ${item.language || 'plaintext'}`;
+                        break;
+                        
+                    default:
+                        element = document.createElement('div');
+                        element.textContent = JSON.stringify(item);
+                }
+                
+                articleContainer.appendChild(element);
+            });
+            
+            // Añadir etiquetas si existen
+            if (article.tags && article.tags.length) {
+                const tagsContainer = document.createElement('div');
+                tagsContainer.className = 'article-tags';
+                
+                const tagsTitle = document.createElement('h4');
+                tagsTitle.textContent = 'Etiquetas:';
+                tagsContainer.appendChild(tagsTitle);
+                
+                const tagsList = document.createElement('div');
+                tagsList.className = 'tags-list';
+                
+                article.tags.forEach(tag => {
+                    const tagItem = document.createElement('span');
+                    tagItem.className = 'tag';
+                    tagItem.textContent = tag;
+                    tagsList.appendChild(tagItem);
+                });
+                
+                tagsContainer.appendChild(tagsList);
+                articleContainer.appendChild(tagsContainer);
+            }
+            
+            // Añadir enlace para volver a la lista
+            const backLink = document.createElement('div');
+            backLink.className = 'back-link text-center mt-5';
+            backLink.innerHTML = `<a href="index.html" class="btn btn-primary"><i class="fas fa-arrow-left"></i> Volver al blog</a>`;
+            articleContainer.appendChild(backLink);
+            
+            // Añadir el contenedor del artículo al grid
+            blogGrid.appendChild(articleContainer);
+            
+            // Destacar el código si existe
+            if (typeof hljs !== 'undefined') {
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            }
+        }
+        
+        // Función auxiliar para obtener el nombre de la categoría
+        function getCategoryName(categorySlug) {
+            const categories = {
+                'programacion': 'Programación',
+                'tutoriales': 'Tutoriales',
+                'pensamientos': 'Pensamientos'
+            };
+            
+            return categories[categorySlug] || categorySlug;
+        }
+        
+        // Función auxiliar para escapar HTML en bloques de código
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+        
+        // Funcionalidad para barra de progreso de lectura
+        function setupReadingProgress() {
+            const progressBar = document.querySelector('.reading-progress');
+            
+            if (!progressBar) return;
+            
+            window.addEventListener('scroll', () => {
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrolled = (window.scrollY / docHeight) * 100;
+                progressBar.style.width = `${scrolled}%`;
+            });
+        }
+        
+        // Función para manejar el modo oscuro explícitamente
+        function setupDarkMode() {
+            const darkModeToggle = document.querySelector('.theme-toggle');
+            
+            if (!darkModeToggle) return;
+            
+            // Verificar si el usuario ya tiene una preferencia guardada
+            let currentTheme = localStorage.getItem('theme');
+            
+            // Si no hay preferencia guardada, usar tema oscuro por defecto
+            if (!currentTheme) {
+                currentTheme = 'dark';
+                localStorage.setItem('theme', currentTheme);
+            }
+            
+            // Aplicar tema
+            document.documentElement.setAttribute('data-theme', currentTheme);
+            
+            // Actualizar el icono
+            if (currentTheme === 'dark') {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            
+            // Manejar evento de click
+            darkModeToggle.addEventListener('click', function() {
+                let theme = document.documentElement.getAttribute('data-theme');
+                
+                if (theme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                    localStorage.setItem('theme', 'light');
+                    darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                    localStorage.setItem('theme', 'dark');
+                    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                }
+            });
+        }
+        
+        // Animar elementos cuando aparecen en la pantalla
+        function setupScrollAnimations() {
+            // Verificar si IntersectionObserver es soportado
+            if (!('IntersectionObserver' in window)) return;
+            
+            const elementsToAnimate = document.querySelectorAll('.blog-card, .article-content h2, .article-content figure');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            elementsToAnimate.forEach(element => {
+                observer.observe(element);
+            });
+        }
+
+        // Cargar los artículos cuando se carga la página
+        document.addEventListener('DOMContentLoaded', function() {
+            loadBlogArticles();
+            setupDarkMode();
+            setupReadingProgress();
+            
+            // Esperar a que se carguen los artículos antes de aplicar animaciones
+            setTimeout(setupScrollAnimations, 500);
+        });
+    </script>
+    
+    <!-- Añadir highlight.js para resaltar el código si es necesario -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+</body>
+</html>

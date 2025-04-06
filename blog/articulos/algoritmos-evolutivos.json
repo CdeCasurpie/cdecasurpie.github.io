@@ -1,0 +1,72 @@
+{
+    "title": "Algoritmos evolutivos aplicados a problemas creativos",
+    "author": "César Perales",
+    "date": "5 de febrero, 2025",
+    "category": "programacion",
+    "tags": ["algoritmos genéticos", "creatividad computacional", "arte generativo"],
+    "content": [
+        {
+            "type": "text",
+            "content": "Los algoritmos evolutivos han demostrado ser herramientas poderosas para resolver problemas de optimización complejos. Sin embargo, su aplicación en dominios creativos está abriendo nuevas posibilidades fascinantes en la intersección entre la tecnología y el arte."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "¿Qué son los algoritmos evolutivos?"
+        },
+        {
+            "type": "text",
+            "content": "Los algoritmos evolutivos son técnicas de optimización inspiradas en la teoría de la evolución de Darwin. Funcionan mediante la evolución de una población de soluciones candidatas a través de procesos de selección natural, recombinación y mutación."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/blog/evolutionary-algorithm-diagram.jpg",
+            "alt": "Diagrama de un algoritmo evolutivo básico",
+            "caption": "Representación esquemática del ciclo de un algoritmo evolutivo"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Aplicaciones creativas"
+        },
+        {
+            "type": "text",
+            "content": "La belleza de estos algoritmos es que pueden aplicarse a problemas donde no tenemos una fórmula clara de qué es 'óptimo'. Por ejemplo, en el arte, donde la evaluación es subjetiva, podemos utilizar diferentes métricas para guiar la evolución hacia resultados estéticamente interesantes."
+        },
+        {
+            "type": "code",
+            "language": "javascript",
+            "content": "// Ejemplo simplificado de función de fitness para arte generativo\nfunction evaluateAesthetic(artwork) {\n  let score = 0;\n  \n  // Evaluar balance de colores\n  score += evaluateColorHarmony(artwork.colors);\n  \n  // Evaluar composición espacial\n  score += evaluateComposition(artwork.elements);\n  \n  // Evaluar complejidad vs simplicidad\n  score += evaluateComplexity(artwork);\n  \n  return score;\n}"
+        },
+        {
+            "type": "text",
+            "content": "Este es solo un ejemplo simplificado. En la práctica, las funciones de evaluación pueden ser mucho más sofisticadas o incluso involucrar feedback humano en el proceso evolutivo."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Ejemplos notables"
+        },
+        {
+            "type": "text",
+            "content": "Algunos proyectos destacados que utilizan algoritmos evolutivos para tareas creativas incluyen PicBreeder (evolución interactiva de imágenes), Genetic Programming for musical composition, y el trabajo de Karl Sims en evolución de criaturas virtuales."
+        },
+        {
+            "type": "text",
+            "content": "En mi propio trabajo, he experimentado con la evolución de patrones visuales que responden a música, creando una forma de sinestesia artificial donde los algoritmos genéticos aprenden qué representaciones visuales complementan mejor diferentes elementos musicales."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusión"
+        },
+        {
+            "type": "text",
+            "content": "Los algoritmos evolutivos ofrecen un poderoso paradigma para explorar espacios creativos de forma sistemática pero abierta a la sorpresa. Al combinarlos con otras técnicas como el aprendizaje profundo, podemos crear sistemas híbridos que nos ayudan a expandir nuestra creatividad y descubrir nuevas posibilidades que quizás no habríamos imaginado por nosotros mismos."
+        },
+        {
+            "type": "text",
+            "content": "En futuros artículos, exploraremos implementaciones específicas y compartiremos código para que puedas comenzar a experimentar con tus propios proyectos de arte evolutivo."
+        }
+    ]
+}

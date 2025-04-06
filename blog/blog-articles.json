@@ -1,0 +1,31 @@
+{
+    "articles": [
+        {
+            "id": "1",
+            "title": "Algoritmos evolutivos aplicados a problemas creativos",
+            "date": "5 de febrero, 2025",
+            "category": "programacion",
+            "excerpt": "Explorando cómo los algoritmos genéticos pueden utilizarse para generar arte, música y resolver problemas de diseño de una forma completamente nueva.",
+            "coverImage": "/assets/images/blog/algoritmos-evolutivos.jpg",
+            "jsonFile": "algoritmos-evolutivos.json"
+        },
+        {
+            "id": "2",
+            "title": "Creando visualizaciones de datos interactivas con D3.js",
+            "date": "28 de marzo, 2025",
+            "category": "tutoriales",
+            "excerpt": "Guía paso a paso para desarrollar gráficas interactivas y visualizaciones de datos que cuentan historias y hacen la información más accesible.",
+            "coverImage": "/assets/images/blog/d3js-visualization.jpg",
+            "jsonFile": "d3js-visualization.json"
+        },
+        {
+            "id": "3",
+            "title": "El arte de la programación funcional",
+            "date": "15 de enero, 2025",
+            "category": "pensamientos",
+            "excerpt": "Reflexiones sobre cómo la programación funcional cambia nuestra forma de pensar sobre el código y puede conducir a soluciones más elegantes y mantenibles.",
+            "coverImage": "/assets/images/blog/functional-programming.jpg",
+            "jsonFile": "functional-programming.json"
+        }
+    ]
+}

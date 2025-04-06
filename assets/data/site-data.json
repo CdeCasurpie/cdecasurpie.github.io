@@ -1,0 +1,182 @@
+{
+  "personal": {
+    "nombres": ["César Perales", "Casurpie", "WebDev"],
+    "tagline": "Programador, Educador y Soñador Digital",
+    "descripcionCorta": "Construyo aplicaciones web y enseño a otros a hacer lo mismo. Programador especializado en desarrollo web y diseño de experiencias digitales.",
+    "fotoPerfil": "/perfil.jpg"
+  },
+  "sobreMi": {
+    "parrafos": [
+      "Soy un programador y educador apasionado por la tecnología, el arte y la educación. Con más de 8 años de experiencia en desarrollo web, me especializo en crear experiencias digitales que combinan funcionalidad y estética.",
+      "Mi trayectoria comenzó estudiando Ingeniería en Sistemas, pero pronto descubrí que mi verdadera pasión estaba en combinar la tecnología con la educación y la creatividad. Esto me llevó a trabajar en proyectos interdisciplinarios y a desarrollar contenido educativo para programadores."
+    ],
+    "enseñanza": "Creo firmemente que el conocimiento debe ser accesible para todos. Enseñar no solo es una forma de compartir lo que sé, sino también una manera de seguir aprendiendo y creciendo. A través de mis tutoriales y proyectos educativos busco desmitificar la programación y hacerla accesible para personas de todos los niveles."
+  },
+  "skills": [
+    {
+      "name": "HTML5",
+      "icon": "fab fa-html5"
+    },
+    {
+      "name": "CSS3",
+      "icon": "fab fa-css3-alt"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "fab fa-js"
+    },
+    {
+      "name": "React",
+      "icon": "fab fa-react"
+    },
+    {
+      "name": "Node.js",
+      "icon": "fab fa-node-js"
+    },
+    {
+      "name": "Python",
+      "icon": "fab fa-python"
+    },
+    {
+      "name": "UI/UX Design",
+      "icon": "fas fa-bezier-curve"
+    },
+    {
+      "name": "Responsive Design",
+      "icon": "fas fa-mobile-alt"
+    },
+    {
+      "name": "Git",
+      "icon": "fab fa-git-alt"
+    }
+  ],
+  "proyectos": [
+    {
+      "titulo": "La Rosa Digital",
+      "descripcion": "Una reinterpretación interactiva del clásico cuento 'La Bella y la Bestia', donde una rosa digital responde a las interacciones del usuario.",
+      "tecnologias": ["JavaScript", "HTML Canvas", "CSS Animation"],
+      "imagen": "rosa-digital.jpg",
+      "demo": "/blog/proyectos/rosa-digital-bellaybestia.html",
+      "codigo": "https://github.com/cesar-perales/rosa-digital"
+    },
+    {
+      "titulo": "CodeTeacher",
+      "descripcion": "Plataforma educativa para enseñar programación mediante ejercicios interactivos y retroalimentación en tiempo real.",
+      "tecnologias": ["React", "Node.js", "MongoDB"],
+      "imagen": "code-teacher.jpg",
+      "demo": "https://codeteacher.demo.com",
+      "codigo": "https://github.com/cesar-perales/code-teacher"
+    },
+    {
+      "titulo": "Porfolio Minimalista",
+      "descripcion": "Template de porfolio personal con diseño minimalista y adaptable, ideal para programadores y diseñadores.",
+      "tecnologias": ["HTML5", "CSS3", "JavaScript"],
+      "imagen": "portfolio-template.jpg",
+      "demo": "/",
+      "codigo": "https://github.com/cesar-perales/minimal-portfolio"
+    }
+  ],
+  "contacto": {
+    "titulo": "Contáctame",
+    "subtitulo": "¿Tienes una idea o proyecto en mente?",
+    "mensaje": "Estoy siempre abierto a nuevas oportunidades y colaboraciones. No dudes en ponerte en contacto conmigo para discutir cualquier idea o proyecto.",
+    "items": [
+      {
+        "titulo": "Email",
+        "contenido": "cesar@ejemplomail.com",
+        "icono": "fas fa-envelope"
+      },
+      {
+        "titulo": "Ubicación",
+        "contenido": "Madrid, España",
+        "icono": "fas fa-map-marker-alt"
+      },
+      {
+        "titulo": "Disponibilidad",
+        "contenido": "Lunes a Viernes, 9:00 - 18:00",
+        "icono": "fas fa-clock"
+      }
+    ],
+    "formulario": {
+      "campos": [
+        {
+          "id": "nombre",
+          "label": "Nombre",
+          "tipo": "text",
+          "placeholder": "Tu nombre"
+        },
+        {
+          "id": "email",
+          "label": "Email",
+          "tipo": "email",
+          "placeholder": "tu@email.com"
+        },
+        {
+          "id": "asunto",
+          "label": "Asunto",
+          "tipo": "text",
+          "placeholder": "Asunto de tu mensaje"
+        },
+        {
+          "id": "mensaje",
+          "label": "Mensaje",
+          "tipo": "textarea",
+          "placeholder": "Escribe tu mensaje aquí..."
+        }
+      ],
+      "botonTexto": "Enviar Mensaje",
+      "botonIcono": "fas fa-paper-plane"
+    }
+  },
+  "footer": {
+    "descripcion": "Soy César Perales, programador y educador dedicado a crear experiencias digitales memorables y compartir conocimiento.",
+    "copyright": "César Perales | Todos los derechos reservados",
+    "fraseFooter": "Hecho con {corazon} y mucho café en Madrid"
+  },
+  "social": [
+    {
+      "nombre": "GitHub",
+      "url": "https://github.com/cesar-perales",
+      "icono": "fab fa-github"
+    },
+    {
+      "nombre": "LinkedIn",
+      "url": "https://linkedin.com/in/cesar-perales",
+      "icono": "fab fa-linkedin"
+    },
+    {
+      "nombre": "Twitter",
+      "url": "https://twitter.com/cesar_perales",
+      "icono": "fab fa-twitter"
+    },
+    {
+      "nombre": "Instagram",
+      "url": "https://instagram.com/cesar.codes",
+      "icono": "fab fa-instagram"
+    }
+  ],
+  "blog": {
+    "categorias": [
+      {
+        "nombre": "Todas",
+        "filtro": "all"
+      },
+      {
+        "nombre": "Programación",
+        "filtro": "programacion"
+      },
+      {
+        "nombre": "Proyectos",
+        "filtro": "proyectos"
+      },
+      {
+        "nombre": "Tutoriales",
+        "filtro": "tutoriales"
+      },
+      {
+        "nombre": "Pensamientos",
+        "filtro": "pensamientos"
+      }
+    ]
+  }
+}
