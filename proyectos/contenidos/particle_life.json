@@ -1,0 +1,92 @@
+{
+    "title": "Simulación de Partículas con Reglas Emergentes",
+    "author": "César Perales",
+    "date": "29 de mayo, 2025",
+    "skills": ["Python", "Pygame", "Numba", "JavaScript", "HTML5 Canvas", "Optimización de Algoritmos", "Simulaciones Físicas"],
+    "repoUrl": "https://github.com/CdeCasurpie/particle_life_python_implementation.git",
+    "demoUrl": "https://cdecasurpie.github.io/particle_life_python_implementation/",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Resumen del Proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto implementa una fascinante simulación de partículas que interactúan entre sí mediante reglas personalizables, creando patrones emergentes complejos. La implementación se realizó en dos versiones: una en Python utilizando Pygame con optimizaciones avanzadas mediante Numba, y otra versión web en JavaScript usando HTML5 Canvas para mayor accesibilidad. Ambas versiones permiten experimentar con diferentes conjuntos de reglas, observar comportamientos emergentes y explorar conceptos de sistemas complejos auto-organizados."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/particle_life.gif",
+            "alt": "Simulación de Particle Life mostrando patrones emergentes",
+            "caption": "Patrones emergentes en la simulación de Particle Life"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Implementación en Python (app.py)"
+        },
+        {
+            "type": "text",
+            "content": "La versión Python de Particle Life utiliza Pygame para la visualización y está altamente optimizada utilizando Numba, una biblioteca de compilación JIT (Just-In-Time) que acelera significativamente los cálculos numéricos. Esta versión incluye características avanzadas como paralelización de cálculos, mundo toroidal infinito, control de cámara con zoom, y un sistema de exploración automática de parámetros para descubrir configuraciones interesantes."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "@jit(nopython=True, parallel=True)\ndef compute_forces(atoms, rules_array, radii2_array, num_colors, time_scale, viscosity, wall_repel, width, height, camera_x, camera_y):\n    \"\"\"Computar todas las fuerzas usando Numba para acelerar el cálculo\"\"\"\n    n = len(atoms)\n    fx_array = np.zeros(n)\n    fy_array = np.zeros(n)\n    \n    # Calcular fuerzas\n    for i in prange(n):\n        # Código optimizado para cálculo de interacciones entre partículas"
+        },
+        {
+            "type": "text",
+            "content": "La versión Python utiliza procesamiento multinúcleo para maximizar el rendimiento, permitiendo simular miles de partículas con interacciones complejas en tiempo real. También implementa un sofisticado sistema de controles que permite ajustar parámetros de simulación sobre la marcha, cambiar reglas de interacción, y explorar diferentes configuraciones con comandos de teclado intuitivos."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Implementación Web (index.html)"
+        },
+        {
+            "type": "text",
+            "content": "La versión web traduce la simulación a JavaScript y HTML5 Canvas, haciéndola accesible desde cualquier navegador sin necesidad de instalación. Esta implementación mantiene muchas de las características clave de la versión Python pero está optimizada para rendimiento web, utilizando técnicas como grid-based collision detection y manejo eficiente del canvas para permitir simulaciones fluidas incluso en dispositivos con recursos limitados."
+        },
+        {
+            "type": "code",
+            "language": "javascript",
+            "content": "// Ejemplo de optimización adaptativa en la versión web\nif (settings.fps < 30 && atoms.length > 200) {\n  if (frameCount % 120 === 0) { // Check every 2 seconds\n    atoms = atoms.slice(0, Math.floor(atoms.length * 0.9));\n    console.log(`Reduced particles to ${atoms.length} for better performance`);\n  }\n}"
+        },
+        {
+            "type": "text",
+            "content": "La versión web incluye optimizaciones específicas como reducción automática de partículas cuando el rendimiento cae por debajo de cierto umbral, y un sistema de interfaz de usuario minimalista pero informativo que muestra los parámetros actuales y controles disponibles. Esta versión es más accesible para demostraciones y divulgación, aunque con algunas funciones simplificadas respecto a la implementación Python completa."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Desafíos Técnicos Superados"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto abordó y resolvió varios desafíos técnicos significativos. La implementación del sistema de partículas con interacciones N-cuerpo requirió optimizar algoritmos para evitar complejidad O(n²). La creación de un mundo toroidal infinito con duplicación de partículas en los bordes proporcionó una experiencia visual fluida sin discontinuidades. El sistema de cámara con zoom implementado permitió observar tanto patrones macroscópicos como interacciones microscópicas detalladas."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Aprendizajes y Habilidades Desarrolladas"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto representa un significativo avance en habilidades de programación científica y optimización de algoritmos. La implementación en Python con Numba demuestra comprensión profunda de técnicas de paralelización y optimización numérica, mientras que la versión web muestra capacidad para trasladar algoritmos complejos entre plataformas, adaptándolos a diferentes entornos de ejecución. El proyecto integra conocimientos de física computacional, estructuras de datos eficientes, y técnicas de visualización interactiva."
+        },
+        {
+            "type": "text",
+            "content": "La creación de este sistema de simulación no solo amplió conocimientos técnicos sino también la comprensión de sistemas complejos y comportamientos emergentes. El trabajo con reglas simples que generan comportamientos complejos proporciona una valiosa perspectiva sobre principios fundamentales presentes en muchos sistemas naturales y artificiales, desde formación de patrones biológicos hasta dinámica social."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Impacto y Aplicabilidad"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto tiene aplicaciones educativas directas para enseñar conceptos de sistemas complejos, comportamiento emergente y dinámica de partículas. La implementación dual en Python (robusto y completo) y JavaScript (accesible y portable) demuestra versatilidad técnica y consideración por diferentes audiencias y casos de uso. Las técnicas de optimización empleadas son transferibles a otros dominios computacionalmente intensivos, desde simulaciones científicas hasta videojuegos o inteligencia artificial."
+        }
+    ]
+}

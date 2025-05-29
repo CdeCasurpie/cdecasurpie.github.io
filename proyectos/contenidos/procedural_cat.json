@@ -1,0 +1,112 @@
+{
+    "title": "Gato Procedural con Animación Cuadrúpeda Avanzada",
+    "author": "César Perales",
+    "date": "04 de mayo, 2025",
+    "skills": ["Godot Engine", "python", "Procedural Animation", "Inverse Kinematics", "Physics Simulation", "State Machine", "3D Mathematics", "Game Development"],
+    "repoUrl": "https://github.com/CesarAP24/cat_proj_test03",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Visión General del Proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto implementa un sistema completo de animación procedural para un gato cuadrúpedo en Godot Engine. El sistema combina algoritmos avanzados de cinemática inversa, máquinas de estado complejas y simulación física para crear movimientos naturales y realistas sin depender de animaciones pre-renderizadas."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/cat_animation.gif",
+            "alt": "Demostración del gato procedural en acción",
+            "caption": "El gato procedural navegando por terreno irregular con animaciones generadas en tiempo real"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Arquitectura del Sistema de Locomoción"
+        },
+        {
+            "type": "text",
+            "content": "El núcleo del sistema se basa en una máquina de estados sofisticada que controla el ciclo de caminar del cuadrúpedo. El sistema implementa 8 estados diferentes: PASO_1, PASO_2, PASO_3, PASO_4, PASO_5, SALTO_PREP, SALTO y ATERRIZAJE, cada uno manejando diferentes fases del movimiento."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "enum Estado { PASO_1, PASO_2, PASO_3, PASO_4, PASO_5, SALTO_PREP, SALTO, ATERRIZAJE }\n\nfunc actualizar_maquina_estados():\n    # Detectar salto si es necesario\n    if debe_avanzar() and not en_ciclo_salto and es_necesario_saltar():\n        en_ciclo_salto = true\n        cambiar_estado(Estado.SALTO_PREP)\n        return\n    \n    # Manejar estados de salto y transiciones de caminata\n    if en_ciclo_salto:\n        match estado_actual:\n            Estado.SALTO_PREP:\n                if todas_patas_en_posicion(): cambiar_estado(Estado.SALTO)"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Sistema de Detección de Terreno y Adaptación"
+        },
+        {
+            "type": "text",
+            "content": "Una de las características más impresionantes del sistema es su capacidad para detectar y adaptarse automáticamente a diferentes tipos de terreno. Utiliza raycasting avanzado para analizar la topografía del suelo y determinar cuándo es necesario realizar saltos o ajustar la longitud de los pasos."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "func es_necesario_saltar():\n    var centro = obtener_centro()\n    var dir_norm = direccion.normalized()\n    \n    for dist in range(1, 30):\n        var distancia_actual = UMBRAL_DETECCION_SALTO * dist / 30.0\n        var punto_check = centro + dir_norm * distancia_actual\n        var altura_terreno = obtener_punto_mas_alto(punto_check.x, punto_check.z, \"suelo\").y\n        var diferencia_altura = altura_terreno - centro.y\n        \n        # Detectar tanto subidas como bajadas\n        if diferencia_altura > MIN_HEIGHT_JUMP && diferencia_altura < MAX_HEIGHT_JUMP:\n            posicion_obstaculo = Vector3(punto_check.x, altura_terreno, punto_check.z)\n            return true"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Cinemática Inversa y Control de Esqueleto"
+        },
+        {
+            "type": "text",
+            "content": "El sistema de rigging utiliza cinemática inversa avanzada para controlar la columna vertebral y las extremidades del gato. Implementa un sistema de resortes físicos para simular el movimiento natural de la cabeza y el cuello, creando movimientos orgánicos que responden a la inercia y el momentum."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "func update_column(skeleton: Skeleton3D, bones: Array, target: Vector3, delta: float):\n    # Simulación de física de resortes\n    var desired_pos = target\n    var current_pos = current_head_pos\n    \n    # Calcular fuerza del resorte: F = -k * x - b * v\n    var displacement = current_pos - desired_pos\n    var spring_force = -spring_stiffness * displacement - spring_damping * velocity\n    \n    # Calcular aceleración (F = ma, entonces a = F/m)\n    var acceleration = spring_force / mass\n    \n    # Actualizar velocidad y posición usando integración de verlet\n    velocity += acceleration * delta\n    current_head_pos += velocity * delta"
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/cat_targets.png",
+            "alt": "Sistema de targets e IK del gato",
+            "caption": "Visualización del sistema de cinemática (targets)"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Algoritmos de Interpolación y Movimiento Suave"
+        },
+        {
+            "type": "text",
+            "content": "El sistema implementa múltiples algoritmos de interpolación para crear transiciones suaves entre posiciones. Utiliza funciones sigmoides para suavizar el progreso del movimiento y parábolas matemáticas para calcular las trayectorias naturales de las patas durante los pasos."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "func obtener_progreso_suave(x):\n    return 1 / (1 + exp(-8 * (x - 0.5)))\n\nfunc calcular_altura_parabola(pos_inicial, pos_final, progreso, factor_altura = 1.0):\n    var y_inicio = pos_inicial.y\n    var y_fin = pos_final.y\n    var altura_maxima = max(y_inicio, y_fin) + (ALTURA_PASO * factor_altura)\n    \n    var a = y_inicio + y_fin - 2 * altura_maxima\n    var b = -2 * y_inicio + 2 * altura_maxima\n    var c = y_inicio\n    \n    return a * progreso * progreso + b * progreso + c"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Sistema de Control de Cámara Avanzado"
+        },
+        {
+            "type": "text",
+            "content": "El proyecto incluye un sistema de cámara tercera persona altamente sofisticado que sigue al gato con suavizado de movimiento, control orbital, zoom dinámico y capacidad de targeting mediante raycast. La cámara responde naturalmente a los movimientos del jugador y proporciona una experiencia de usuario fluida."
+        },
+        {
+            "type": "text",
+            "content": "El control de entrada permite movimiento relativo a la cámara, rotación orbital con clic derecho, zoom con la rueda del mouse, y targeting por clic izquierdo que utiliza raycasting para determinar nuevos objetivos de movimiento en el terreno."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Aplicaciones y Potencial Futuro"
+        },
+        {
+            "type": "text",
+            "content": "Este sistema tiene aplicaciones directas en el desarrollo de videojuegos que requieran personajes cuadrúpedos realistas, simulaciones de comportamiento animal, herramientas de animación procedural, y proyectos de investigación en robótica y locomoción. La arquitectura modular permite su expansión para diferentes tipos de criaturas y escenarios de movimiento."
+        },
+        {
+            "type": "text",
+            "content": "El código base proporciona una excelente fundación para el desarrollo de sistemas de IA más complejos, comportamientos emergentes, y mecánicas de juego avanzadas que requieran movimiento orgánico y adaptativo."
+        }
+    ]
+}

@@ -1,49 +1,104 @@
 {
     "projects": [
         {
-            "id": "1",
-            "title": "Test title Project",
-            "date": "18 de diciembre, 2024",
-            "skills": ["JavaScript", "WebGL", "Three.js", "Simulación física"],
-            "excerpt": "Test description for the project.",
-            "jsonFile": "test.json",
-            "coverImage": "/assets/images/projects/test.jpg"
+            "id": "5",
+            "title": "Gato Procedural en Godot",
+            "date": "04 de mayo, 2025",
+            "skills": [
+                "Godot",
+                "Procedural Animation",
+                "Game Development",
+                "3D Modeling"
+            ],
+            "excerpt": "Proyecto de animación procedural de un gato en Godot con movimientos realistas y comportamientos naturales implementados programáticamente.",
+            "jsonFile": "procedural_cat.json",
+            "coverImage": "/assets/images/projects/cat.png"
         },
         {
             "id": "1",
-            "title": "test",
-            "date": "18 de diciembre, 2024",
-            "skills": ["JavaScript", "WebGL", "Three.js", "Simulación física"],
-            "excerpt": "Test description for the project.",
-            "jsonFile": "test.json",
-            "coverImage": "/assets/images/projects/test.jpg"
+            "title": "Sistema de Base de Datos Multimodal",
+            "date": "26 de mayo, 2024",
+            "skills": [
+                "Python",
+                "Database Systems",
+                "GUI PyQT"
+            ],
+            "excerpt": "Base de datos completa implementada desde cero con 5 tipos de índices (Sequential File, Extended Hashing, CLI y interfaz gráfica para exportar queries a JSON/CSV.",
+            "jsonFile": "database_system.json",
+            "coverImage": "/assets/images/projects/base_datos_multi.png"
         },
         {
-            "id": "1",
-            "title": "test",
-            "date": "18 de diciembre, 2024",
-            "skills": ["JavaScript", "WebGL", "Three.js", "Simulación física"],
-            "excerpt": "Test description for the project.",
-            "jsonFile": "test.json",
-            "coverImage": "/assets/images/projects/test.jpg"
+            "id": "3",
+            "title": "Generador de Informes con IA",
+            "date": "25 noviembre, 2024",
+            "skills": [
+                "Python",
+                "AI",
+                "Flask",
+                "React"
+            ],
+            "excerpt": "Sistema completo de generación de informes usando IA. Backend en Python con Flask y frontend moderno, procesamiento de imágenes y conversión automática a documentos.",
+            "jsonFile": "ai_report_generator.json",
+            "coverImage": "/assets/images/projects/gpt_generator.png"
         },
         {
-            "id": "1",
-            "title": "test",
-            "date": "18 de diciembre, 2024",
-            "skills": ["JavaScript", "WebGL", "Three.js", "Simulación física"],
-            "excerpt": "Test description for the project.",
-            "jsonFile": "test.json",
-            "coverImage": "/assets/images/projects/test.jpg"
+            "id": "4",
+            "title": "Simulador Físico de Bípedos",
+            "date": "26 de marzo, 2025",
+            "skills": [
+                "Pygame",
+                "Physics Simulation",
+                "Procedural Animation"
+            ],
+            "excerpt": "Simulador físico avanzado de bípedos con animaciones procedurales para caminar. Implementación completa de física y biomecánica usando Pygame.",
+            "jsonFile": "biped_simulator.json",
+            "coverImage": "/assets/images/projects/biped_sim.png"
         },
         {
-            "id": "1",
-            "title": "test",
-            "date": "18 de diciembre, 2024",
-            "skills": ["JavaScript", "WebGL", "Three.js", "Simulación física"],
-            "excerpt": "Test description for the project.",
-            "jsonFile": "test.json",
-            "coverImage": "/assets/images/projects/test.jpg"
+            "id": "9",
+            "title": "Simulación Particle Life",
+            "date": "18 de mayo, 2024",
+            "skills": [
+                "Python",
+                "Physics Simulation",
+                "Cellular Automata",
+                "Web Technologies",
+                "Complex Systems"
+            ],
+            "excerpt": "Simulación de vida artificial con partículas que siguen reglas de atracción/repulsión en una matriz. Implementación de sistemas complejos emergentes.",
+            "jsonFile": "particle_life.json",
+            "coverImage": "/assets/images/projects/particle_life.png"
+        },
+        {
+            "id": "6",
+            "title": "Búsqueda por Similitud Musical",
+            "date": "12 de septiembre, 2024",
+            "skills": [
+                "C++",
+                "Machine Learning",
+                "Spotify API",
+                "Data Visualization",
+                "Algorithms"
+            ],
+            "excerpt": "Implementación de múltiples algoritmos de búsqueda por similitud aplicados a Spotify. Incluye visualización de métricas y buscador de estilos musicales similares.",
+            "jsonFile": "music_similarity.json",
+            "coverImage": "/assets/images/projects/music_similarity.jpg"
+        },
+        {
+            "id": "2",
+            "title": "Visualizador de Planetas 3D",
+            "date": "10 de octubre, 2024",
+            "skills": [
+                "WebGL",
+                "Three.js",
+                "NASA API",
+                "3D Graphics",
+                "Frontend",
+                "Backend"
+            ],
+            "excerpt": "Visualizador web 3D de planetas usando la API de la NASA. Arquitectura completa con frontend y backend para renderizado de datos astronómicos en tiempo real.",
+            "jsonFile": "planet_visualizer.json",
+            "coverImage": "/assets/images/projects/planet_visualizer.jpg"
         }
     ]
 }

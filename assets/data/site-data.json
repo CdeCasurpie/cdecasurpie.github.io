@@ -12,6 +12,76 @@
     ],
     "enseñanza": "Creo firmemente que el conocimiento debe ser accesible para todos. Enseñar no solo es una forma de compartir lo que sé, sino también una manera de seguir aprendiendo y creciendo. A través de mis tutoriales y proyectos educativos busco desmitificar la programación y hacerla accesible para personas de todos los niveles."
   },
+  "experiencia": {
+    "titulo": "Mi Trayectoria Profesional",
+    "subtitulo": "Un vistazo a mi recorrido laboral",
+    "trabajos": [
+      {
+        "empresa": "CAPS - UTEC",
+        "cargo": "Profesor Particular",
+        "periodo": "2025 - Actualidad",
+        "descripcion": "Actualmente doy enseñansa a estudiantes de programación y desarrollo web, no solo en CAPS sino de forma particular. Me enfoco en crear un ambiente de aprendizaje inclusivo y motivador, adaptando mis métodos a las necesidades de cada estudiante.",
+        "logo": "assets/images/techedu-logo.png",
+        "tecnologias": ["Diseño de algoritmos", "Python", "BD"],
+        "hitos": [
+          "Creación de material para las asesorías de programación",
+          "Contacto con más estudiantes por el boca a boca"
+        ]
+      },
+      {
+        "empresa": "Haramara",
+        "cargo": "Desarrollador Full Stack",
+        "periodo": "2024-2025",
+        "descripcion": "Desarrollo de una aplicación web para la venta, compra y reserva de actividades acuáticas",
+        "logo": "assets/images/creativcode-logo.png",
+        "tecnologias": ["Next.js", "Node.js", "Tailwind CSS", "OVH Cloud"],
+        "hitos": [
+          "Implementación de un sistema de reservas",
+          "Front-end complejo y responsivo con Next.js",
+          "Integración de un sistema Usuario-Empresa para gestión de actividades"
+        ]
+      },
+      {
+        "empresa": "BenjiOr",
+        "cargo": "Desarrollador de Software",
+        "periodo": "2023 - 2025",
+        "descripcion": "Se desarrollaron varias aplicaciones web, de escritorio y móviles para la empresa, incluyendo un sistema de gestión de inventarios y ventas.",
+        "logo": "assets/images/digitallearn-logo.png",
+        "tecnologias": ["JavaScript", "HTML/CSS", "Python", "Flask", "SQLite", "etc"],
+        "hitos": [
+          "Desarrollo de un sistema de gestión de inventarios y ventas",
+          "Optimización del rendimiento del sistema con técnicas avanzadas de programación",
+          "Desarrollo de aplicaciones de escritorio y móviles para la empresa"
+        ]
+      },
+      {
+        "empresa": "Mastery Five",
+        "cargo": "Desarrollador Full Stack",
+        "periodo": "2023 - 2024",
+        "descripcion": "Colaboración en el proceso de creación de un software para gestionar el tiempo de las personas",
+        "logo": "assets/images/websolutions-logo.png",
+        "tecnologias": ["Next.js", "Tailwind CSS", "Google Cloud"],
+        "hitos": [
+          "Desarrollo de un sistema de gestión de tiempo y productividad",
+          "Implementación de un sistema de notificaciones en tiempo real",
+          "Creación de componentes reutilizables y escalables con Next.js"
+        ]
+      },
+      {
+        "empresa": "Cults - Sketchfab",
+        "cargo": "Modelador 3D",
+        "periodo": "2021 - 2022",
+        "descripcion": "Creación de modelos 3D para la plataforma Cults, incluyendo modelos de alta calidad para impresión 3D y visualización en línea.",
+        "logo": "assets/images/cults-logo.png",
+        "tecnologias": ["Blender", "Cults3D", "Sketchfab"],
+        "hitos": [
+          "Desarrollo de modelos 3D para la plataforma Cults",
+          "Optimización de modelos para impresión 3D y visualización en línea",
+          "Ventas de varios modelos 3D en la plataforma"
+        ]
+      }
+    ]
+  },
   "skills": [
     {
       "name": "HTML5",

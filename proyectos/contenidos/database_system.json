@@ -1,0 +1,117 @@
+{
+    "title": "Sistema de Base de Datos Multimodal con Soporte Avanzado para Índices Espaciales",
+    "author": "César Perales",
+    "date": "18 de diciembre, 2024",
+    "skills": ["Python", "PyQt5", "Estructuras de Datos Avanzadas", "Algoritmos de Indexación", "Bases de Datos", "Procesamiento Espacial", "Desarrollo de Interfaces", "Manejo de Archivos Binarios"],
+    "repoUrl": "https://github.com/Fabryzzio-Meza-Torres/Sistema-de-Base-de-Datos-Multimodal",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Visión General del Proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Desarrollamos un innovador sistema de gestión de bases de datos con capacidades multimodales, implementando desde cero cinco técnicas avanzadas de indexación, incluyendo soporte completo para datos espaciales. Este proyecto representa una solución completa que abarca la implementación de estructuras de datos complejas, serialización eficiente, procesamiento espacial, una interfaz SQL personalizada y una aplicación gráfica intuitiva desarrollada en PyQt5."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/db-multimodal-gui.png",
+            "alt": "Interfaz gráfica del Sistema de Base de Datos Multimodal",
+            "caption": "Interfaz principal del sistema con panel de consulta SQL"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Características Técnicas Destacadas"
+        },
+        {
+            "type": "text",
+            "content": "La característica más distintiva del sistema es su capacidad de cambiar dinámicamente entre cinco algoritmos de indexación avanzados: B+ Tree, Hash Extensible, Archivo Secuencial con Overflow, ISAM Sparse y R-Tree espacial. Cada algoritmo está implementado con optimizaciones específicas para maximizar rendimiento en diferentes casos de uso y patrones de acceso a datos."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "# Ejemplo de creación de una tabla con índice espacial\nquery = '''\nCREATE TABLE restaurants (\n    id INT KEY,\n    name VARCHAR(100),\n    location POINT SPATIAL INDEX,\n    rating FLOAT,\n    area POLYGON\n) using index bplus_tree(id);\n'''\n\ndatabase.execute_query(query)"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Innovaciones en Indexación Espacial"
+        },
+        {
+            "type": "text",
+            "content": "Se implementó un potente sistema de indexación espacial basado en R-Tree que permite realizar consultas geoespaciales complejas con alto rendimiento. El sistema es capaz de procesar cuatro tipos de consultas espaciales: búsqueda por radio, intersecciones geométricas, k-vecinos más cercanos y búsqueda por rango rectangular. Esta funcionalidad permite trabajar con geometrías complejas representadas en formato WKT (Well-Known Text) y realizar análisis espacial avanzado."
+        },
+        {
+            "type": "code",
+            "language": "sql",
+            "content": "-- Búsqueda por radio: encuentra restaurantes en un radio de 5km\nSELECT * FROM restaurants WHERE location WITHIN ((10.5, 20.3), 5.0);\n\n-- Búsqueda por intersección geométrica\nSELECT * FROM restaurants WHERE area INTERSECTS \"POLYGON((0 0, 10 0, 10 10, 0 10, 0 0))\";\n\n-- Búsqueda de 3 vecinos más cercanos\nSELECT * FROM restaurants WHERE location NEAREST (0, 0) LIMIT 3;\n\n-- Búsqueda por rango espacial rectangular\nSELECT * FROM restaurants WHERE location IN_RANGE ((0, 0), (10, 10));"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Análisis de Rendimiento y Algoritmos Implementados"
+        },
+        {
+            "type": "text",
+            "content": "Se realizó un análisis de rendimiento de las cinco técnicas de indexación implementadas, utilizando conjuntos de datos de hasta 100,000 registros. El sistema B+ Tree demostró ser el más equilibrado para operaciones generales, con una complejidad O(log n) consistente. El Hash Extensible destacó en inserciones y búsquedas puntuales con complejidad promedio O(1). El R-Tree, aunque más lento en inserciones (18,112ms/registro para 100k), superó exponencialmente a otras estructuras en consultas espaciales complejas."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/grafica_db.png",
+            "alt": "Gráfica de comparación de rendimiento entre técnicas de indexación",
+            "caption": "Comparativa de rendimiento en operaciones de inserción para diferentes volúmenes de datos"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Arquitectura y Diseño"
+        },
+        {
+            "type": "text",
+            "content": "El sistema implementa una arquitectura modular basada en el patrón Strategy para la selección dinámica de algoritmos de indexación. La clase Table actúa como coordinador central que encapsula la estructura de datos, el esquema y el índice primario seleccionado. Para la interfaz gráfica, apliqué el patrón Model-View-Controller con señales y slots de PyQt5, separando completamente la lógica de negocio de la presentación."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "class Table:\n    \"\"\"Clase principal que coordina estructura de datos y algoritmos de indexación.\"\"\"\n    \n    def __init__(self, name, columns, primary_key, page_size=4096, index_type=\"sequential\", spatial_columns=None):\n        self.name = name\n        self.columns = columns\n        self.primary_key = primary_key\n        self.page_size = page_size\n        self.index_type = index_type\n        self.spatial_columns = spatial_columns or []\n        \n        # Crear índice primario según tipo seleccionado (patrón Strategy)\n        self.index = self._create_index(index_type, primary_key)\n        \n        # Crear índices espaciales adicionales si se especifican\n        if spatial_columns:\n            self._create_spatial_indexes()"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Parser SQL Personalizado"
+        },
+        {
+            "type": "text",
+            "content": "Se implementó un parser SQL personalizado que soporta tanto operaciones estándar como las extensiones espaciales del sistema. El parser utiliza un enfoque descendente recursivo basado en expresiones regulares complejas para interpretar consultas de creación de tablas, inserción, selección, eliminación y consultas espaciales especializadas. Este componente permite al usuario interactuar con el motor de base de datos mediante una sintaxis SQL familiar extendida con capacidades espaciales."
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "def parse_query(query):\n    \"\"\"Parser SQL con soporte para consultas espaciales.\"\"\"\n    query = query.strip()\n    \n    # Reconocer consulta CREATE TABLE\n    create_match = re.match(r'(?i)CREATE\\s+TABLE\\s+([\\w_]+)\\s*\\((.+?)\\)(\\s+using\\s+index\\s+([\\w_]+)\\(([\\w_]+)\\))?', query, re.DOTALL)\n    if create_match:\n        # Procesar definición de tabla...\n        \n    # Reconocer consulta espacial\n    spatial_match = re.match(r'(?i)SELECT\\s+(.+?)\\s+FROM\\s+([\\w_]+)\\s+WHERE\\s+([\\w_]+)\\s+(WITHIN|INTERSECTS|NEAREST|IN_RANGE)\\s+\\((.+?)\\)', query)\n    if spatial_match:\n        # Procesar consulta espacial..."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusiones y Aprendizajes"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto me permitió aplicar y profundizar en conceptos avanzados de estructuras de datos, algoritmos de indexación, serialización binaria y desarrollo de interfaces. La implementación desde cero de algoritmos complejos como el B+ Tree fortaleció significativamente mi comprensión de estas estructuras y su comportamiento en situaciones de datos reales."
+        },
+        {
+            "type": "text",
+            "content": "Entre los desafíos más interesantes estuvo la optimización de rendimiento para grandes volúmenes de datos, la implementación eficiente de las consultas, y el diseño de una interfaz gráfica que expusiera toda la potencia del sistema manteniendo una experiencia de usuario intuitiva. Las pruebas de rendimiento revelaron comportamientos fascinantes de las diferentes estructuras de indexación con diversos patrones de datos y consultas, proporcionando una comprensión práctica que complementa el conocimiento teórico."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Tecnologías Utilizadas"
+        },
+        {
+            "type": "text",
+            "content": "• Python 3.7+: Lenguaje principal de desarrollo • PyQt5: Framework para la interfaz gráfica • Shapely: Biblioteca para procesamiento de geometrías espaciales • RTree: Implementación eficiente de índices espaciales\n• SQLite (como referencia para el diseño del parser SQL) • Matplotlib: Visualización de resultados de análisis de rendimiento"
+        }
+    ]
+}

@@ -374,6 +374,7 @@
             // Cambiar el título de la página
             document.title = `${project.title} | César Perales - Proyectos`;
             
+            
             // Actualizar la sección del encabezado
             const postHeader = document.querySelector('.post-header');
             postHeader.innerHTML = `
@@ -392,47 +393,11 @@
             projectsGrid.className = 'blog-article'; // Usar la misma clase que los artículos
             projectsGrid.innerHTML = '';
             
+            
             // Crear un contenedor para el proyecto
             const projectContainer = document.createElement('div');
             projectContainer.className = 'article-content'; // Usar la misma clase que los artículos
             
-            
-            // Procesar cada elemento del contenido del proyecto
-            project.content.forEach(item => {
-                let element;
-                
-                switch (item.type) {
-                    case 'text':
-                        element = document.createElement('p');
-                        element.textContent = item.content;
-                        break;
-                        
-                    case 'header':
-                        element = document.createElement(`h${item.level}`);
-                        element.textContent = item.content;
-                        break;
-                        
-                    case 'image':
-                        element = document.createElement('figure');
-                        element.innerHTML = `
-                            <img src="${item.url}" alt="${item.alt || ''}" loading="lazy">
-                            ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ''}
-                        `;
-                        break;
-                        
-                    case 'code':
-                        element = document.createElement('pre');
-                        element.innerHTML = `<code class="language-${item.language || 'plaintext'}">${escapeHtml(item.content)}</code>`;
-                        element.className = `code-block ${item.language || 'plaintext'}`;
-                        break;
-                        
-                    default:
-                        element = document.createElement('div');
-                        element.textContent = JSON.stringify(item);
-                }
-                
-                projectContainer.appendChild(element);
-            });
             
             // Si hay enlaces al repositorio o demo, mostrarlos
             if (project.repoUrl || project.demoUrl) {
@@ -461,6 +426,52 @@
                 
                 projectContainer.appendChild(linksContainer);
             }
+            
+            // Procesar cada elemento del contenido del proyecto
+            project.content.forEach(item => {
+                let element;
+                
+                switch (item.type) {
+                    case 'text':
+                        //separar por \n para párrafos
+                        const paragraphs = item.content.split('\n').filter(p => p.trim() !== '');
+                        paragraphs.forEach(paragraph => {
+                            if (paragraph.trim() !== '') {
+                                element = document.createElement('p');
+                                element.textContent = paragraph;
+                                projectContainer.appendChild(element);
+                            }
+                        });
+                        break;
+                        
+                    case 'header':
+                        element = document.createElement(`h${item.level}`);
+                        element.textContent = item.content;
+                        projectContainer.appendChild(element);
+                        break;
+                        
+                    case 'image':
+                        element = document.createElement('figure');
+                        element.innerHTML = `
+                            <img src="${item.url}" alt="${item.alt || ''}" loading="lazy">
+                            ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ''}
+                        `;
+                        projectContainer.appendChild(element);
+                        break;
+                        
+                    case 'code':
+                        element = document.createElement('pre');
+                        element.innerHTML = `<code class="language-${item.language || 'plaintext'}">${escapeHtml(item.content)}</code>`;
+                        element.className = `code-block ${item.language || 'plaintext'}`;
+                        projectContainer.appendChild(element);
+                        break;
+                        
+                    default:
+                        element = document.createElement('div');
+                        element.textContent = JSON.stringify(item);
+                        projectContainer.appendChild(element);
+                }
+            });
             
             // Añadir enlace para volver a la lista
             const backLink = document.createElement('div');

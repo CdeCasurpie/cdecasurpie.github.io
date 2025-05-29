@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/timeline.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.ico">
     <script src="assets/js/cursor-light.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -84,6 +85,43 @@
                         <div class="skills-carousel">
                             <div class="skills-track">
                                 <!-- Se llenará dinámicamente con JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Experiencia Profesional Timeline Section -->
+        <section id="experiencia" class="section timeline-section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Experiencia Profesional</h2>
+                </div>
+                
+                <div class="timeline-container">
+                    <div class="timeline-controls">
+                        <button class="timeline-control prev-btn" aria-label="Anterior experiencia">
+                            <i class="fas fa-arrow-left"></i>
+                        </button>
+                        <button class="timeline-control next-btn" aria-label="Siguiente experiencia">
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="timeline-wrapper">
+                        <div class="timeline-track">
+                            <!-- Timeline items will be loaded dynamically -->
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-details">
+                        <div class="timeline-details-content">
+                            <!-- Selected job details will appear here -->
+                            <div class="loading-spinner">
+                                <i class="fas fa-circle-notch fa-spin"></i>
+                                <p>Cargando experiencia profesional...</p>
                             </div>
                         </div>
                     </div>
@@ -332,6 +370,193 @@
             }
         }
         
+        // Función para cargar la línea de tiempo de experiencia profesional
+        async function loadExperienceTimeline() {
+            try {
+                const response = await fetch('assets/data/site-data.json');
+                const data = await response.json();
+                
+                if (!data.experiencia || !data.experiencia.trabajos || !data.experiencia.trabajos.length) {
+                    throw new Error('No se encontraron datos de experiencia laboral');
+                }
+                
+                const timelineTrack = document.querySelector('.timeline-track');
+                const timelineDetails = document.querySelector('.timeline-details-content');
+                
+                // Limpiar contenedores
+                timelineTrack.innerHTML = '';
+                
+                // Crear línea temporal
+                data.experiencia.trabajos.forEach((job, index) => {
+                    const timelineItem = document.createElement('div');
+                    timelineItem.className = `timeline-item ${index === 0 ? 'active' : ''}`;
+                    timelineItem.dataset.index = index;
+                    
+                    // Crear años como puntos en la línea
+                    timelineItem.innerHTML = `
+                        <div class="timeline-point"></div>
+                        <div class="timeline-date">${job.periodo}</div>
+                    `;
+                    
+                    timelineTrack.appendChild(timelineItem);
+                    
+                    // Añadir evento de clic
+                    timelineItem.addEventListener('click', () => {
+                        selectTimelineItem(index);
+                    });
+                });
+                
+                // Mostrar el primer trabajo por defecto
+                showJobDetails(0);
+                
+                // Configurar controles de navegación
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+                
+                prevBtn.addEventListener('click', () => {
+                    const activeItem = document.querySelector('.timeline-item.active');
+                    const currentIndex = parseInt(activeItem.dataset.index);
+                    const prevIndex = Math.max(0, currentIndex - 1);
+                    selectTimelineItem(prevIndex);
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    const activeItem = document.querySelector('.timeline-item.active');
+                    const currentIndex = parseInt(activeItem.dataset.index);
+                    const nextIndex = Math.min(data.experiencia.trabajos.length - 1, currentIndex + 1);
+                    selectTimelineItem(nextIndex);
+                });
+                
+                // Configurar desplazamiento horizontal
+                const timelineWrapper = document.querySelector('.timeline-wrapper');
+                let isDown = false;
+                let startX;
+                let scrollLeft;
+                
+                timelineWrapper.addEventListener('mousedown', (e) => {
+                    isDown = true;
+                    timelineWrapper.classList.add('active');
+                    startX = e.pageX - timelineWrapper.offsetLeft;
+                    scrollLeft = timelineWrapper.scrollLeft;
+                });
+                
+                timelineWrapper.addEventListener('mouseleave', () => {
+                    isDown = false;
+                    timelineWrapper.classList.remove('active');
+                });
+                
+                timelineWrapper.addEventListener('mouseup', () => {
+                    isDown = false;
+                    timelineWrapper.classList.remove('active');
+                });
+                
+                timelineWrapper.addEventListener('mousemove', (e) => {
+                    if (!isDown) return;
+                    e.preventDefault();
+                    const x = e.pageX - timelineWrapper.offsetLeft;
+                    const walk = (x - startX) * 2; // Velocidad de desplazamiento
+                    timelineWrapper.scrollLeft = scrollLeft - walk;
+                });
+                
+                // También permite desplazamiento táctil
+                timelineWrapper.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX - timelineWrapper.offsetLeft;
+                    scrollLeft = timelineWrapper.scrollLeft;
+                });
+                
+                timelineWrapper.addEventListener('touchmove', (e) => {
+                    if (!startX) return;
+                    const x = e.touches[0].pageX - timelineWrapper.offsetLeft;
+                    const walk = (x - startX) * 2;
+                    timelineWrapper.scrollLeft = scrollLeft - walk;
+                });
+                
+            } catch (error) {
+                console.error('Error al cargar la línea de tiempo:', error);
+                document.querySelector('.timeline-track').innerHTML = 
+                    '<div class="error-message"><h3>Error al cargar la experiencia laboral</h3><p>No se pudieron cargar los datos.</p></div>';
+            }
+        }
+        
+        // Función para seleccionar un item de la línea temporal
+        function selectTimelineItem(index) {
+            // Actualizar clases activas
+            document.querySelectorAll('.timeline-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            const selectedItem = document.querySelector(`.timeline-item[data-index="${index}"]`);
+            selectedItem.classList.add('active');
+            
+            // Asegurar que el elemento seleccionado es visible
+            const timelineWrapper = document.querySelector('.timeline-wrapper');
+            timelineWrapper.scrollLeft = selectedItem.offsetLeft - (timelineWrapper.clientWidth / 2) + (selectedItem.clientWidth / 2);
+            
+            // Mostrar detalles del trabajo
+            showJobDetails(index);
+        }
+        
+        // Función para mostrar los detalles de un trabajo
+        async function showJobDetails(index) {
+            try {
+                const response = await fetch('assets/data/site-data.json');
+                const data = await response.json();
+                
+                const job = data.experiencia.trabajos[index];
+                const detailsContainer = document.querySelector('.timeline-details-content');
+                
+                // Generar HTML para tecnologías
+                const techHTML = job.tecnologias.map(tech => 
+                    `<span class="job-tech">${tech}</span>`
+                ).join('');
+                
+                // Generar HTML para hitos
+                const hitosHTML = job.hitos.map(hito => 
+                    `<li><i class="fas fa-check-circle"></i> ${hito}</li>`
+                ).join('');
+                
+                detailsContainer.innerHTML = `
+                    <div class="job-header">
+                        <div class="job-title-container">
+                            <h3 class="job-title">${job.cargo}</h3>
+                            <div class="job-company">${job.empresa}</div>
+                            <div class="job-period"><i class="far fa-calendar-alt"></i> ${job.periodo}</div>
+                        </div>
+                        <div class="job-logo">
+                            <img src="${job.logo}" alt="${job.empresa} logo" onerror="this.src='assets/images/default-logo.png'; this.onerror=null;">
+                        </div>
+                    </div>
+                    
+                    <div class="job-description">
+                        <p>${job.descripcion}</p>
+                    </div>
+                    
+                    <div class="job-tech-container">
+                        <h4><i class="fas fa-code"></i> Tecnologías utilizadas</h4>
+                        <div class="job-tech-list">
+                            ${techHTML}
+                        </div>
+                    </div>
+                    
+                    <div class="job-achievements">
+                        <h4><i class="fas fa-trophy"></i> Logros destacados</h4>
+                        <ul class="job-achievements-list">
+                            ${hitosHTML}
+                        </ul>
+                    </div>
+                `;
+                
+                // Animar la entrada de los detalles
+                detailsContainer.classList.add('animate');
+                setTimeout(() => {
+                    detailsContainer.classList.remove('animate');
+                }, 500);
+                
+            } catch (error) {
+                console.error('Error al mostrar detalles del trabajo:', error);
+            }
+        }
+        
         // Función auxiliar para obtener el nombre de la categoría
         function getCategoryName(categorySlug) {
             const categories = {
@@ -347,6 +572,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadRecentBlogArticles();
             loadRecentProjects();
+            loadExperienceTimeline();
         });
     </script>
     <script>
