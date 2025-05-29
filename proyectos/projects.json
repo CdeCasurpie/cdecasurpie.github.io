@@ -98,7 +98,7 @@
             ],
             "excerpt": "Visualizador web 3D de planetas usando la API de la NASA. Arquitectura completa con frontend y backend para renderizado de datos astronómicos en tiempo real.",
             "jsonFile": "planet_visualizer.json",
-            "coverImage": "/assets/images/projects/planet_visualizer.jpg"
+            "coverImage": "/assets/images/projects/sun_plantets.png"
         }
     ]
 }

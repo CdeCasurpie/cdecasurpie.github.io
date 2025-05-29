@@ -1,0 +1,103 @@
+{
+    "title": "Visualizador de Planetas 3D",
+    "author": "César Perales",
+    "date": "10 de octubre, 2024",
+    "skills": [
+        "Three.js",
+        "WebGL",
+        "React",
+        "Python",
+        "Flask",
+        "RESTful API",
+        "Postprocessing 3D",
+        "NASA API"
+    ],
+    "repoUrl": "https://github.com/Jerimy2021/Project-CS3081",
+    "demoUrl": "https://project-cs3081-demo.vercel.app",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Resumen del Proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto es un visualizador tridimensional interactivo de sistemas estelares y planetas que combina datos astronómicos reales con técnicas avanzadas de renderizado 3D. La aplicación permite a los usuarios explorar diferentes sistemas planetarios, visualizar las características de cada cuerpo celeste y acceder a información científica detallada sobre cada uno."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/particle_planet_dem.gif",
+            "alt": "Visualización de un sistema planetario",
+            "caption": "Visualización 3D interactiva de un sistema estelar con efectos de iluminación realistas"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Arquitectura Técnica"
+        },
+        {
+            "type": "text",
+            "content": "El proyecto implementa una arquitectura cliente-servidor completa. El backend está desarrollado con Python y Flask, ofreciendo una API RESTful que sirve datos planetarios estructurados y texturas de alta resolución. El frontend utiliza React para la interfaz de usuario y Three.js para el renderizado 3D avanzado, incluyendo efectos de iluminación de alta calidad como God Rays y sistemas de partículas para simular polvo espacial."
+        },
+        {
+            "type": "code",
+            "language": "javascript",
+            "content": "// Extracto del sistema de renderizado 3D\nexport function addStellars(scene, stellars, planetsRef, composer, cameraRef) {\n    stellars.forEach((stellar) => {\n        const sphere = getStellarSphere(stellar);\n        \n        // Efectos especiales para estrellas\n        if (stellar.star && stellar.star === true) {\n            const godRaysEffect = new GodRaysEffect(cameraRef, sphere, {\n                resolutionScale: 0.5,\n                density: 0.96,\n                decay: 0.93,\n                weight: 0.3,\n                samples: 60\n            });\n            composer.addPass(new EffectPass(cameraRef, godRaysEffect));\n        }\n        \n        // Sistema de partículas para polvo espacial\n        const polvoGeometry = new THREE.SphereGeometry(0.01 * sphere.geometry.parameters.radius, 32, 32);\n        // ...\n    });\n}"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Características Principales"
+        },
+        {
+            "type": "text",
+            "content": "- Navegación 3D fluida por sistemas estelares completos\n- Sistema de iluminación realista con efectos de God Rays para estrellas\n- Simulación de partículas para representar polvo espacial alrededor de los planetas\n- Visualización detallada de cada planeta con texturas HD basadas en datos reales\n- Panel de información con datos científicos precisos sobre cada cuerpo celeste\n- Controles intuitivos para explorar el espacio virtual\n- Efectos visuales avanzados como wireframes geométricos y desplazamiento de texturas"
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/panel_info_planeta.png",
+            "alt": "Panel de información planetaria",
+            "caption": "Panel de información detallada sobre características planetarias"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Retos Técnicos"
+        },
+        {
+            "type": "text",
+            "content": "Uno de los principales desafíos fue optimizar el rendimiento del renderizado 3D para manejar múltiples cuerpos celestes con efectos visuales complejos. Implementé técnicas de nivel de detalle adaptativo y sistemas de partículas eficientes para mantener una experiencia fluida. La correcta sincronización entre la interfaz 2D (marcadores, paneles de información) y el mundo 3D también requirió soluciones creativas, como el cálculo preciso de proyecciones de coordenadas 3D a 2D."
+        },
+        {
+            "type": "code",
+            "language": "javascript",
+            "content": "// Proyección de coordenadas 3D a 2D para la interfaz\nconst centroCoordenadas = (i) => {\n    let vectorCP = new THREE.Vector3();\n    vectorCP = vectorCP.subVectors(planetsRef.current[i].position, cameraRef.current.position);\n    vectorCP.setFromMatrixPosition(planetsRef.current[i].matrixWorld).project(cameraRef.current);\n\n    const coordenadas = {x: 0, y: 0};\n    coordenadas.x = (vectorCP.x + 1) / 2 * topCanvasRef.current.clientWidth;\n    coordenadas.y = (1 - vectorCP.y) / 2 * topCanvasRef.current.clientHeight;\n\n    return coordenadas;\n}"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Aprendizajes Significativos"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto me permitió profundizar en el desarrollo de aplicaciones 3D web de alto rendimiento. Aprendí a optimizar escenas 3D complejas, implementar efectos de postprocesado avanzados como God Rays, y crear sistemas de partículas dinámicos. La integración de React con Three.js me enseñó patrones efectivos para manejar el ciclo de vida de componentes con renderizado 3D y manipular referencias para controlar efectos visuales. También gané experiencia valiosa en la creación de APIs RESTful para servir datos estructurados y assets estáticos."
+        },
+        {
+            "type": "text",
+            "content": "La implementación de los controles de cámara personalizados y el sistema de selección de objetos mediante raytracing me dieron un entendimiento profundo de la matemática 3D aplicada y las técnicas de interacción usuario-espacio tridimensional."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusiones"
+        },
+        {
+            "type": "text",
+            "content": "El Visualizador de Planetas 3D demuestra que es posible crear experiencias educativas interactivas y visualmente atractivas combinando datos científicos con tecnologías web modernas. Las aplicaciones de WebGL y Three.js permiten llevar visualizaciones científicas complejas directamente al navegador, haciendo accesible la exploración espacial virtual a cualquier persona con conexión a internet. Este proyecto establece una base sólida para futuras expansiones, como la inclusión de más sistemas estelares, simulaciones físicas más precisas, o incluso experiencias en realidad virtual."
+        },
+        {
+            "type": "text",
+            "content": "Como desarrollador, este proyecto consolidó mi capacidad para implementar soluciones técnicas avanzadas que combinan múltiples tecnologías en una experiencia de usuario fluida y atractiva, mientras mantengo un código modular y mantenible."
+        }
+    ]
+}
