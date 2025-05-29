@@ -1,0 +1,124 @@
+{
+    "title": "Diversify: Sistema de búsqueda con diversificación inteligente",
+    "author": "César Perales",
+    "date": "18 de diciembre, 2024",
+    "skills": ["C++", "Python", "Flask", "Algoritmos de clustering", "Procesamiento de datos", "Embedded representation", "Frontend web"],
+    "repoUrl": "https://github.com/username/ProyectoEDA",
+    "demoUrl": "https://diversify-demo.example.com",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Descripción del proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Diversify es un sistema de búsqueda que implementa una métrica avanzada para la clasificación de resultados diversificados llamada DFM (Diversity Features Model). Este proyecto combina algoritmos de diversidad y clustering para ofrecer resultados de búsqueda que equilibran relevancia y variedad, evitando la redundancia típica de los buscadores convencionales."
+        },
+        {
+            "type": "text",
+            "content": "El sistema está diseñado con una arquitectura modular que incluye un backend robusto en C++ y una interfaz web interactiva desarrollada con Flask y JavaScript. Diversify utiliza embeddings vectoriales para representar el contenido y aplicar diversos algoritmos de clustering que permiten encontrar resultados tanto similares como diversos a una consulta dada."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/diversify-dashboard.png",
+            "alt": "Dashboard de Diversify mostrando resultados y métricas",
+            "caption": "Interfaz de usuario de Diversify con visualización de métricas DFM"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Características principales"
+        },
+        {
+            "type": "text",
+            "content": "• Implementación genérica usando templates de C++ para máxima flexibilidad\n• Múltiples algoritmos de clustering y diversidad (Motley, BRID, Swap, MMR)\n• Métricas de evaluación integradas para medir la calidad de los resultados\n• Visualización interactiva de métricas como Dunn*, Davies-Bouldin* y Silhouette*\n• API REST para integración con otras aplicaciones\n• Interfaz web intuitiva con gráficos dinámicos para visualizar las métricas"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Arquitectura del sistema"
+        },
+        {
+            "type": "text",
+            "content": "El proyecto está estructurado en dos componentes principales: un potente backend en C++ que implementa los algoritmos de clustering y cálculo de métricas, y un frontend web que permite interactuar con el sistema de forma intuitiva."
+        },
+        {
+            "type": "code",
+            "language": "cpp",
+            "content": "// Ejemplo de implementación de un algoritmo de diversidad (Motley)\nstd::vector<Data<T>> Motley<T>::execute(size_t k, const Data<T>& q, DataSet<T>& O,\nstd::vector<Cluster<T>>& C, DataSet<T>& query_set) {\n    \n    auto content = O.getAllData();\n    //ordenar por similutud con q\n    std::sort(content.begin(), content.end(), [&q, this](const Data<T>& a, const Data<T>& b) -> bool {\n        return this->distance(a, q) < this->distance(b, q);\n    });\n\n    //inicializar conjunto Resultado\n    std::vector<Data<T>> R;\n    R.push_back(content[0]); \n    \n    // Seleccionar elementos diversos usando radio r\n    // ...\n    \n    return R;\n}"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Métricas DFM (Diversity Features Model)"
+        },
+        {
+            "type": "text",
+            "content": "Una de las contribuciones más importantes de este proyecto es la implementación del modelo DFM, que permite evaluar la calidad de los resultados de búsqueda en base a siete métricas complementarias:"
+        },
+        {
+            "type": "text",
+            "content": "• Dunn*: Mide la compacidad de los clusters y su separación\n• Davies-Bouldin*: Evalúa la similitud entre clusters\n• Silhouette*: Calcula qué tan bien están agrupados los elementos\n• Sigma-sim: Desviación estándar de la similitud\n• Sigma-div: Desviación estándar de la diversidad\n• U-sim: Media de similitud entre elementos\n• U-div: Media de diversidad entre elementos"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Algoritmos implementados"
+        },
+        {
+            "type": "text",
+            "content": "El sistema implementa cuatro algoritmos diferentes para diversificar resultados, cada uno con sus propias características:"
+        },
+        {
+            "type": "text",
+            "content": "• Motley: Utiliza un enfoque basado en medoides y un radio de diversidad para seleccionar elementos diversos pero relevantes.\n\n• BRID (Bidirectional Retrieval for Information Diversification): Algoritmo de clustering bidireccional que optimiza distancias entre elementos.\n\n• Swap: Algoritmo de intercambio que realiza optimización local para mejorar incrementalmente la diversidad.\n\n• MMR (Maximal Marginal Relevance): Selección iterativa con un balance configurable entre relevancia y diversidad."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Interfaz de usuario"
+        },
+        {
+            "type": "text",
+            "content": "La interfaz web de Diversify está diseñada para ser intuitiva y funcional. Permite a los usuarios realizar búsquedas, seleccionar el algoritmo de diversificación y visualizar tanto los resultados como las métricas de calidad. Los resultados se presentan en un formato atractivo inspirado en plataformas de streaming, mientras que las métricas se muestran en gráficos interactivos que pueden alternarse entre vista de radar y barras."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/algorithm_visualizer_brin.png",
+            "alt": "Resultados de búsqueda diversificados en visualizer",
+            "caption": "Resultados de búsqueda diversificados en un Plano"
+        },
+        {
+            "type": "text",
+            "content": "El frontend utiliza Chart.js para renderizar gráficos dinámicos que muestran las métricas DFM, permitiendo a los usuarios entender la calidad de los resultados de forma visual y directa."
+        },
+        {
+            "type": "code",
+            "language": "javascript",
+            "content": "// Código para crear gráficos de métricas dinámicos\nfunction createChart(data) {\n  if (currentChart) {\n    currentChart.destroy();\n  }\n\n  const ctx = document.getElementById(\"metricsChart\").getContext(\"2d\");\n  const labels = [\n    \"Dunn*\",\n    \"DB*\",\n    \"Sil*\",\n    \"Sigma-sim\",\n    \"Sigma-div\",\n    \"U-sim\",\n    \"U-div\",\n  ];\n  let values = data || [0, 0, 0, 0, 0, 0, 0];\n\n  // Configuración del gráfico según el tipo seleccionado\n  // ...\n}"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Detalles técnicos"
+        },
+        {
+            "type": "text",
+            "content": "Backend:\n- C++17 para los algoritmos core\n- Templates para soporte de diferentes tipos de datos\n- Estructura modular con clases como Point, Data, DataSet, Cluster\n- Métricas implementadas como clases reutilizables"
+        },
+        {
+            "type": "text",
+            "content": "Frontend:\n- Flask para el servidor web\n- API REST para comunicación entre frontend y backend\n- Sentence Transformers para generación de embeddings\n- Chart.js para visualización de métricas\n- Diseño responsive basado en CSS moderno"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusiones"
+        },
+        {
+            "type": "text",
+            "content": "Diversify demuestra cómo los algoritmos de clustering y diversidad pueden mejorar significativamente la experiencia de búsqueda al ofrecer resultados que balancean similitud y diversidad. El modelo DFM proporciona una forma objetiva de evaluar la calidad de estos resultados a través de múltiples dimensiones."
+        }
+    ]
+}

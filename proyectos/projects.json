@@ -75,14 +75,13 @@
             "date": "12 de septiembre, 2024",
             "skills": [
                 "C++",
-                "Machine Learning",
-                "Spotify API",
+                "Clustering",
                 "Data Visualization",
-                "Algorithms"
+                "Algorithms Metrics"
             ],
             "excerpt": "Implementación de múltiples algoritmos de búsqueda por similitud aplicados a Spotify. Incluye visualización de métricas y buscador de estilos musicales similares.",
             "jsonFile": "music_similarity.json",
-            "coverImage": "/assets/images/projects/music_similarity.jpg"
+            "coverImage": "/assets/images/projects/diversify_busqueda.png"
         },
         {
             "id": "2",
