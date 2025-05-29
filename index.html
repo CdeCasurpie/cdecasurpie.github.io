@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/png" href="assets/images/favicon.ico">
+    <script src="assets/js/cursor-light.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <!-- Barra de progreso de lectura -->
@@ -66,6 +68,54 @@
             </div>
         </section>
 
+        <!-- About Me Section -->
+        <section id="sobre-mi" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Sobre Mí</h2>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <!-- Se llenará dinámicamente con JS -->
+                    </div>
+                    
+                    <div class="skills-section">
+                        <div class="skills-carousel">
+                            <div class="skills-track">
+                                <!-- Se llenará dinámicamente con JS -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Projects Section -->
+        <section id="proyectos" class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Proyectos</h2>
+                </div>
+                
+                <div id="projects-grid" class="projects-grid">
+                    <!-- Se cargará dinámicamente desde projects.json -->
+                    <div class="loading-spinner">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                        <p>Cargando proyectos...</p>
+                    </div>
+                </div>
+                
+                <div class="text-center mt-4">
+                    <a href="proyectos/index.html" class="btn btn-primary">
+                        <i class="fas fa-project-diagram"></i> Ver todos los proyectos
+                    </a>
+                </div>
+            </div>
+        </section>
+
+
         <!-- Blog Section -->
         <section id="blog" class="section">
             <div class="container">
@@ -96,57 +146,6 @@
             </div>
         </section>
 
-        <!-- About Me Section -->
-        <section id="sobre-mi" class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Sobre Mí</h2>
-                </div>
-                
-                <div class="about-content">
-                    <div class="about-text">
-                        <!-- Se llenará dinámicamente con JS -->
-                    </div>
-                    
-                    <div class="skills-section">
-                        <div class="teaching-section">
-                            <h3 class="section-title">¿Por qué enseño?</h3>
-                            <p class="teaching-text"><!-- Se llenará dinámicamente con JS con efecto de escritura --></p>
-                        </div>
-                        
-                        <h3 class="section-title mt-4">Skills</h3>
-                        <div class="skills-carousel">
-                            <div class="skills-track">
-                                <!-- Se llenará dinámicamente con JS -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="proyectos" class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Proyectos</h2>
-                </div>
-                
-                <div id="projects-grid" class="projects-grid">
-                    <!-- Se cargará dinámicamente desde projects.json -->
-                    <div class="loading-spinner">
-                        <i class="fas fa-circle-notch fa-spin"></i>
-                        <p>Cargando proyectos...</p>
-                    </div>
-                </div>
-                
-                <div class="text-center mt-4">
-                    <a href="proyectos/index.html" class="btn btn-primary">
-                        <i class="fas fa-project-diagram"></i> Ver todos los proyectos
-                    </a>
-                </div>
-            </div>
-        </section>
 
         <!-- Contact Section -->
         <section id="contacto" class="section">
@@ -234,13 +233,16 @@
                     articleCard.dataset.category = article.category;
                     
                     articleCard.innerHTML = `
-                        <div class="blog-content">
-                            <span class="blog-category">${getCategoryName(article.category)}</span>
-                            <div class="blog-date">${article.date}</div>
+                        <img src="${article.coverImage}" alt="${article.title}" class="blog-cover-image">
+                        <a href="blog/index.html?article=${article.jsonFile}" class="blog-content">
                             <h3>${article.title}</h3>
+                            <div class="blog-date">${article.date}</div>
                             <p class="blog-excerpt">${article.excerpt}</p>
-                            <a href="blog/index.html?article=${article.jsonFile}" class="btn btn-outline read-more">Leer más</a>
-                        </div>
+                            <div class="blog-footer">
+                                <span class="blog-category">${getCategoryName(article.category)}</span>
+                                <div class="read-more">Leer más -></div>
+                            </div>
+                        </a>
                     `;
                     
                     blogGrid.appendChild(articleCard);
@@ -289,23 +291,36 @@
                 // Crear las tarjetas para los proyectos recientes
                 recentProjects.forEach(project => {
                     const projectCard = document.createElement('article');
-                    projectCard.className = 'project-card';
+                    projectCard.className = 'blog-card'; // Usar la misma clase que los artículos
                     
+                    const skills = [
+                        { name: 'JavaScript', icon: 'fa-brands fa-js' },
+                        { name: 'Python', icon: 'fa-brands fa-python' },
+                        { name: 'Three.js', icon: 'fa-solid fa-shapes'},
+                        { name: 'WebGL', icon: 'fas fa-cubes' },
+                        { name: 'React', icon: 'fab fa-react' },
+                        { name: 'Node.js', icon: 'fab fa-node-js' },
+                        { name: 'Física Simulada', icon: 'fas fa-atom' },
+                    ];
+
                     // Construir el HTML para las etiquetas de habilidades
-                    const skillsHTML = project.skills.slice(0, 3).map(skill => 
-                        `<span class="skill-tag">${skill}</span>`
-                    ).join('');
+                    const skillsHTML = project.skills.map(skill => 
+                        `<div class="project-tag">` +
+                        `<i class="${skills.find(s => s.name.toLowerCase() === skill.toLowerCase())?.icon || 'fas fa-code'}"></i> ${skill}` +
+                        `</div>`
+                    ).join('')
                     
                     projectCard.innerHTML = `
-                        <div class="project-content">
-                            <div class="project-date">${project.date}</div>
+                        <img src="${project.coverImage}" alt="${project.title}" class="blog-cover-image">
+                        <a href="proyectos/index.html?project=${project.jsonFile}" class="blog-content">
                             <h3>${project.title}</h3>
-                            <p class="project-excerpt">${project.excerpt}</p>
-                            <div class="project-skills">
+                            <div class="blog-date">${project.date}</div>
+                            <p class="blog-excerpt">${project.excerpt}</p>
+                            <div class="project-tags">
                                 ${skillsHTML}
                             </div>
-                            <a href="proyectos/index.html?project=${project.jsonFile}" class="btn btn-outline read-more">Ver proyecto</a>
-                        </div>
+                            <div href="proyectos/index.html?project=${project.jsonFile}" class="read-more">Ver proyecto -></div>
+                        </a>
                     `;
                     
                     projectsGrid.appendChild(projectCard);
@@ -332,11 +347,11 @@
         document.addEventListener('DOMContentLoaded', function() {
             loadRecentBlogArticles();
             loadRecentProjects();
-            
-            // Otras funciones de inicialización que ya tengas...
         });
     </script>
-    
+    <script>
+        emailjs.init("qNnIU_kmgunz6zJYb");
+    </script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>

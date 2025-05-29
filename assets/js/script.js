@@ -22,7 +22,7 @@ function setupDarkModeToggle() {
     
     // Si no hay preferencia guardada, usar tema oscuro por defecto
     if (!currentTheme) {
-        currentTheme = 'dark';
+        currentTheme = 'light';
         localStorage.setItem('theme', currentTheme);
     }
     
@@ -91,10 +91,10 @@ function loadSocialLinks() {
     if (socialLinksContainers.length === 0) return;
     
     const socialLinks = [
-        { icon: 'github', url: 'https://github.com/cdecasurpie', label: 'GitHub' },
-        { icon: 'linkedin-in', url: 'https://www.linkedin.com/in/cesar-perales/', label: 'LinkedIn' },
-        { icon: 'instagram', url: 'https://www.instagram.com/causa_code/', label: 'Instagram' },
-        { icon: 'coffee', url: '#', label: 'Ko-fi' }
+        { icon: 'fab fa-github', url: 'https://github.com/cdecasurpie', label: 'GitHub' },
+        { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/cesar-perales/', label: 'LinkedIn' },
+        { icon: 'fab fa-instagram', url: 'https://www.instagram.com/causa_code/', label: 'Instagram' },
+        { icon: 'fa-solid fa-mug-saucer', url: 'https://ko-fi.com/cdecasurpie', label: 'Donate me a coffee' },
     ];
     
     socialLinksContainers.forEach(container => {
@@ -107,7 +107,7 @@ function loadSocialLinks() {
             linkElement.target = '_blank';
             linkElement.rel = 'noopener noreferrer';
             linkElement.setAttribute('aria-label', link.label);
-            linkElement.innerHTML = `<i class="fab fa-${link.icon}"></i>`;
+            linkElement.innerHTML = `<i class="${link.icon}"></i>`;
             
             container.appendChild(linkElement);
         });
@@ -186,20 +186,65 @@ function loadContactForm() {
     }
     
     // Manejar envío del formulario
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
+contactForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    // Recoger datos del formulario
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    
+    // Mostrar indicador de carga
+    contactForm.innerHTML = `
+        <div class="loading-message">
+            <i class="fas fa-circle-notch fa-spin"></i>
+            <h3>Enviando mensaje...</h3>
+            <p>Por favor, espera un momento.</p>
+        </div>
+    `;
+    
+    try {
+        // Enviar email usando EmailJS
+        const response = await emailjs.send(
+            'service_aovwrdu',    // Service ID
+            'template_nf3pcy9',   // Template ID
+            {
+                message: "from: " + name + " <" + email + "> (" + subject + ")<br><br>" + message
+            }
+        );
+
+        console.log('Email enviado exitosamente:', response);
         
-        // Aquí normalmente se enviaría el formulario a un servidor
-        // Por ahora, solo mostramos un mensaje de éxito
-        
+        // Mostrar mensaje de éxito
         contactForm.innerHTML = `
             <div class="success-message">
-                <i class="fas fa-check-circle"></i>
-                <h3>¡Mensaje enviado correctamente!</h3>
+                <h3>¡Mensaje enviado correctamente!
+                <i class="fas fa-check-circle"></i></h3>
                 <p>Gracias por contactarme. Te responderé lo más pronto posible.</p>
             </div>
         `;
-    });
+        
+    } catch (error) {
+        console.error('Error al enviar email:', error);
+        
+        // Mostrar mensaje de error al usuario
+        contactForm.innerHTML = `
+            <div class="error-message">
+                <h3>Error al enviar el mensaje</h3>
+                <p>Lo sentimos, ha ocurrido un problema. Por favor, intenta de nuevo más tarde o contacta directamente a cesar.cap20.p@gmail.com</p>
+                <button class="btn btn-primary mt-3" id="retry-btn">
+                    <i class="fas fa-redo"></i> Intentar de nuevo
+                </button>
+            </div>
+        `;
+        
+        // Permitir al usuario intentar de nuevo
+        document.getElementById('retry-btn').addEventListener('click', function() {
+            loadContactForm(); // Recargar el formulario
+        });
+    }
+});
 }
 
 // Cargar contenido de About Me
@@ -209,63 +254,24 @@ function loadAboutMeContent() {
     if (!aboutText) return;
     
     aboutText.innerHTML = `
-        <p>Soy César Perales, un apasionado de la programación creativa y la simulación de sistemas complejos. Me fascina el punto donde la tecnología se encuentra con el arte, y cómo podemos utilizar algoritmos para crear experiencias visuales que imiten fenómenos naturales.</p>
-        
-        <p>Con más de 10 años de experiencia en desarrollo de software, me he especializado en crear simulaciones interactivas que exploran conceptos como vida artificial, autómatas celulares y sistemas basados en reglas simples que generan comportamientos complejos.</p>
+        <p>Me fascina el punto donde la tecnología se encuentra con el arte, y cómo podemos utilizar algoritmos para crear experiencias visuales que imiten fenómenos naturales.</p>
         
         <p>Además de crear software, me dedico a la enseñanza. Creo firmemente que compartir conocimiento es tan importante como adquirirlo, y disfruto ayudando a otros a descubrir el fascinante mundo de la programación creativa.</p>
     `;
     
-    // Animación de texto para la sección "Por qué enseño"
-    const teachingText = document.querySelector('.teaching-text');
-    
-    if (teachingText) {
-        const text = "Enseñar es aprender dos veces. Disfruto viendo cómo los conceptos abstractos cobran vida en la mente de mis estudiantes, cómo las ideas se transforman en código y el código en experiencias visuales. La programación creativa abre un mundo donde la lógica y el arte coexisten, y me encanta guiar a otros en ese viaje de descubrimiento.";
-        
-        const cursor = document.createElement('span');
-        cursor.className = 'cursor';
-        teachingText.appendChild(cursor);
-        
-        let charIndex = 0;
-        
-        function typeWriter() {
-            if (charIndex < text.length) {
-                teachingText.insertBefore(document.createTextNode(text.charAt(charIndex)), cursor);
-                charIndex++;
-                setTimeout(typeWriter, 20);
-            }
-        }
-        
-        // Iniciar la animación cuando la sección sea visible
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(typeWriter, 500);
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-        
-        observer.observe(teachingText);
-    }
     
     // Cargar skills para el carousel
     const skillsTrack = document.querySelector('.skills-track');
     
     if (skillsTrack) {
         const skills = [
-            { name: 'JavaScript', icon: 'js' },
-            { name: 'Python', icon: 'python' },
-            { name: 'Three.js', icon: 'code' },
-            { name: 'WebGL', icon: 'cubes' },
-            { name: 'Processing', icon: 'paint-brush' },
-            { name: 'p5.js', icon: 'palette' },
-            { name: 'React', icon: 'react' },
-            { name: 'Node.js', icon: 'node-js' },
-            { name: 'Algoritmos Genéticos', icon: 'dna' },
-            { name: 'Sistemas Complejos', icon: 'project-diagram' },
-            { name: 'Física Simulada', icon: 'atom' },
-            { name: 'Visualización de Datos', icon: 'chart-bar' }
+            { name: 'JavaScript', icon: 'fa-brands fa-js' },
+            { name: 'Python', icon: 'fa-brands fa-python' },
+            { name: 'Three.js', icon: 'fa-solid fa-shapes'},
+            { name: 'WebGL', icon: 'fas fa-cubes' },
+            { name: 'React', icon: 'fab fa-react' },
+            { name: 'Node.js', icon: 'fab fa-node-js' },
+            { name: 'Física Simulada', icon: 'fas fa-atom' },
         ];
         
         // Duplicar skills para el efecto infinito
@@ -273,7 +279,7 @@ function loadAboutMeContent() {
         
         skillsTrack.innerHTML = allSkills.map(skill => {
             const iconClass = skill.icon.includes('-') ? `fab fa-${skill.icon}` : `fas fa-${skill.icon}`;
-            return `<div class="skill-item"><i class="${iconClass}"></i> ${skill.name}</div>`;
+            return `<div class="skill-item"><i class="${skill.icon}"></i> ${skill.name}</div>`;
         }).join('');
     }
 }

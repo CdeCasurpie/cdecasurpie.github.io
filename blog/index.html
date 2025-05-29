@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <!-- Script para el efecto de luz que sigue al cursor -->
+    <script src="../assets/js/cursor-light.js" defer></script>
 </head>
 <body>
     <!-- Barra de progreso de lectura -->
@@ -173,13 +175,16 @@
                 articleCard.dataset.content = `${article.title} ${article.excerpt}`.toLowerCase();
                 
                 articleCard.innerHTML = `
-                    <div class="blog-content">
-                        <span class="blog-category">${getCategoryName(article.category)}</span>
-                        <div class="blog-date">${article.date}</div>
+                    <img src="${article.coverImage}" alt="${article.title}" class="blog-cover-image">
+                    <a href="blog/index.html?article=${article.jsonFile}" class="blog-content">
                         <h3>${article.title}</h3>
+                        <div class="blog-date">${article.date}</div>
                         <p class="blog-excerpt">${article.excerpt}</p>
-                        <a href="?article=${article.jsonFile}" class="btn btn-outline read-more">Leer más</a>
-                    </div>
+                        <div class="blog-footer">
+                            <span class="blog-category">${getCategoryName(article.category)}</span>
+                            <div class="read-more">Leer más -></div>
+                        </div>
+                    </a>
                 `;
                 
                 blogGrid.appendChild(articleCard);

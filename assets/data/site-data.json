@@ -1,6 +1,6 @@
 {
   "personal": {
-    "nombres": ["César Perales", "Casurpie", "WebDev"],
+    "nombres": ["César Perales", "Casurpie"],
     "tagline": "Programador, Educador y Soñador Digital",
     "descripcionCorta": "Construyo aplicaciones web y enseño a otros a hacer lo mismo. Programador especializado en desarrollo web y diseño de experiencias digitales.",
     "fotoPerfil": "/perfil.jpg"
@@ -16,64 +16,6 @@
     {
       "name": "HTML5",
       "icon": "fab fa-html5"
-    },
-    {
-      "name": "CSS3",
-      "icon": "fab fa-css3-alt"
-    },
-    {
-      "name": "JavaScript",
-      "icon": "fab fa-js"
-    },
-    {
-      "name": "React",
-      "icon": "fab fa-react"
-    },
-    {
-      "name": "Node.js",
-      "icon": "fab fa-node-js"
-    },
-    {
-      "name": "Python",
-      "icon": "fab fa-python"
-    },
-    {
-      "name": "UI/UX Design",
-      "icon": "fas fa-bezier-curve"
-    },
-    {
-      "name": "Responsive Design",
-      "icon": "fas fa-mobile-alt"
-    },
-    {
-      "name": "Git",
-      "icon": "fab fa-git-alt"
-    }
-  ],
-  "proyectos": [
-    {
-      "titulo": "La Rosa Digital",
-      "descripcion": "Una reinterpretación interactiva del clásico cuento 'La Bella y la Bestia', donde una rosa digital responde a las interacciones del usuario.",
-      "tecnologias": ["JavaScript", "HTML Canvas", "CSS Animation"],
-      "imagen": "rosa-digital.jpg",
-      "demo": "/blog/proyectos/rosa-digital-bellaybestia.html",
-      "codigo": "https://github.com/cesar-perales/rosa-digital"
-    },
-    {
-      "titulo": "CodeTeacher",
-      "descripcion": "Plataforma educativa para enseñar programación mediante ejercicios interactivos y retroalimentación en tiempo real.",
-      "tecnologias": ["React", "Node.js", "MongoDB"],
-      "imagen": "code-teacher.jpg",
-      "demo": "https://codeteacher.demo.com",
-      "codigo": "https://github.com/cesar-perales/code-teacher"
-    },
-    {
-      "titulo": "Porfolio Minimalista",
-      "descripcion": "Template de porfolio personal con diseño minimalista y adaptable, ideal para programadores y diseñadores.",
-      "tecnologias": ["HTML5", "CSS3", "JavaScript"],
-      "imagen": "portfolio-template.jpg",
-      "demo": "/",
-      "codigo": "https://github.com/cesar-perales/minimal-portfolio"
     }
   ],
   "contacto": {
@@ -154,29 +96,5 @@
       "url": "https://instagram.com/cesar.codes",
       "icono": "fab fa-instagram"
     }
-  ],
-  "blog": {
-    "categorias": [
-      {
-        "nombre": "Todas",
-        "filtro": "all"
-      },
-      {
-        "nombre": "Programación",
-        "filtro": "programacion"
-      },
-      {
-        "nombre": "Proyectos",
-        "filtro": "proyectos"
-      },
-      {
-        "nombre": "Tutoriales",
-        "filtro": "tutoriales"
-      },
-      {
-        "nombre": "Pensamientos",
-        "filtro": "pensamientos"
-      }
-    ]
-  }
+  ]
 }
