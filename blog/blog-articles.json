@@ -1,14 +1,14 @@
 {
     "articles": [
         {
-            "id": "1",
-            "title": "Test de Artículos",
-            "date": "5 de febrero, 2025",
-            "category": "programación",
-            "excerpt": "Descripción de prueba para el artículo.",
-            "author": "César Perales",
-            "coverImage": "/assets/images/projects/test.jpg",
-            "jsonFile": "test.json"
+            "id": "3",
+            "title": "Rinder: Mi primer proyecto de desarrollo web con IA y trabajo en equipo",
+            "date": "12 de junio, 2024",
+            "category": "proyectos",
+            "excerpt": "La historia de cómo desarrollamos una plataforma de citas con inteligencia artificial usando Flask, TensorFlow y React. Un proyecto que marcó el inicio de mi carrera en desarrollo web full-stack.",
+            "author": "César Perales, Isabella Romero, Gianpier Segovia",
+            "coverImage": "https://cdecasurpie.github.io/Rinder/assets/logos/logoFuccia.png",
+            "jsonFile": "rinder.json"
         },
         {
             "id": "1",

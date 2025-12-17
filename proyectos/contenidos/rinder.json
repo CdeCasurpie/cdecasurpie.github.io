@@ -1,0 +1,109 @@
+{
+    "title": "Rinder: Aplicación de citas web",
+    "author": "César Perales, Isabella Romero, Gianpier Segovia",
+    "date": "12 de junio, 2024",
+    "skills": ["Python", "Flask", "React", "Next.js", "Vue.js", "PostgreSQL"],
+    "repoUrl": "https://github.com/CesarAP24/Rinder",
+    "demoUrl": "https://cdecasurpie.github.io/Rinder/",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Descripción del Proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Rinder es una aplicación web de citas desarrollada con Flask en Python. El proyecto fue realizado en equipo junto a Isabella Romero y Gianpier Segovia como parte de nuestro aprendizaje en desarrollo web full-stack. La aplicación incluye las funcionalidades típicas de una plataforma de citas: perfiles de usuarios, sistema de matching, mensajería y publicación de contenido."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Arquitectura"
+        },
+        {
+            "type": "text",
+            "content": "El proyecto original está construido como un monolito en Flask que maneja tanto el backend como el frontend. Posteriormente realizamos un experimento con Vue.js para separar el frontend. Para la demostración pública, creamos un fork en React con Next.js que utiliza datos simulados."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Backend (Flask + PostgreSQL)"
+        },
+        {
+            "type": "text",
+            "content": "El backend implementa las operaciones CRUD necesarias para la gestión de usuarios y sus interacciones:\n\n- CREATE: Registro de usuarios, creación de posts, envío de mensajes, generación de likes\n- READ: Consulta de perfiles, visualización de matches, lectura de mensajes, feed de posts\n- UPDATE: Edición de perfil, actualización de preferencias\n- DELETE: Eliminación de cuenta, borrado de posts\n\nLa base de datos PostgreSQL almacena toda la información de usuarios, matches, mensajes y posts."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Funcionalidades Implementadas"
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/Captura de pantalla_20251217_163626.png",
+            "alt": "Sección de Matching",
+            "caption": "Sección de Matching"
+        },
+        {
+            "type": "text",
+            "content": "Sección de Matching: Interfaz donde los usuarios pueden ver perfiles de otros usuarios y decidir si les interesan mediante un sistema de likes. Cuando dos usuarios se dan like mutuamente, se genera un match."
+        },
+
+        {
+            "type": "image",
+            "url": "/assets/images/projects/Captura de pantalla_20251217_163823.png",
+            "alt": "Sección de Mensajes",
+            "caption": "Sección de Mensajes"
+        },
+        {
+            "type": "text",
+            "content": "Sección de Mensajes: Sistema de chat donde los usuarios que hicieron match pueden comunicarse. Incluye historial de conversaciones y notificaciones de nuevos mensajes."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/Captura de pantalla_20251217_163906.png",
+            "alt": "Mi Perfil",
+            "caption": "Mi Perfil"
+        },
+        {
+            "type": "text",
+            "content": "Mi Perfil: Página personal donde cada usuario puede editar su información, fotos, y ver sus estadísticas (matches, likes recibidos, etc.)."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Tipos de Cuenta"
+        },
+        {
+            "type": "text",
+            "content": "La aplicación incluye tres niveles de cuenta con diferentes límites:\n\n- Gratuito: 10-20 likes diarios, incluye anuncios\n- Premium: 50 likes diarios, sin anuncios\n- VIP: Likes ilimitados, sin anuncios, visualización de quién visitó el perfil"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Stack Tecnológico"
+        },
+        {
+            "type": "text",
+            "content": "- Backend: Python, Flask, SQLAlchemy\n- Base de Datos: PostgreSQL (puerto 5432)\n- Frontend Original: Templates Jinja2 con Flask\n- Frontend Experimental: Vue.js\n- Demo Pública: React con Next.js (datos simulados)\n- Autenticación: Sistema de sesiones con Flask"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Equipo de Desarrollo"
+        },
+        {
+            "type": "text",
+            "content": "- César Perales: Frontend, Backend, integración de base de datos, lógica completa, entre otros.\n- Isabella Romero: Frontend, diseño de interfaz\n- Gianpier Segovia: Backend, autenticación y seguridad"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusión"
+        },
+        {
+            "type": "text",
+            "content": "Rinder fue nuestro primer proyecto de desarrollo web full-stack en equipo. Implementamos todas las operaciones CRUD necesarias para una aplicación funcional, aprendimos sobre autenticación, manejo de bases de datos relacionales y desarrollo colaborativo con Git."
+        }
+    ]
+}

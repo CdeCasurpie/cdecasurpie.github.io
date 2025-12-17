@@ -1,0 +1,121 @@
+{
+    "title": "Rinder: Aplicación web de citas - Primer proyecto full-stack en equipo",
+    "author": "César Perales",
+    "date": "12 de junio, 2024",
+    "category": "proyectos",
+    "tags": ["desarrollo web", "trabajo en equipo", "Flask", "PostgreSQL", "CRUD"],
+    "content": [
+        {
+            "type": "text",
+            "content": "Rinder fue mi primer proyecto de desarrollo web full-stack en equipo, desarrollado junto a Isabella Romero y Gianpier Segovia. Es una aplicación de citas web que implementa las funcionalidades básicas de este tipo de plataformas."
+        },
+        {
+            "type": "image",
+            "url": "https://cdecasurpie.github.io/Rinder/assets/logos/logoFuccia.png",
+            "alt": "Logo de Rinder",
+            "caption": "Logo de Rinder"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "¿Qué es Rinder?"
+        },
+        {
+            "type": "text",
+            "content": "Una aplicación web de citas construida con Flask y PostgreSQL. Los usuarios pueden crear perfiles, dar likes a otros usuarios, chatear con sus matches y publicar contenido."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Stack Tecnológico"
+        },
+        {
+            "type": "text",
+            "content": "El proyecto utiliza:\n\n- **Backend:** Flask (Python) con SQLAlchemy\n- **Base de Datos:** PostgreSQL\n- **Frontend original:** Templates Jinja2\n- **Versión experimental:** Vue.js\n- **Demo pública:** React + Next.js con datos simulados"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Funcionalidades Implementadas"
+        },
+        {
+            "type": "text",
+            "content": "**1. Sección de Matching**\n\nLos usuarios pueden ver perfiles de otros usuarios y dar like. Cuando hay un match mutuo, ambos usuarios quedan conectados."
+        },
+        {
+            "type": "text",
+            "content": "**2. Sección de Mensajes**\n\nSistema de chat para usuarios que hicieron match. Incluye historial de conversaciones."
+        },
+        {
+            "type": "text",
+            "content": "**3. Mi Perfil**\n\nCada usuario puede editar su información personal, fotos y preferencias. También puede ver estadísticas de sus matches y likes."
+        },
+        {
+            "type": "text",
+            "content": "**4. Sistema de Posts**\n\nLos usuarios pueden publicar fotos y contenido en su perfil."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Operaciones CRUD"
+        },
+        {
+            "type": "text",
+            "content": "El backend implementa todas las operaciones CRUD necesarias:"
+        },
+        {
+            "type": "code",
+            "language": "python",
+            "content": "# CREATE - Crear nuevo usuario\n@app.route('/register', methods=['POST'])\ndef register_user():\n    # Insertar nuevo usuario en la base de datos\n    pass\n\n# READ - Obtener perfil de usuario\n@app.route('/profile/<user_id>', methods=['GET'])\ndef get_profile(user_id):\n    # Consultar información del usuario\n    pass\n\n# UPDATE - Actualizar perfil\n@app.route('/profile/edit', methods=['PUT'])\ndef update_profile():\n    # Actualizar información del usuario\n    pass\n\n# DELETE - Eliminar cuenta\n@app.route('/profile/delete', methods=['DELETE'])\ndef delete_account():\n    # Eliminar usuario de la base de datos\n    pass"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Sistema de Planes"
+        },
+        {
+            "type": "text",
+            "content": "Implementamos tres tipos de cuenta:\n\n- **Gratuito:** 10-20 likes diarios\n- **Premium:** 50 likes diarios, sin anuncios\n- **VIP:** Likes ilimitados, ver quién visitó el perfil"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Trabajo en Equipo"
+        },
+        {
+            "type": "text",
+            "content": "Dividimos el trabajo así:\n\n- **César Perales:** Backend con Flask, integración de base de datos\n- **Isabella Romero:** Frontend, diseño de interfaz\n- **Gianpier Segovia:** Backend, sistema de autenticación\n\nUsamos Git con tres ramas principales: main, AdvanceFE y AdvanceBE."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Arquitectura"
+        },
+        {
+            "type": "text",
+            "content": "El proyecto evolucionó en tres versiones:\n\n1. **Monolito Flask:** Backend y frontend integrados\n2. **Experimento Vue.js:** Separación del frontend\n3. **Demo React/Next.js:** Versión pública con datos simulados para GitHub Pages"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Aprendizajes"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto nos enseñó:\n\n- Implementación completa de operaciones CRUD\n- Manejo de autenticación y sesiones\n- Trabajo con bases de datos relacionales (PostgreSQL)\n- Desarrollo colaborativo con Git\n- Despliegue de aplicaciones web"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusión"
+        },
+        {
+            "type": "text",
+            "content": "Rinder fue nuestro primer proyecto real de desarrollo web. Aunque no es perfecto, cumplió su propósito: aprender a construir una aplicación completa desde cero, trabajar en equipo y enfrentar los desafíos del desarrollo full-stack."
+        },
+        {
+            "type": "text",
+            "content": "Puedes ver el código en [GitHub](https://github.com/CesarAP24/Rinder) o probar la [demo](https://cdecasurpie.github.io/Rinder/)."
+        }
+    ]
+}

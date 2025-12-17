@@ -1,6 +1,22 @@
 {
     "projects": [
         {
+            "id": "10",
+            "title": "Rinder - Plataforma de Citas con IA",
+            "date": "12 de junio, 2024",
+            "skills": [
+                "Python",
+                "Flask",
+                "React",
+                "Next.js",
+                "TensorFlow",
+                "Machine Learning"
+            ],
+            "excerpt": "Plataforma de citas innovadora que utiliza redes neuronales para matchmaking inteligente. Monolito en Flask con implementación experimental en Vue.js y demo en React/Next.js con mocks.",
+            "jsonFile": "rinder.json",
+            "coverImage": "/assets/images/projects/coverRinder.png"
+        },
+        {
             "id": "5",
             "title": "Gato Procedural en Godot",
             "date": "04 de mayo, 2025",
@@ -13,6 +29,20 @@
             "excerpt": "Proyecto de animación procedural de un gato en Godot con movimientos realistas y comportamientos naturales implementados programáticamente.",
             "jsonFile": "procedural_cat.json",
             "coverImage": "/assets/images/projects/cat.png"
+        },
+        {
+            "id": "3",
+            "title": "Generador de Informes con IA",
+            "date": "25 noviembre, 2024",
+            "skills": [
+                "Python",
+                "AI",
+                "Flask",
+                "React"
+            ],
+            "excerpt": "Sistema completo de generación de informes usando IA. Backend en Python con Flask y frontend moderno, procesamiento de imágenes y conversión automática a documentos.",
+            "jsonFile": "ai_report_generator.json",
+            "coverImage": "/assets/images/projects/gpt_generator.png"
         },
         {
             "id": "1",
@@ -28,18 +58,20 @@
             "coverImage": "/assets/images/projects/base_datos_multi.png"
         },
         {
-            "id": "3",
-            "title": "Generador de Informes con IA",
-            "date": "25 noviembre, 2024",
+            "id": "2",
+            "title": "Visualizador de Planetas 3D",
+            "date": "10 de octubre, 2024",
             "skills": [
-                "Python",
-                "AI",
-                "Flask",
-                "React"
+                "WebGL",
+                "Three.js",
+                "NASA API",
+                "3D Graphics",
+                "Frontend",
+                "Backend"
             ],
-            "excerpt": "Sistema completo de generación de informes usando IA. Backend en Python con Flask y frontend moderno, procesamiento de imágenes y conversión automática a documentos.",
-            "jsonFile": "ai_report_generator.json",
-            "coverImage": "/assets/images/projects/gpt_generator.png"
+            "excerpt": "Visualizador web 3D de planetas usando la API de la NASA. Arquitectura completa con frontend y backend para renderizado de datos astronómicos en tiempo real.",
+            "jsonFile": "planet_visualizer.json",
+            "coverImage": "/assets/images/projects/sun_plantets.png"
         },
         {
             "id": "4",
@@ -82,22 +114,6 @@
             "excerpt": "Implementación de múltiples algoritmos de búsqueda por similitud aplicados a Spotify. Incluye visualización de métricas y buscador de estilos musicales similares.",
             "jsonFile": "music_similarity.json",
             "coverImage": "/assets/images/projects/diversify_busqueda.png"
-        },
-        {
-            "id": "2",
-            "title": "Visualizador de Planetas 3D",
-            "date": "10 de octubre, 2024",
-            "skills": [
-                "WebGL",
-                "Three.js",
-                "NASA API",
-                "3D Graphics",
-                "Frontend",
-                "Backend"
-            ],
-            "excerpt": "Visualizador web 3D de planetas usando la API de la NASA. Arquitectura completa con frontend y backend para renderizado de datos astronómicos en tiempo real.",
-            "jsonFile": "planet_visualizer.json",
-            "coverImage": "/assets/images/projects/sun_plantets.png"
         }
     ]
 }
