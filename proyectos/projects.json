@@ -28,7 +28,7 @@
             ],
             "excerpt": "Proyecto de animación procedural de un gato en Godot con movimientos realistas y comportamientos naturales implementados programáticamente.",
             "jsonFile": "procedural_cat.json",
-            "coverImage": "/assets/images/projects/cat.png"
+            "coverImage": "/assets/images/projects/coverGato.png"
         },
         {
             "id": "3",

@@ -377,13 +377,22 @@
             
             // Actualizar la sección del encabezado
             const postHeader = document.querySelector('.post-header');
-            postHeader.innerHTML = `
-                <h1>${project.title}</h1>
+            postHeader.innerHTML = `<h1>${project.title}</h1>
                 <div class="article-meta">
                     <span class="article-date">${project.date}</span>
                     <span class="article-category">Proyecto</span>
                 </div>
             `;
+
+            // Si hay una imagen de portada, mostrarla al inicio
+            if (project.coverImage) {
+                const coverImage = document.createElement('figure');
+                coverImage.className = 'project-cover-banner';
+                coverImage.innerHTML = `
+                    <img src="${project.coverImage}" alt="${project.title}" loading="lazy" style="width: 65%; max-height: 150px; object-fit: cover; border-radius: 12px; margin: 2rem 0; margin-top: 0rem;">
+                `;
+                postHeader.appendChild(coverImage);
+            }
             
             // Ocultar los filtros de habilidades
             document.getElementById('skills-filter').style.display = 'none';
@@ -426,6 +435,7 @@
                 
                 projectContainer.appendChild(linksContainer);
             }
+            
             
             // Procesar cada elemento del contenido del proyecto
             project.content.forEach(item => {

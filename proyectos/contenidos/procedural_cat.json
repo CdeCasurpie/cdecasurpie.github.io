@@ -4,6 +4,8 @@
     "date": "04 de mayo, 2025",
     "skills": ["Godot Engine", "python", "Procedural Animation", "Inverse Kinematics", "Physics Simulation", "State Machine", "3D Mathematics", "Game Development"],
     "repoUrl": "https://github.com/CesarAP24/cat_proj_test03",
+    "demoUrl": "https://cesarap24.github.io/cat_proj_test03/",
+    "coverImage": "/assets/images/projects/coverGato.png",
     "content": [
         {
             "type": "header",
@@ -15,10 +17,26 @@
             "content": "Este proyecto implementa un sistema completo de animación procedural para un gato cuadrúpedo en Godot Engine. El sistema combina algoritmos avanzados de cinemática inversa, máquinas de estado complejas y simulación física para crear movimientos naturales y realistas sin depender de animaciones pre-renderizadas."
         },
         {
+            "type":"image",
+            "url": "/assets/images/projects/Captura de pantalla_20251217_165400.png",
+            "alt": "Galería de fotos del gato procedural",
+            "caption": "Imágenes del gato procedural en diferentes poses y movimientos generados en tiempo"
+        },
+        {
             "type": "image",
             "url": "/assets/images/projects/cat_animation.gif",
             "alt": "Demostración del gato procedural en acción",
             "caption": "El gato procedural navegando por terreno irregular con animaciones generadas en tiempo real"
+        },
+        {
+            "type": "text",
+            "content": "El proyecto incluye documentación completa y página web donde se muestra el funcionamiento del sistema, así como un repositorio público con todo el código fuente y recursos necesarios para replicar y estudiar la implementación."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/Captura de pantalla_20251217_165212.png",
+            "alt": "Documentación del proyecto",
+            "caption": "Documentación detallada del sistema de animación procedural del gato"
         },
         {
             "type": "header",

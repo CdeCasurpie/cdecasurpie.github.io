@@ -5,6 +5,7 @@
     "skills": ["Python", "Flask", "React", "Next.js", "Vue.js", "PostgreSQL"],
     "repoUrl": "https://github.com/CesarAP24/Rinder",
     "demoUrl": "https://cdecasurpie.github.io/Rinder/",
+    "coverImage": "/assets/images/projects/coverRinder.png",
     "content": [
         {
             "type": "header",
