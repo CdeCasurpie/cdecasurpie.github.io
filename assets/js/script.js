@@ -149,6 +149,8 @@ function loadContactForm() {
     
     // Añadir información de contacto
     const contactInfo = document.querySelector('.contact-info');
+
+    contactInfo.innerHTML = ''; // Limpiar contenido previo
     
     if (contactInfo) {
         const contactItems = `
@@ -158,7 +160,7 @@ function loadContactForm() {
                 </div>
                 <div>
                     <h4>Email</h4>
-                    <p>contacto@cesarperales.com</p>
+                    <p>cesar.cap20.p@gmail.com</p>
                 </div>
             </div>
             
@@ -178,7 +180,7 @@ function loadContactForm() {
                 </div>
                 <div>
                     <h4>Horario</h4>
-                    <p>Lunes a viernes, 9am - 6pm</p>
+                    <p>Lunes a viernes, 9am - 9pm</p>
                 </div>
             </div>
         `;
