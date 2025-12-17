@@ -17,11 +17,24 @@
     "subtitulo": "Un vistazo a mi recorrido laboral",
     "trabajos": [
       {
+        "empresa": "Independiente",
+        "cargo": "Profesor Particular",
+        "periodo": "2022 - Presente",
+        "descripcion": "Desde 2022, he estado ofreciendo clases particulares de programación y desarrollo web a estudiantes de diversos niveles. Mi enfoque se centra en adaptar las lecciones a las necesidades individuales de cada estudiante, fomentando un aprendizaje práctico y efectivo.",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX-tgUHvmTrZOMI7oLXBkPAUieru7eaC8qeQ&s",
+        "tecnologias": ["Python", "Algoritmos Avanzados", "Estructuras de Datos", "Computación Gráfica"],
+        "hitos": [
+          "Más de 50 estudiantes asesorados con éxito",
+          "Desarrollo de planes de estudio personalizados",
+          "Alta tasa de satisfacción y recomendación entre estudiantes"
+        ]
+      },
+      {
         "empresa": "CAPS - UTEC",
         "cargo": "Profesor Particular",
-        "periodo": "2025 - Actualidad",
+        "periodo": "2025 (enero) - 2025 (diciembre)",
         "descripcion": "Actualmente doy enseñansa a estudiantes de programación y desarrollo web, no solo en CAPS sino de forma particular. Me enfoco en crear un ambiente de aprendizaje inclusivo y motivador, adaptando mis métodos a las necesidades de cada estudiante.",
-        "logo": "assets/images/techedu-logo.png",
+        "logo": "https://static.wixstatic.com/media/2d543e_fb5ff8f60e094a4aa5a200d16a7b3cf5~mv2.png/v1/fill/w_282,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/CAPS.png",
         "tecnologias": ["Diseño de algoritmos", "Python", "BD"],
         "hitos": [
           "Creación de material para las asesorías de programación",
@@ -33,7 +46,6 @@
         "cargo": "Desarrollador Full Stack",
         "periodo": "2024-2025",
         "descripcion": "Desarrollo de una aplicación web para la venta, compra y reserva de actividades acuáticas",
-        "logo": "assets/images/creativcode-logo.png",
         "tecnologias": ["Next.js", "Node.js", "Tailwind CSS", "OVH Cloud"],
         "hitos": [
           "Implementación de un sistema de reservas",
@@ -46,7 +58,6 @@
         "cargo": "Desarrollador de Software",
         "periodo": "2023 - 2025",
         "descripcion": "Se desarrollaron varias aplicaciones web, de escritorio y móviles para la empresa, incluyendo un sistema de gestión de inventarios y ventas.",
-        "logo": "assets/images/digitallearn-logo.png",
         "tecnologias": ["JavaScript", "HTML/CSS", "Python", "Flask", "SQLite", "etc"],
         "hitos": [
           "Desarrollo de un sistema de gestión de inventarios y ventas",
@@ -59,7 +70,7 @@
         "cargo": "Desarrollador Full Stack",
         "periodo": "2023 - 2024",
         "descripcion": "Colaboración en el proceso de creación de un software para gestionar el tiempo de las personas",
-        "logo": "assets/images/websolutions-logo.png",
+        "logo": "assets/images/projects/logo-masteryfive.svg",
         "tecnologias": ["Next.js", "Tailwind CSS", "Google Cloud"],
         "hitos": [
           "Desarrollo de un sistema de gestión de tiempo y productividad",
@@ -72,7 +83,7 @@
         "cargo": "Modelador 3D",
         "periodo": "2021 - 2022",
         "descripcion": "Creación de modelos 3D para la plataforma Cults, incluyendo modelos de alta calidad para impresión 3D y visualización en línea.",
-        "logo": "assets/images/cults-logo.png",
+        "logo": "assets/images/projects/cults_logo.png",
         "tecnologias": ["Blender", "Cults3D", "Sketchfab"],
         "hitos": [
           "Desarrollo de modelos 3D para la plataforma Cults",
@@ -165,6 +176,11 @@
       "nombre": "Instagram",
       "url": "https://instagram.com/cesar.codes",
       "icono": "fab fa-instagram"
+    },
+    {
+      "nombre": "Tiktok",
+      "url": "https://www.tiktok.com/@causa_code",
+      "icono": "fab fa-tiktok"
     }
   ]
 }

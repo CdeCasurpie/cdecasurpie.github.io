@@ -1,0 +1,159 @@
+{
+    "title": "P&R Arquitectos - Sitio Web Corporativo",
+    "author": "César Perales",
+    "date": "15 de diciembre, 2024",
+    "skills": ["HTML5", "CSS3", "JavaScript", "Responsive Design", "UI/UX"],
+    "repoUrl": "https://github.com/CdeCasurpie/pag-web-dip",
+    "demoUrl": "https://cdecasurpie.github.io/pag-web-dip/",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Descripción del Proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Sitio web corporativo profesional desarrollado para P&R Arquitectos S.R.L., una firma líder en arquitectura e ingeniería con 20 años de experiencia en Lima, Perú. La plataforma implementa un diseño moderno y responsivo con gestión dinámica de contenido, enfatizando la experiencia de usuario y optimización de conversión a través de ubicaciones estratégicas de llamadas a la acción y canales directos de comunicación con clientes."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/pyr_coverImage.png",
+            "alt": "Hero section de P&R Arquitectos",
+            "caption": "Página principal con carrusel de imágenes automático"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Características Principales"
+        },
+        {
+            "type": "text",
+            "content": "Sistema de Carrusel Dinámico: Carrusel de imágenes completamente funcional con transición automática, controles manuales, soporte para gestos táctiles, navegación por teclado y pausa al pasar el mouse."
+        },
+        {
+            "type": "text",
+            "content": "Gestión Dinámica de Proyectos: Sistema de portafolio impulsado por JSON con vistas detalladas en modal. Los proyectos se cargan dinámicamente desde una estructura de datos y se muestran en tarjetas interactivas."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/pyr_modal.png",
+            "alt": "Modal de proyecto con galería de imágenes",
+            "caption": "Vista modal de proyectos con galería interactiva y detalles completos"
+        },
+        {
+            "type": "text",
+            "content": "Sistema de Temas: Soporte para tema claro y oscuro con persistencia de preferencias del usuario mediante LocalStorage y transiciones suaves entre temas."
+        },
+        {
+            "type": "text",
+            "content": "Integración de WhatsApp: Botón flotante persistente (FAB) para comunicación directa con la empresa, ubicación estratégica de botones CTA y formulario de contacto con validación."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Secciones del Sitio"
+        },
+        {
+            "type": "text",
+            "content": "El sitio implementa una arquitectura de página única con las siguientes secciones:"
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/pyr_servicios.png",
+            "alt": "Sección de servicios",
+            "caption": "Grid de servicios con diseño destacado"
+        },
+        {
+            "type": "text",
+            "content": "Sección Hero: Introducción de pantalla completa con fondo de carrusel y overlay personalizado para mejor legibilidad del contenido."
+        },
+        {
+            "type": "text",
+            "content": "Grid de Servicios: Diseño de seis servicios con tarjeta destacada, incluyendo proyectos arquitectónicos, obras de edificación, gestiones públicas, consultoría, inspección y supervisión."
+        },
+        {
+            "type": "text",
+            "content": "Flujo de Trabajo: Representación visual del proceso en cuatro pasos que muestra la metodología de trabajo de la empresa."
+        },
+        {
+            "type": "text",
+            "content": "Portafolio de Proyectos: Grid dinámico de proyectos con interacciones en modal que incluye galería de imágenes, ubicación, año, área construida e información del contratista."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/pyr_seccion_loquedicennuestroclientes.png",
+            "alt": "Sección de testimonios de clientes",
+            "caption": "Carrusel de testimonios de clientes satisfechos"
+        },
+        {
+            "type": "text",
+            "content": "Sección Sobre Nosotros: Historia de la empresa, certificaciones y logros incluyendo Buen Contribuyente SUNAT 2022, Registro Nacional de Proveedores (RNP) activo y acreditación REMYPE."
+        },
+        {
+            "type": "text",
+            "content": "Testimonios: Carrusel de feedback de clientes con comentarios y valoraciones de proyectos realizados."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Arquitectura Técnica"
+        },
+        {
+            "type": "text",
+            "content": "Patrones de Diseño: JavaScript orientado a objetos (ES6+) con arquitectura basada en clases, separación de responsabilidades con organización modular de archivos CSS y JS, mejora progresiva y enfoque mobile-first."
+        },
+        {
+            "type": "text",
+            "content": "Sistema de Gestión de Proyectos: Los proyectos se cargan desde una estructura JSON con información detallada incluyendo imágenes, ubicación, fecha, área y contratista."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Stack Tecnológico"
+        },
+        {
+            "type": "text",
+            "content": "Frontend:\n- HTML5 semántico con atributos ARIA para accesibilidad\n- CSS3 con Grid y Flexbox para sistemas de layout\n- CSS Custom Properties para theming dinámico\n- JavaScript ES6+ con programación orientada a objetos\n- Font Awesome 6 para iconografía"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Características de SEO y Accesibilidad"
+        },
+        {
+            "type": "text",
+            "content": "SEO: Estructura HTML5 semántica, optimización de meta tags (title, description, Open Graph), configuración de robots.txt, manifest PWA para presencia mejorada en búsquedas e implementación de texto alt en imágenes."
+        },
+        {
+            "type": "text",
+            "content": "Accesibilidad: Etiquetas y roles ARIA, soporte para navegación por teclado, gestión de estados de foco, cumplimiento de contraste de color (WCAG 2.1 AA) y optimizaciones para lectores de pantalla."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Compatibilidad de Navegadores"
+        },
+        {
+            "type": "text",
+            "content": "El sitio es compatible con:\n- Chrome/Edge 90+\n- Firefox 88+\n- Safari 14+\n- Mobile Safari iOS 12+\n- Chrome Mobile Android 8+"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Cliente"
+        },
+        {
+            "type": "text",
+            "content": "P&R Arquitectos S.R.L.\n\n- RUC: 20511083967\n- Fundada: 2005\n- Experiencia: 20+ años\n- Ubicación: Jr. Jesús Morales Nº 536 Zona E, San Juan de Miraflores, Lima\n- Certificaciones: Buen Contribuyente SUNAT 2022, Registro Nacional de Proveedores (RNP), Microempresa acreditada REMYPE"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusión"
+        },
+        {
+            "type": "text",
+            "content": "Este proyecto representa una solución web corporativa completa que combina diseño moderno, funcionalidad dinámica y optimización para conversión. El sitio está construido con tecnologías web estándar, enfocándose en rendimiento, accesibilidad y experiencia de usuario. La arquitectura modular permite fácil mantenimiento y futuras expansiones del sitio."
+        }
+    ]
+}

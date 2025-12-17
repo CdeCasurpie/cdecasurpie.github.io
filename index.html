@@ -522,9 +522,11 @@
                             <div class="job-company">${job.empresa}</div>
                             <div class="job-period"><i class="far fa-calendar-alt"></i> ${job.periodo}</div>
                         </div>
+                        ${job.logo ? `
                         <div class="job-logo">
                             <img src="${job.logo}" alt="${job.empresa} logo" onerror="this.src='assets/images/default-logo.png'; this.onerror=null;">
                         </div>
+                        ` : ''}
                     </div>
                     
                     <div class="job-description">

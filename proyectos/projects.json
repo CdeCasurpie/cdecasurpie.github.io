@@ -31,6 +31,21 @@
             "coverImage": "/assets/images/projects/coverGato.png"
         },
         {
+            "id": "11",
+            "title": "P&R Arquitectos - Sitio Web Corporativo",
+            "date": "15 de diciembre, 2024",
+            "skills": [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "Responsive Design",
+                "UI/UX"
+            ],
+            "excerpt": "Sitio web corporativo profesional para firma de arquitectura con 20 años de experiencia. Incluye carrusel dinámico, gestión de proyectos con modales, sistema de temas y integración de WhatsApp.",
+            "jsonFile": "pyr_arquitectos.json",
+            "coverImage": "/assets/images/projects/pyr_coverImage.png"
+        },
+        {
             "id": "3",
             "title": "Generador de Informes con IA",
             "date": "25 noviembre, 2024",

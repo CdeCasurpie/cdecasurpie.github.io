@@ -92,8 +92,9 @@ function loadSocialLinks() {
     
     const socialLinks = [
         { icon: 'fab fa-github', url: 'https://github.com/cdecasurpie', label: 'GitHub' },
-        { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/cesar-perales/', label: 'LinkedIn' },
+        { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/cesar-aaron-perales-rosales-469142292/', label: 'LinkedIn' },
         { icon: 'fab fa-instagram', url: 'https://www.instagram.com/causa_code/', label: 'Instagram' },
+        { icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@causa_code', label: 'TikTok' },
         { icon: 'fa-solid fa-mug-saucer', url: 'https://ko-fi.com/cdecasurpie', label: 'Donate me a coffee' },
     ];
     
