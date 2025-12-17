@@ -4,7 +4,6 @@
     "date": "29 de mayo, 2025",
     "skills": ["Python", "Flask", "React", "Inteligencia Artificial", "Procesamiento de documentos", "API REST"],
     "repoUrl": "https://github.com/CdeCasurpie/GeneradorInformes-Frontend.git",
-    "demoUrl": "http://127.0.0.1:5000",
     "content": [
         {
             "type": "header",
