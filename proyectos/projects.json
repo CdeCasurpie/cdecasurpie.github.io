@@ -46,6 +46,21 @@
             "coverImage": "/assets/images/projects/pyr_coverImage.png"
         },
         {
+            "id": "12",
+            "title": "Graph Organizer - Editor de Grafos Jerárquicos",
+            "date": "18 de diciembre, 2024",
+            "skills": [
+                "JavaScript",
+                "HTML5",
+                "Canvas API",
+                "Graph Theory",
+                "UI/UX"
+            ],
+            "excerpt": "Aplicación web interactiva para crear grafos con jerarquías anidadas. Cada nodo puede contener su propio subgrafo interno, ideal para organizar flujos de trabajo complejos, dependencias de cursos o arquitecturas de software.",
+            "jsonFile": "graph_organizer.json",
+            "coverImage": "/assets/images/projects/graphEditorMain.png"
+        },
+        {
             "id": "3",
             "title": "Generador de Informes con IA",
             "date": "25 noviembre, 2024",

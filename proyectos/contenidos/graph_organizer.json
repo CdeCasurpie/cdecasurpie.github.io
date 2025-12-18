@@ -1,0 +1,143 @@
+{
+    "title": "Graph Organizer - Editor de Grafos Jerárquicos",
+    "author": "César Perales",
+    "date": "18 de diciembre, 2024",
+    "skills": ["JavaScript", "HTML5", "Canvas API", "Graph Theory", "UI/UX"],
+    "repoUrl": "https://github.com/CdeCasurpie/casurpie-graph-editor",
+    "demoUrl": "https://cdecasurpie.github.io/casurpie-graph-editor/",
+    "content": [
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Descripción del Proyecto"
+        },
+        {
+            "type": "text",
+            "content": "Graph Organizer es una aplicación web interactiva para crear y gestionar grafos con jerarquías anidadas. El sistema permite que cada nodo contenga su propio subgrafo interno, facilitando la organización de flujos de trabajo complejos, dependencias de proyectos, cursos con módulos, o cualquier estructura que requiera múltiples niveles de organización."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/graphEditorWelcome.png",
+            "alt": "Pantalla de bienvenida de Graph Organizer",
+            "caption": "Interfaz de bienvenida con instrucciones de uso"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Características Principales"
+        },
+        {
+            "type": "text",
+            "content": "Grafos Jerárquicos: Cada nodo puede contener un subgrafo completo en su interior. Esto permite crear estructuras anidadas de múltiples niveles, ideal para representar sistemas complejos con subsistemas."
+        },
+        {
+            "type": "text",
+            "content": "Interacción Intuitiva: Sistema de controles basado en mouse y teclado. Doble clic para crear nodos, arrastrar para mover, Ctrl + Click para conectar nodos, y navegación fluida por el canvas."
+        },
+        {
+            "type": "text",
+            "content": "Edición de Propiedades: Cada nodo puede editarse con un simple clic, permitiendo modificar nombres, descripciones y otras propiedades personalizadas."
+        },
+        {
+            "type": "text",
+            "content": "Sistema de Zoom y Pan: Navegación completa por el canvas con zoom mediante rueda del mouse y movimiento arrastrando el canvas."
+        },
+        {
+            "type": "image",
+            "url": "/assets/images/projects/graphEditorMain.png",
+            "alt": "Vista principal del editor de grafos",
+            "caption": "Editor en acción mostrando un grafo de dependencias con múltiples niveles"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Casos de Uso"
+        },
+        {
+            "type": "text",
+            "content": "Planificación de Cursos: Organizar programas académicos donde cada curso tiene módulos internos con sus propias dependencias y subtemas."
+        },
+        {
+            "type": "text",
+            "content": "Gestión de Proyectos: Estructurar proyectos grandes con subproyectos, donde cada tarea puede contener subtareas y dependencias internas."
+        },
+        {
+            "type": "text",
+            "content": "Flujos de Trabajo: Diseñar procesos complejos donde cada paso puede tener su propio subflujo de actividades."
+        },
+        {
+            "type": "text",
+            "content": "Programación Modular: Visualizar arquitecturas de software donde cada módulo contiene sus propios componentes y dependencias."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Controles de la Aplicación"
+        },
+        {
+            "type": "text",
+            "content": "Crear Nodos: Doble click en el canvas para añadir un nuevo nodo.\n\nMover Nodos: Arrastrar nodos con el mouse para reposicionarlos.\n\nConectar Nodos: Ctrl + Click en un nodo origen, luego Ctrl + Click en el nodo destino para crear una conexión.\n\nEditar Propiedades: Click simple en un nodo para abrir el panel de edición.\n\nCrear Subgrafos: Doble click en un nodo contenedor para entrar a su subgrafo interno.\n\nZoom: Rueda del mouse para acercar o alejar la vista.\n\nMover Vista: Arrastrar el canvas para navegar por el espacio de trabajo.\n\nNavegación: Botón de retroceso para volver al grafo padre."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Implementación Técnica"
+        },
+        {
+            "type": "text",
+            "content": "Canvas API: Renderizado completo usando HTML5 Canvas para máximo rendimiento y flexibilidad visual."
+        },
+        {
+            "type": "text",
+            "content": "Estructura de Datos: Sistema de grafos anidados implementado con objetos JavaScript, permitiendo navegación recursiva entre niveles."
+        },
+        {
+            "type": "text",
+            "content": "Sistema de Eventos: Manejo sofisticado de eventos de mouse y teclado para interacciones fluidas y detección de estados (hover, drag, connect)."
+        },
+        {
+            "type": "text",
+            "content": "Persistencia: Sistema de importación/exportación de grafos en formato JSON para guardar y cargar proyectos completos."
+        },
+        {
+            "type": "code",
+            "language": "javascript",
+            "content": "// Estructura de un nodo con subgrafo\nconst node = {\n    id: 'node-1',\n    title: 'Programación Básica',\n    x: 100,\n    y: 100,\n    connections: ['node-2', 'node-3'],\n    subgraph: {\n        nodes: [\n            { id: 'sub-1', title: 'Variables' },\n            { id: 'sub-2', title: 'Condicionales' },\n            { id: 'sub-3', title: 'Bucles' }\n        ],\n        connections: [...]\n    }\n};"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Stack Tecnológico"
+        },
+        {
+            "type": "text",
+            "content": "Frontend: HTML5, CSS3, JavaScript puro (vanilla JS)\n\nRenderizado: Canvas API para gráficos 2D de alto rendimiento\n\nTeoría de Grafos: Implementación de estructuras de datos de grafos dirigidos con soporte para anidación\n\nUI/UX: Sistema de controles intuitivo con feedback visual en tiempo real"
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Funcionalidades de Exportación"
+        },
+        {
+            "type": "text",
+            "content": "Exportar Grafo: Guarda toda la estructura del grafo en formato JSON, incluyendo todos los subgrafos anidados."
+        },
+        {
+            "type": "text",
+            "content": "Importar Grafo: Carga grafos previamente guardados, restaurando toda la jerarquía y conexiones."
+        },
+        {
+            "type": "text",
+            "content": "Limpiar Todo: Opción para resetear el canvas y comenzar desde cero con un nuevo grafo."
+        },
+        {
+            "type": "header",
+            "level": 2,
+            "content": "Conclusión"
+        },
+        {
+            "type": "text",
+            "content": "Graph Organizer es una herramienta poderosa para visualizar y organizar estructuras jerárquicas complejas. Su capacidad de anidar grafos dentro de nodos la hace única para casos de uso donde se necesita representar múltiples niveles de abstracción. La aplicación es completamente funcional en el navegador sin necesidad de instalación, y el sistema de exportación permite guardar y compartir proyectos fácilmente."
+        }
+    ]
+}
