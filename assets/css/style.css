@@ -39,6 +39,7 @@
     --bg-color: var(--color-bg);
     --bg-color-alt: var(--color-accent-light);
     --accent-color-rgb: 213, 168, 158; /* RGB para --accent-color */
+    --background-code: #ededed;
 }
 
 /* Dark Mode Colors */
@@ -57,6 +58,7 @@
     --text-color: var(--color-text-strong);
     --bg-color: var(--color-bg);
     --bg-color-alt: var(--color-accent-light);
+    --background-code: #0d1117;
 }
 
 *, *::before, *::after {
@@ -676,6 +678,7 @@ nav {
     line-height: 1.6;
     border-radius: 0 0 var(--radius) var(--radius);
     color: var(--color-title);
+    background: var(--background-code);
 }
 
 .article-content pre {

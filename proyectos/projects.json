@@ -46,6 +46,21 @@
             "coverImage": "/assets/images/projects/pyr_coverImage.png"
         },
         {
+            "id": "13",
+            "title": "CulqiPay - Pasarela de Pagos con Herramientas Gratuitas",
+            "date": "19 de diciembre, 2024",
+            "skills": [
+                "Next.js",
+                "TypeScript",
+                "Supabase",
+                "Culqi API",
+                "Tailwind CSS"
+            ],
+            "excerpt": "Plataforma de comercio electrónico 100% funcional construida con herramientas gratuitas. Implementa autenticación, catálogo de productos y procesamiento de pagos con Culqi, desplegada en GitHub Pages.",
+            "jsonFile": "culqipay.json",
+            "coverImage": "/assets/images/projects/coverCulqiPay.png"
+        },
+        {
             "id": "12",
             "title": "Graph Organizer - Editor de Grafos Jerárquicos",
             "date": "18 de diciembre, 2024",
