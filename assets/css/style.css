@@ -164,6 +164,7 @@ p {
 .btn-outline {
     border: 2px solid var(--color-accent-mid);
     color: var(--color-text-strong);
+    background: none;
 }
 
 .btn-outline:hover {
@@ -396,7 +397,7 @@ nav {
 
 .hero-content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr;
     gap: 3rem;
     align-items: center;
 }

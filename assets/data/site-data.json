@@ -7,8 +7,8 @@
   },
   "sobreMi": {
     "parrafos": [
-      "Soy un programador y educador apasionado por la tecnología, el arte y la educación. Con más de 8 años de experiencia en desarrollo web, me especializo en crear experiencias digitales que combinan funcionalidad y estética.",
-      "Mi trayectoria comenzó estudiando Ingeniería en Sistemas, pero pronto descubrí que mi verdadera pasión estaba en combinar la tecnología con la educación y la creatividad. Esto me llevó a trabajar en proyectos interdisciplinarios y a desarrollar contenido educativo para programadores."
+      "Soy estudiante de Computer Science, me fascina el punto donde la tecnología se encuentra con el arte, y cómo podemos utilizar algoritmos para crear experiencias visuales que imiten fenómenos naturales.",
+      "Además de crear software, me dedico a la enseñanza. Creo firmemente que compartir conocimiento es tan importante como adquirirlo, y disfruto ayudando a otros a descubrir el fascinante mundo de la programación creativa."
     ],
     "enseñanza": "Creo firmemente que el conocimiento debe ser accesible para todos. Enseñar no solo es una forma de compartir lo que sé, sino también una manera de seguir aprendiendo y creciendo. A través de mis tutoriales y proyectos educativos busco desmitificar la programación y hacerla accesible para personas de todos los niveles."
   },
@@ -97,6 +97,66 @@
     {
       "name": "HTML5",
       "icon": "fab fa-html5"
+    },
+    {
+      "name": "CSS3",
+      "icon": "fab fa-css3-alt"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "fab fa-js"
+    },
+    {
+      "name": "TypeScript",
+      "icon": "fab fa-js"
+    },
+    {
+      "name": "Python",
+      "icon": "fab fa-python"
+    },
+    {
+      "name": "React",
+      "icon": "fab fa-react"
+    },
+    {
+      "name": "Next.js",
+      "icon": "fas fa-code"
+    },
+    {
+      "name": "Node.js",
+      "icon": "fab fa-node-js"
+    },
+    {
+      "name": "Git",
+      "icon": "fab fa-git-alt"
+    },
+    {
+      "name": "Figma",
+      "icon": "fab fa-figma"
+    },
+    {
+      "name": "Blender",
+      "icon": "fas fa-cube"
+    },
+    {
+      "name": "Flask",
+      "icon": "fas fa-flask"
+    },
+    {
+      "name": "Tailwind CSS",
+      "icon": "fas fa-wind"
+    },
+    {
+      "name": "PostgreSQL",
+      "icon": "fas fa-database"
+    },
+    {
+      "name": "Godot",
+      "icon": "fas fa-gamepad"
+    },
+    {
+      "name": "Supabase",
+      "icon": "fas fa-cloud"
     }
   ],
   "contacto": {
@@ -111,7 +171,7 @@
       },
       {
         "titulo": "Ubicación",
-        "contenido": "Madrid, España",
+        "contenido": "Perù, Lima",
         "icono": "fas fa-map-marker-alt"
       },
       {

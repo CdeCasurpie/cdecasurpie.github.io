@@ -4,12 +4,26 @@ document.addEventListener('DOMContentLoaded', function() {
     setupDarkModeToggle();
     setupMobileMenu();
     initializeComponents();
-    loadSocialLinks();
-    loadContactForm();
-    loadAboutMeContent();
+    loadSiteData(); // Nueva función que carga todos los datos
     setupScrollAnimations();
-    setupTypewriterEffect(); // Añadida nueva función para el efecto de escritura
 });
+
+// Función para cargar todos los datos del sitio desde site-data.json
+async function loadSiteData() {
+    try {
+        const response = await fetch('assets/data/site-data.json');
+        const data = await response.json();
+        
+        // Cargar todos los componentes con los datos
+        loadSocialLinks(data.social);
+        loadContactForm(data.contacto);
+        loadAboutMeContent(data.sobreMi);
+        setupTypewriterEffect(data.personal.nombres);
+        
+    } catch (error) {
+        console.error('Error cargando los datos del sitio:', error);
+    }
+}
 
 // Función para configurar el toggle del modo oscuro
 function setupDarkModeToggle() {
@@ -85,30 +99,22 @@ function initializeComponents() {
 }
 
 // Cargar enlaces sociales
-function loadSocialLinks() {
+function loadSocialLinks(socialData) {
     const socialLinksContainers = document.querySelectorAll('.social-links');
     
-    if (socialLinksContainers.length === 0) return;
-    
-    const socialLinks = [
-        { icon: 'fab fa-github', url: 'https://github.com/cdecasurpie', label: 'GitHub' },
-        { icon: 'fab fa-linkedin-in', url: 'https://www.linkedin.com/in/cesar-aaron-perales-rosales-469142292/', label: 'LinkedIn' },
-        { icon: 'fab fa-instagram', url: 'https://www.instagram.com/causa_code/', label: 'Instagram' },
-        { icon: 'fab fa-tiktok', url: 'https://www.tiktok.com/@causa_code', label: 'TikTok' },
-        { icon: 'fa-solid fa-mug-saucer', url: 'https://ko-fi.com/cdecasurpie', label: 'Donate me a coffee' },
-    ];
+    if (socialLinksContainers.length === 0 || !socialData) return;
     
     socialLinksContainers.forEach(container => {
         container.innerHTML = '';
         
-        socialLinks.forEach(link => {
+        socialData.forEach(link => {
             const linkElement = document.createElement('a');
             linkElement.href = link.url;
             linkElement.className = 'social-icon';
             linkElement.target = '_blank';
             linkElement.rel = 'noopener noreferrer';
-            linkElement.setAttribute('aria-label', link.label);
-            linkElement.innerHTML = `<i class="${link.icon}"></i>`;
+            linkElement.setAttribute('aria-label', link.nombre);
+            linkElement.innerHTML = `<i class="${link.icono}"></i>`;
             
             container.appendChild(linkElement);
         });
@@ -116,174 +122,165 @@ function loadSocialLinks() {
 }
 
 // Cargar formulario de contacto
-function loadContactForm() {
+function loadContactForm(contactoData) {
     const contactForm = document.querySelector('.contact-form');
     
-    if (!contactForm) return;
+    if (!contactForm || !contactoData) return;
     
-    contactForm.innerHTML = `
-        <div class="form-group">
-            <label for="name">Nombre</label>
-            <input type="text" id="name" name="name" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="subject">Asunto</label>
-            <input type="text" id="subject" name="subject" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
-        </div>
-        
+    // Generar campos del formulario desde los datos
+    let formHTML = '';
+    contactoData.formulario.campos.forEach(campo => {
+        if (campo.tipo === 'textarea') {
+            formHTML += `
+                <div class="form-group">
+                    <label for="${campo.id}">${campo.label}</label>
+                    <textarea id="${campo.id}" name="${campo.id}" class="form-control" rows="5" placeholder="${campo.placeholder}" required></textarea>
+                </div>
+            `;
+        } else {
+            formHTML += `
+                <div class="form-group">
+                    <label for="${campo.id}">${campo.label}</label>
+                    <input type="${campo.tipo}" id="${campo.id}" name="${campo.id}" class="form-control" placeholder="${campo.placeholder}" required>
+                </div>
+            `;
+        }
+    });
+    
+    formHTML += `
         <button type="submit" class="btn btn-primary">
-            <i class="fas fa-paper-plane"></i> Enviar mensaje
+            <i class="${contactoData.formulario.botonIcono}"></i> ${contactoData.formulario.botonTexto}
         </button>
     `;
     
-    // Añadir información de contacto
+    contactForm.innerHTML = formHTML;
+    
+    // Añadir información de contacto desde los datos
     const contactInfo = document.querySelector('.contact-info');
-
-    contactInfo.innerHTML = ''; // Limpiar contenido previo
     
     if (contactInfo) {
-        const contactItems = `
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-envelope"></i>
-                </div>
-                <div>
-                    <h4>Email</h4>
-                    <p>cesar.cap20.p@gmail.com</p>
-                </div>
-            </div>
-            
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-map-marker-alt"></i>
-                </div>
-                <div>
-                    <h4>Ubicación</h4>
-                    <p>Lima, Perú</p>
-                </div>
-            </div>
-            
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <i class="fas fa-calendar-alt"></i>
-                </div>
-                <div>
-                    <h4>Horario</h4>
-                    <p>Lunes a viernes, 9am - 9pm</p>
-                </div>
-            </div>
-        `;
+        // Mantener el título y subtítulo existente
+        let contactHTML = '<h3>¡Hablemos!</h3>';
+        contactHTML += `<p>${contactoData.mensaje}</p>`;
         
-        contactInfo.insertAdjacentHTML('beforeend', contactItems);
+        // Agregar items de contacto desde los datos
+        contactoData.items.forEach(item => {
+            contactHTML += `
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="${item.icono}"></i>
+                    </div>
+                    <div>
+                        <h4>${item.titulo}</h4>
+                        <p>${item.contenido}</p>
+                    </div>
+                </div>
+            `;
+        });
+        
+        contactInfo.innerHTML = contactHTML;
     }
     
     // Manejar envío del formulario
-contactForm.addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    // Recoger datos del formulario
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const subject = document.getElementById('subject').value;
-    const message = document.getElementById('message').value;
-    
-    // Mostrar indicador de carga
-    contactForm.innerHTML = `
-        <div class="loading-message">
-            <i class="fas fa-circle-notch fa-spin"></i>
-            <h3>Enviando mensaje...</h3>
-            <p>Por favor, espera un momento.</p>
-        </div>
-    `;
-    
-    try {
-        // Enviar email usando EmailJS
-        const response = await emailjs.send(
-            'service_aovwrdu',    // Service ID
-            'template_nf3pcy9',   // Template ID
-            {
-                message: "from: " + name + " <" + email + "> (" + subject + ")<br><br>" + message
-            }
-        );
-
-        console.log('Email enviado exitosamente:', response);
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
         
-        // Mostrar mensaje de éxito
-        contactForm.innerHTML = `
-            <div class="success-message">
-                <h3>¡Mensaje enviado correctamente!
-                <i class="fas fa-check-circle"></i></h3>
-                <p>Gracias por contactarme. Te responderé lo más pronto posible.</p>
-            </div>
-        `;
-        
-    } catch (error) {
-        console.error('Error al enviar email:', error);
-        
-        // Mostrar mensaje de error al usuario
-        contactForm.innerHTML = `
-            <div class="error-message">
-                <h3>Error al enviar el mensaje</h3>
-                <p>Lo sentimos, ha ocurrido un problema. Por favor, intenta de nuevo más tarde o contacta directamente a cesar.cap20.p@gmail.com</p>
-                <button class="btn btn-primary mt-3" id="retry-btn">
-                    <i class="fas fa-redo"></i> Intentar de nuevo
-                </button>
-            </div>
-        `;
-        
-        // Permitir al usuario intentar de nuevo
-        document.getElementById('retry-btn').addEventListener('click', function() {
-            loadContactForm(); // Recargar el formulario
+        // Recoger datos del formulario dinámicamente
+        const formData = {};
+        contactoData.formulario.campos.forEach(campo => {
+            formData[campo.id] = document.getElementById(campo.id).value;
         });
-    }
-});
+        
+        // Mostrar indicador de carga
+        contactForm.innerHTML = `
+            <div class="loading-message">
+                <i class="fas fa-circle-notch fa-spin"></i>
+                <h3>Enviando mensaje...</h3>
+                <p>Por favor, espera un momento.</p>
+            </div>
+        `;
+        
+        try {
+            // Construir mensaje del email
+            const emailMessage = `from: ${formData.nombre} <${formData.email}> (${formData.asunto})<br><br>${formData.mensaje}`;
+            
+            // Enviar email usando EmailJS
+            const response = await emailjs.send(
+                'service_aovwrdu',
+                'template_nf3pcy9',
+                { message: emailMessage }
+            );
+
+            console.log('Email enviado exitosamente:', response);
+            
+            // Mostrar mensaje de éxito
+            contactForm.innerHTML = `
+                <div class="success-message">
+                    <h3>¡Mensaje enviado correctamente!
+                    <i class="fas fa-check-circle"></i></h3>
+                    <p>Gracias por contactarme. Te responderé lo más pronto posible.</p>
+                </div>
+            `;
+            
+        } catch (error) {
+            console.error('Error al enviar email:', error);
+            
+            // Mostrar mensaje de error
+            contactForm.innerHTML = `
+                <div class="error-message">
+                    <h3>Error al enviar el mensaje</h3>
+                    <p>Lo sentimos, ha ocurrido un problema. Por favor, intenta de nuevo más tarde o contacta directamente a ${contactoData.items[0].contenido}</p>
+                    <button class="btn btn-primary mt-3" id="retry-btn">
+                        <i class="fas fa-redo"></i> Intentar de nuevo
+                    </button>
+                </div>
+            `;
+            
+            // Permitir reintentar
+            document.getElementById('retry-btn').addEventListener('click', function() {
+                loadSiteData();
+            });
+        }
+    });
 }
 
 // Cargar contenido de About Me
-function loadAboutMeContent() {
+function loadAboutMeContent(sobreMiData) {
     const aboutText = document.querySelector('.about-text');
     
-    if (!aboutText) return;
+    if (!aboutText || !sobreMiData) return;
     
-    aboutText.innerHTML = `
-        <p>Me fascina el punto donde la tecnología se encuentra con el arte, y cómo podemos utilizar algoritmos para crear experiencias visuales que imiten fenómenos naturales.</p>
-        
-        <p>Además de crear software, me dedico a la enseñanza. Creo firmemente que compartir conocimiento es tan importante como adquirirlo, y disfruto ayudando a otros a descubrir el fascinante mundo de la programación creativa.</p>
-    `;
-    
+    // Generar párrafos desde los datos
+    aboutText.innerHTML = sobreMiData.parrafos.map(parrafo => 
+        `<p>${parrafo}</p>`
+    ).join('');
     
     // Cargar skills para el carousel
     const skillsTrack = document.querySelector('.skills-track');
     
     if (skillsTrack) {
-        const skills = [
-            { name: 'JavaScript', icon: 'fa-brands fa-js' },
-            { name: 'Python', icon: 'fa-brands fa-python' },
-            { name: 'Three.js', icon: 'fa-solid fa-shapes'},
-            { name: 'WebGL', icon: 'fas fa-cubes' },
-            { name: 'React', icon: 'fab fa-react' },
-            { name: 'Node.js', icon: 'fab fa-node-js' },
-            { name: 'Física Simulada', icon: 'fas fa-atom' },
-        ];
-        
-        // Duplicar skills para el efecto infinito
-        const allSkills = [...skills, ...skills];
-        
-        skillsTrack.innerHTML = allSkills.map(skill => {
-            const iconClass = skill.icon.includes('-') ? `fab fa-${skill.icon}` : `fas fa-${skill.icon}`;
-            return `<div class="skill-item"><i class="${skill.icon}"></i> ${skill.name}</div>`;
-        }).join('');
+        // Cargar skills desde site-data.json si existen
+        fetch('assets/data/site-data.json')
+            .then(response => response.json())
+            .then(data => {
+                const skills = data.skills || [
+                    { name: 'JavaScript', icon: 'fab fa-js' },
+                    { name: 'Python', icon: 'fab fa-python' },
+                    { name: 'Three.js', icon: 'fa-solid fa-shapes'},
+                    { name: 'WebGL', icon: 'fas fa-cubes' },
+                    { name: 'React', icon: 'fab fa-react' },
+                    { name: 'Node.js', icon: 'fab fa-node-js' },
+                    { name: 'Física Simulada', icon: 'fas fa-atom' },
+                ];
+                
+                // Duplicar skills para el efecto infinito
+                const allSkills = [...skills, ...skills];
+                
+                skillsTrack.innerHTML = allSkills.map(skill => 
+                    `<div class="skill-item"><i class="${skill.icon}"></i> ${skill.name}</div>`
+                ).join('');
+            })
+            .catch(error => console.error('Error cargando skills:', error));
     }
 }
 
@@ -311,58 +308,42 @@ function setupScrollAnimations() {
 }
 
 // Función para configurar el efecto de escritura tipo consola
-function setupTypewriterEffect() {
+function setupTypewriterEffect(nombres) {
     const nameElement = document.getElementById('typewriter-name');
-    if (!nameElement) return;
+    if (!nameElement || !nombres || nombres.length === 0) return;
     
-    // Cargar los nombres desde el archivo JSON
-    fetch('/assets/data/site-data.json')
-        .then(response => response.json())
-        .then(data => {
-            const names = data.personal.nombres;
-            if (!names || names.length === 0) return;
-            
-            let currentNameIndex = 0;
-            let currentCharIndex = 0;
-            let isDeleting = false;
-            let typingSpeed = 100;
-            let pauseTime = 1500; // Tiempo de pausa cuando el nombre está completamente escrito
-            
-            function typeEffect() {
-                const currentName = names[currentNameIndex];
-                
-                if (isDeleting) {
-                    // Si estamos borrando, quitar un carácter
-                    nameElement.textContent = currentName.substring(0, currentCharIndex - 1);
-                    currentCharIndex--;
-                    typingSpeed = 50; // Borrar más rápido que escribir
-                } else {
-                    // Si estamos escribiendo, añadir un carácter
-                    nameElement.textContent = currentName.substring(0, currentCharIndex + 1);
-                    currentCharIndex++;
-                    typingSpeed = 100; // Escribir a velocidad normal
-                }
-                
-                // Añadir el cursor parpadeante después del texto
-                nameElement.innerHTML = nameElement.textContent + '<span class="cursor">|</span>';
-                
-                // Lógica para cambiar entre escribir y borrar
-                if (!isDeleting && currentCharIndex === currentName.length) {
-                    // Si terminamos de escribir, pausar antes de borrar
-                    isDeleting = true;
-                    typingSpeed = pauseTime;
-                } else if (isDeleting && currentCharIndex === 0) {
-                    // Si terminamos de borrar, cambiar al siguiente nombre
-                    isDeleting = false;
-                    currentNameIndex = (currentNameIndex + 1) % names.length;
-                }
-                
-                // Continuar con el efecto
-                setTimeout(typeEffect, typingSpeed);
-            }
-            
-            // Iniciar el efecto
-            typeEffect();
-        })
-        .catch(error => console.error('Error cargando los datos:', error));
+    let currentNameIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    let pauseTime = 1500;
+    
+    function typeEffect() {
+        const currentName = nombres[currentNameIndex];
+        
+        if (isDeleting) {
+            nameElement.textContent = currentName.substring(0, currentCharIndex - 1);
+            currentCharIndex--;
+            typingSpeed = 50;
+        } else {
+            nameElement.textContent = currentName.substring(0, currentCharIndex + 1);
+            currentCharIndex++;
+            typingSpeed = 100;
+        }
+        
+        // Añadir el cursor parpadeante
+        nameElement.innerHTML = nameElement.textContent + '<span class="cursor">|</span>';
+        
+        if (!isDeleting && currentCharIndex === currentName.length) {
+            isDeleting = true;
+            typingSpeed = pauseTime;
+        } else if (isDeleting && currentCharIndex === 0) {
+            isDeleting = false;
+            currentNameIndex = (currentNameIndex + 1) % nombres.length;
+        }
+        
+        setTimeout(typeEffect, typingSpeed);
+    }
+    
+    typeEffect();
 }

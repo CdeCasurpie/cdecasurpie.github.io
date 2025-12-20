@@ -14,6 +14,8 @@
     <link rel="icon" type="image/png" href="assets/images/favicon.ico">
     <script src="assets/js/cursor-light.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <!-- jsPDF para exportar currículum -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <!-- Barra de progreso de lectura -->
@@ -57,6 +59,9 @@
                             <a href="#proyectos" class="btn btn-outline">
                                 <i class="fas fa-code"></i> Ver proyectos
                             </a>
+                            <button id="export-cv-btn" class="btn btn-outline">
+                                <i class="fas fa-file-pdf"></i> Exportar Currículum
+                            </button>
                         </div>
                         <div class="social-links">
                             <!-- Se llenará dinámicamente con JS -->
@@ -279,8 +284,7 @@
                             <div class="blog-footer">
                                 <span class="blog-category">${getCategoryName(article.category)}</span>
                                 <div class="read-more">Leer más -></div>
-                            </div>
-                        </a>
+                            </a>
                     `;
                     
                     blogGrid.appendChild(articleCard);
@@ -581,5 +585,6 @@
         emailjs.init("qNnIU_kmgunz6zJYb");
     </script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/cv-export.js"></script>
 </body>
 </html>
