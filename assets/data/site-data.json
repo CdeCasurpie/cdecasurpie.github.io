@@ -166,12 +166,12 @@
     "items": [
       {
         "titulo": "Email",
-        "contenido": "cesar@ejemplomail.com",
+        "contenido": "c.casurpie@gmail.com",
         "icono": "fas fa-envelope"
       },
       {
         "titulo": "Ubicación",
-        "contenido": "Perù, Lima",
+        "contenido": "Perú, Lima",
         "icono": "fas fa-map-marker-alt"
       },
       {
