@@ -1497,6 +1497,108 @@ footer {
     color: var(--color-text-strong);
 }
 
+/* ========== Educación Section ========== */
+.education-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.education-card {
+    background: var(--color-bg);
+    border-left: 4px solid var(--color-accent-mid);
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-left-color: var(--color-accent-light);
+}
+
+.edu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.edu-header h3 {
+    font-size: 1.5rem;
+    color: var(--color-title);
+    margin-bottom: 0.5rem;
+}
+
+.edu-degree {
+    font-size: 1.15rem;
+    color: var(--color-accent-mid);
+    font-weight: 500;
+}
+
+.edu-period {
+    font-size: 0.95rem;
+    color: var(--color-text-soft);
+    font-style: italic;
+    white-space: nowrap;
+}
+
+.edu-location {
+    font-size: 0.9rem;
+    color: var(--color-text-soft);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.edu-location i {
+    color: var(--color-accent-mid);
+}
+
+.edu-achievements {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 1rem;
+}
+
+.edu-achievements li {
+    padding-left: 1.5rem;
+    position: relative;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-strong);
+    line-height: 1.6;
+}
+
+.edu-achievements li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--color-accent-mid);
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+    .edu-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .edu-period {
+        white-space: normal;
+    }
+    
+    .education-card {
+        padding: 1.5rem;
+    }
+}
+
 /* Easter Egg */
 .easter-egg {
     position: fixed;

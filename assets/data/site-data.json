@@ -1,17 +1,31 @@
 {
   "personal": {
     "nombres": ["César Perales", "Casurpie"],
-    "tagline": "Programador, Educador y Soñador Digital",
-    "descripcionCorta": "Construyo aplicaciones web y enseño a otros a hacer lo mismo. Programador especializado en desarrollo web y diseño de experiencias digitales.",
+    "tagline": "Computer Science Student & Systems Architect",
+    "descripcionCorta": "CS student specializing in algorithms, system design, and computational graphics. Passionate about building scalable architectures and teaching complex concepts.",
     "fotoPerfil": "/perfil.jpg"
   },
   "sobreMi": {
     "parrafos": [
-      "Soy estudiante de Computer Science, me fascina el punto donde la tecnología se encuentra con el arte, y cómo podemos utilizar algoritmos para crear experiencias visuales que imiten fenómenos naturales.",
-      "Además de crear software, me dedico a la enseñanza. Creo firmemente que compartir conocimiento es tan importante como adquirirlo, y disfruto ayudando a otros a descubrir el fascinante mundo de la programación creativa."
+      "Computer Science student at UTEC with a strong foundation in algorithms, data structures, and software architecture. I focus on the intersection of theoretical computer science and practical system implementation, particularly in areas of computational graphics and simulation.",
+      "Beyond coding, I work as a teaching assistant and private tutor, helping students master complex topics in algorithms, advanced data structures, and system design. I believe in learning by building - my portfolio reflects hands-on projects ranging from physics simulators to full-stack architectures."
     ],
-    "enseñanza": "Creo firmemente que el conocimiento debe ser accesible para todos. Enseñar no solo es una forma de compartir lo que sé, sino también una manera de seguir aprendiendo y creciendo. A través de mis tutoriales y proyectos educativos busco desmitificar la programación y hacerla accesible para personas de todos los niveles."
+    "enseñanza": "Teaching reinforces my own understanding. As a TA for Data Structures & Algorithms at UTEC, I've developed pedagogical methods to make abstract concepts concrete through visualization and interactive examples."
   },
+  "educacion": [
+    {
+      "institucion": "Universidad de Ingeniería y Tecnología (UTEC)",
+      "grado": "Computer Science (In Progress)",
+      "periodo": "2023 - Presente",
+      "ubicacion": "Lima, Perú",
+      "logros": [
+        "Tercio Superior - GPA: 3.8/4.0",
+        "Auxiliar de Cátedra: Estructuras de Datos y Algoritmos",
+        "Proyecto destacado: Implementación de simulador bípedo con física realista",
+        "Especialización en: Arquitectura de Sistemas, Algoritmos Avanzados, Computación Gráfica"
+      ]
+    }
+  ],
   "experiencia": {
     "titulo": "Mi Trayectoria Profesional",
     "subtitulo": "Un vistazo a mi recorrido laboral",
@@ -93,72 +107,73 @@
       }
     ]
   },
-  "skills": [
-    {
-      "name": "HTML5",
-      "icon": "fab fa-html5"
-    },
-    {
-      "name": "CSS3",
-      "icon": "fab fa-css3-alt"
-    },
-    {
-      "name": "JavaScript",
-      "icon": "fab fa-js"
-    },
-    {
-      "name": "TypeScript",
-      "icon": "fab fa-js"
-    },
-    {
-      "name": "Python",
-      "icon": "fab fa-python"
-    },
-    {
-      "name": "React",
-      "icon": "fab fa-react"
-    },
-    {
-      "name": "Next.js",
-      "icon": "fas fa-code"
-    },
-    {
-      "name": "Node.js",
-      "icon": "fab fa-node-js"
-    },
-    {
-      "name": "Git",
-      "icon": "fab fa-git-alt"
-    },
-    {
-      "name": "Figma",
-      "icon": "fab fa-figma"
-    },
-    {
-      "name": "Blender",
-      "icon": "fas fa-cube"
-    },
-    {
-      "name": "Flask",
-      "icon": "fas fa-flask"
-    },
-    {
-      "name": "Tailwind CSS",
-      "icon": "fas fa-wind"
-    },
-    {
-      "name": "PostgreSQL",
-      "icon": "fas fa-database"
-    },
-    {
-      "name": "Godot",
-      "icon": "fas fa-gamepad"
-    },
-    {
-      "name": "Supabase",
-      "icon": "fas fa-cloud"
-    }
-  ],
+  "skills": {
+    "lenguajes": [
+      {
+        "name": "Python",
+        "icon": "fab fa-python",
+        "nivel": "Avanzado"
+      },
+      {
+        "name": "C++",
+        "icon": "fas fa-code",
+        "nivel": "Avanzado"
+      },
+      {
+        "name": "JavaScript/TypeScript",
+        "icon": "fab fa-js",
+        "nivel": "Intermedio"
+      }
+    ],
+    "sistemas": [
+      {
+        "name": "Data Structures & Algorithms",
+        "icon": "fas fa-project-diagram"
+      },
+      {
+        "name": "Software Architecture",
+        "icon": "fas fa-sitemap"
+      },
+      {
+        "name": "Computer Graphics (OpenGL/WebGL)",
+        "icon": "fas fa-cube"
+      },
+      {
+        "name": "Database Systems (PostgreSQL, SQLite)",
+        "icon": "fas fa-database"
+      },
+      {
+        "name": "Physics Simulation",
+        "icon": "fas fa-atom"
+      }
+    ],
+    "herramientas": [
+      {
+        "name": "Git",
+        "icon": "fab fa-git-alt"
+      },
+      {
+        "name": "Linux/Unix",
+        "icon": "fab fa-linux"
+      },
+      {
+        "name": "Next.js/React",
+        "icon": "fab fa-react"
+      },
+      {
+        "name": "Flask",
+        "icon": "fas fa-flask"
+      },
+      {
+        "name": "Blender",
+        "icon": "fas fa-cube"
+      },
+      {
+        "name": "Godot",
+        "icon": "fas fa-gamepad"
+      }
+    ]
+  },
   "contacto": {
     "titulo": "Contáctame",
     "subtitulo": "¿Tienes una idea o proyecto en mente?",

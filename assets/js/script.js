@@ -18,6 +18,8 @@ async function loadSiteData() {
         loadSocialLinks(data.social);
         loadContactForm(data.contacto);
         loadAboutMeContent(data.sobreMi);
+        loadEducation(data.educacion);
+        loadSkillsCarousel(data.skills);
         setupTypewriterEffect(data.personal.nombres);
         
     } catch (error) {
@@ -254,34 +256,52 @@ function loadAboutMeContent(sobreMiData) {
     aboutText.innerHTML = sobreMiData.parrafos.map(parrafo => 
         `<p>${parrafo}</p>`
     ).join('');
+}
+
+// Cargar sección de Educación
+function loadEducation(educacionData) {
+    const container = document.querySelector('.education-container');
+    if (!container || !educacionData) return;
     
-    // Cargar skills para el carousel
+    educacionData.forEach(edu => {
+        const eduCard = document.createElement('div');
+        eduCard.className = 'education-card';
+        eduCard.innerHTML = `
+            <div class="edu-header">
+                <div>
+                    <h3>${edu.institucion}</h3>
+                    <div class="edu-degree">${edu.grado}</div>
+                </div>
+                <span class="edu-period">${edu.periodo}</span>
+            </div>
+            <div class="edu-location"><i class="fas fa-map-marker-alt"></i> ${edu.ubicacion}</div>
+            <ul class="edu-achievements">
+                ${edu.logros.map(logro => `<li>${logro}</li>`).join('')}
+            </ul>
+        `;
+        container.appendChild(eduCard);
+    });
+}
+
+// Cargar skills carousel con nueva estructura categorizada
+function loadSkillsCarousel(skillsData) {
     const skillsTrack = document.querySelector('.skills-track');
     
-    if (skillsTrack) {
-        // Cargar skills desde site-data.json si existen
-        fetch('assets/data/site-data.json')
-            .then(response => response.json())
-            .then(data => {
-                const skills = data.skills || [
-                    { name: 'JavaScript', icon: 'fab fa-js' },
-                    { name: 'Python', icon: 'fab fa-python' },
-                    { name: 'Three.js', icon: 'fa-solid fa-shapes'},
-                    { name: 'WebGL', icon: 'fas fa-cubes' },
-                    { name: 'React', icon: 'fab fa-react' },
-                    { name: 'Node.js', icon: 'fab fa-node-js' },
-                    { name: 'Física Simulada', icon: 'fas fa-atom' },
-                ];
-                
-                // Duplicar skills para el efecto infinito
-                const allSkills = [...skills, ...skills];
-                
-                skillsTrack.innerHTML = allSkills.map(skill => 
-                    `<div class="skill-item"><i class="${skill.icon}"></i> ${skill.name}</div>`
-                ).join('');
-            })
-            .catch(error => console.error('Error cargando skills:', error));
-    }
+    if (!skillsTrack || !skillsData) return;
+    
+    // Combinar todas las categorías de skills
+    const allSkills = [
+        ...skillsData.lenguajes,
+        ...skillsData.sistemas,
+        ...skillsData.herramientas
+    ];
+    
+    // Duplicar skills para el efecto infinito
+    const duplicated = [...allSkills, ...allSkills];
+    
+    skillsTrack.innerHTML = duplicated.map(skill => 
+        `<div class="skill-item"><i class="${skill.icon}"></i> ${skill.name}</div>`
+    ).join('');
 }
 
 // Configurar animaciones al scroll
