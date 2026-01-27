@@ -1,0 +1,43 @@
+{
+  "theme": {
+    "default": "dark",
+    "cursorEffect": true
+  },
+  "navbar": {
+    "logoText": "COMPUTER SCIENTIST | WEB DEVELOPER",
+    "links": [
+      { "id": "home", "text": "Inicio", "path": "/#home" },
+      { "id": "projects", "text": "Proyectos", "path": "/#projects" },
+      { "id": "about", "text": "Sobre Mí", "path": "/#about" }
+    ]
+  },
+  "scrollNarrative": [
+    {
+      "id": "intro",
+      "start": 0.0, 
+      "end": 0.3,
+      "text": [
+        ""
+      ]
+    },
+    {
+      "id": "about",
+      "start": 0.45,
+      "end": 0.9,
+      "text": [
+        "SOBRE MÍ",
+        "Soy César Perales, estudiante de CS.",
+        "Combino diseño y tecnología para",
+        "ofrecer soluciones innovadoras,",
+        "enfocándome en sistemas escalables",
+        "y simulaciones físicas realistas."
+      ]
+    }
+  ],
+  "footer": {
+    "copyrightText": "© 2026 César Perales. Hecho con código y café.",
+    "sections": [
+      { "title": "Navegación", "links": ["home", "projects", "about"] }
+    ]
+  }
+}

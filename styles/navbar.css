@@ -1,0 +1,26 @@
+/* navbar.css */
+nav {
+    position: fixed;
+    top: 20px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20; /* Aseguramos que esté por encima de todo */
+}
+
+/* Estilos para los enlaces (SPANs) */
+.nav-links span {
+    margin-left: 20px;
+    cursor: pointer;
+    pointer-events: auto; /* Habilita clicks aunque ui-layer los deshabilite */
+    transition: text-shadow 0.3s ease;
+}
+
+/* Efecto Hover */
+.nav-links span:hover {
+    text-shadow: 0 0 10px var(--primary-pink);
+}

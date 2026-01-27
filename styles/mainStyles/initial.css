@@ -1,0 +1,24 @@
+/* colors.css */
+:root {
+    /* Paleta de colores */
+    --primary-pink: #ffcccb;
+    --bg-color: #050505;
+    
+    /* Tipografía */
+    --text-font: 'Courier New', monospace;
+}
+
+/* Estilos base que usan las variables */
+body, html {
+    background-color: var(--bg-color);
+    font-family: var(--text-font);
+    color: var(--primary-pink); /* Heredado por defecto */
+}
+
+html { scroll-behavior: smooth; }
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}

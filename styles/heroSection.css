@@ -1,0 +1,324 @@
+/* --- ESTILOS BASE (Originales de César) --- */
+
+/* Contenedor de Texto e Icono */
+.hero-text {
+    max-width: 50%;
+    display: flex;
+    gap: 20px;
+    align-items: start;
+}
+
+.hero-name {
+    display: flex;
+    padding-left: 20px;
+    flex-direction: column;
+    justify-content: center;
+    pointer-events: auto;
+    /* Agregado un pequeño gap para separar titulo, subtitulo y botones */
+    gap: 10px; 
+}
+
+.hero-name h1 {
+    max-width: 500px;
+    border-left: 3px solid var(--primary-pink);
+    padding-left: 20px;
+    margin-left: -20px;
+    font-size: 2.3rem;
+    line-height: 1.1;
+    margin-bottom: 5px; /* Reduje un poco para dar espacio a lo nuevo */
+    font-weight: 300;
+    text-transform: uppercase;
+    text-shadow: 0 0 20px rgba(255, 204, 203, 0.3);
+}
+
+.hero-name h2 {
+    font-size: 1rem;
+    opacity: 0.8;
+    letter-spacing: 4px;
+    margin: 0;
+}
+
+.logo-icon {
+    width: 80px;
+    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 0 15px rgba(255, 204, 203, 0.2);
+}
+
+.logo-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.profile-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    min-width: 350px;
+    min-height: 350px;
+    pointer-events: auto;
+    border-radius: 50%;
+    background: rgba(255, 204, 203, 0.02);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(255, 204, 203, 0.2);
+    box-shadow: 0 0 30px rgba(255, 204, 203, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: transform 0.1s ease-out;
+}
+
+.profile-img {
+    width: 90%;
+    height: 90%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, 0); opacity: 0.5; }
+    50% { transform: translate(-50%, 10px); opacity: 1; }
+}
+
+/* --- NUEVOS ESTILOS (Integrados en tu diseño) --- */
+
+.hero-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icon {
+    color: var(--primary-pink);
+    font-size: 1.4rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    opacity: 1;
+    transform: translateY(-3px);
+    text-shadow: 0 0 15px var(--primary-pink);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn {
+    font-family: var(--text-font);
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background: var(--primary-pink);
+    color: var(--bg-color);
+    border: 1px solid var(--primary-pink);
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 20px rgba(255, 204, 203, 0.5);
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--primary-pink);
+    border: 1px solid var(--primary-pink);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 204, 203, 0.1);
+    box-shadow: 0 0 10px rgba(255, 204, 203, 0.2);
+}
+
+/* --- RESPONSIVE DESIGN (Tu código original + ajustes para botones) --- */
+@media screen and (max-width: 1024px) {
+    .ui-layer {
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 40px;
+        padding: 80px 5% 40px 5%;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-name {
+        border-left: none;
+        padding-left: 0;
+        padding-bottom: 15px;
+        align-items: center; /* Esto centra también los botones y redes */
+    }
+
+    .hero-name h1 {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+    }
+    
+    .hero-name h2 {
+        max-width: 300px;
+        border-top: 3px solid var(--primary-pink);
+        padding-top: 15px;
+    }
+
+    .logo-icon {
+        display: none;
+        margin-bottom: 10px;
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+        min-height: 60px;
+    }
+
+    .profile-container {
+        width: 300px;
+        height: 300px;
+        min-width: 300px;
+        min-height: 300px;
+        margin-top: 20px;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 0.9rem; letter-spacing: 2px; }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-container {
+        display: none;
+    }
+
+    .hero-text {
+        align-items: center;
+    }
+
+    .logo-icon {
+        display: flex;
+        margin-bottom: 10px;
+        width: 180px;
+        height: 180px;
+        min-width: 180px;
+        min-height: 180px;
+    }
+
+    h1 { font-size: 1.8rem; }
+    
+    .hero-name h2 { 
+        font-size: 0.8rem; 
+        max-width: 400px;
+    }
+
+    .scroll-indicator {
+        bottom: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    /* Ajuste para botones en móvil muy pequeño */
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.dynamic-text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: height 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Transición suave de tamaño */
+    overflow: hidden; /* Para que la transición de altura funcione limpio */
+}
+
+.narrative-line {
+    font-family: var(--text-font);
+    font-size: 0.95rem;
+    color: var(--primary-pink);
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 1.5;
+    
+    /* Optimizaciones de renderizado */
+    will-change: opacity, transform; 
+    /* No ponemos transición aquí porque JS controla el frame-by-frame */
+}
+
+/* ESTILO ESPECIAL PARA LA PRIMERA LÍNEA */
+.narrative-title {
+    font-size: 1.2rem;       /* Más grande */
+    font-weight: 700;        /* Más grueso */
+    letter-spacing: 3px;     /* Más espaciado */
+    margin-bottom: 10px;     /* Separación del cuerpo */
+    text-transform: uppercase;
+    color: #fff;             /* Quizás blanco para destacar sobre el rosa */
+    text-shadow: 0 0 10px rgba(255, 204, 203, 0.5);
+}
+
+/* Transiciones suaves para los elementos que desaparecen */
+.hero-socials, 
+.hero-actions,
+.hero-name h2 {
+    transition: opacity 0.1s linear, transform 0.1s linear, filter 0.1s linear;
+    will-change: opacity, transform, filter;
+}
+
+/* En móvil ocultamos la narrativa compleja */
+@media screen and (max-width: 1024px) {
+    .dynamic-text {
+        height: auto !important; /* En móvil dejamos que fluya */
+        margin-top: 20px;
+    }
+    
+    .narrative-line {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}

@@ -1,6 +1,6 @@
 {
   "personal": {
-    "nombres": ["César Perales", "Casurpie"],
+    "nombres": ["César Aarón Perales Rosales"],
     "tagline": "Computer Science Student & Systems Architect",
     "descripcionCorta": "CS student specializing in algorithms, system design, and computational graphics. Passionate about building scalable architectures and teaching complex concepts.",
     "fotoPerfil": "/perfil.jpg"
@@ -234,22 +234,17 @@
   "social": [
     {
       "nombre": "GitHub",
-      "url": "https://github.com/cesar-perales",
+      "url": "https://github.com/CdeCasurpie",
       "icono": "fab fa-github"
     },
     {
       "nombre": "LinkedIn",
-      "url": "https://linkedin.com/in/cesar-perales",
+      "url": "https://www.linkedin.com/in/cesar-aaron-perales-rosales-469142292/",
       "icono": "fab fa-linkedin"
     },
     {
-      "nombre": "Twitter",
-      "url": "https://twitter.com/cesar_perales",
-      "icono": "fab fa-twitter"
-    },
-    {
       "nombre": "Instagram",
-      "url": "https://instagram.com/cesar.codes",
+      "url": "https://instagram.com/cesar_perales_20/",
       "icono": "fab fa-instagram"
     },
     {
