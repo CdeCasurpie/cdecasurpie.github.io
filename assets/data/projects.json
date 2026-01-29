@@ -1,20 +1,17 @@
 {
     "projects": [
         {
-            "id": "10",
-            "title": "Rinder - Plataforma de Citas con IA",
-            "date": "12 de junio, 2024",
+            "id": "1",
+            "title": "Sistema de Base de Datos Multimodal",
+            "date": "26 de mayo, 2024",
             "skills": [
                 "Python",
-                "Flask",
-                "React",
-                "Next.js",
-                "TensorFlow",
-                "Machine Learning"
+                "Database Systems",
+                "GUI PyQT"
             ],
-            "excerpt": "Plataforma de citas innovadora que utiliza redes neuronales para matchmaking inteligente. Monolito en Flask con implementación experimental en Vue.js y demo en React/Next.js con mocks.",
-            "jsonFile": "rinder.json",
-            "coverImage": "/assets/images/projects/coverRinder.png"
+            "excerpt": "Base de datos completa implementada desde cero con 5 tipos de índices (Sequential File, Extended Hashing, CLI y interfaz gráfica para exportar queries a JSON/CSV.",
+            "jsonFile": "database_system.json",
+            "coverImage": "/assets/images/projects/base_datos_multi.png"
         },
         {
             "id": "5",
@@ -31,6 +28,21 @@
             "coverImage": "/assets/images/projects/coverGato.png"
         },
         {
+            "id": "9",
+            "title": "Simulación Particle Life",
+            "date": "18 de mayo, 2024",
+            "skills": [
+                "Python",
+                "Physics Simulation",
+                "Cellular Automata",
+                "Web Technologies",
+                "Complex Systems"
+            ],
+            "excerpt": "Simulación de vida artificial con partículas que siguen reglas de atracción/repulsión en una matriz. Implementación de sistemas complejos emergentes.",
+            "jsonFile": "particle_life.json",
+            "coverImage": "/assets/images/projects/particle_life.png"
+        },
+        {
             "id": "11",
             "title": "P&R Arquitectos - Sitio Web Corporativo",
             "date": "15 de diciembre, 2024",
@@ -44,6 +56,22 @@
             "excerpt": "Sitio web corporativo profesional para firma de arquitectura con 20 años de experiencia. Incluye carrusel dinámico, gestión de proyectos con modales, sistema de temas y integración de WhatsApp.",
             "jsonFile": "pyr_arquitectos.json",
             "coverImage": "/assets/images/projects/pyr_coverImage.png"
+        },
+        {
+            "id": "10",
+            "title": "Rinder - Plataforma de Citas con IA",
+            "date": "12 de junio, 2024",
+            "skills": [
+                "Python",
+                "Flask",
+                "React",
+                "Next.js",
+                "TensorFlow",
+                "Machine Learning"
+            ],
+            "excerpt": "Plataforma de citas innovadora que utiliza redes neuronales para matchmaking inteligente. Monolito en Flask con implementación experimental en Vue.js y demo en React/Next.js con mocks.",
+            "jsonFile": "rinder.json",
+            "coverImage": "/assets/images/projects/coverRinder.png"
         },
         {
             "id": "13",
@@ -90,19 +118,6 @@
             "coverImage": "/assets/images/projects/gpt_generator.png"
         },
         {
-            "id": "1",
-            "title": "Sistema de Base de Datos Multimodal",
-            "date": "26 de mayo, 2024",
-            "skills": [
-                "Python",
-                "Database Systems",
-                "GUI PyQT"
-            ],
-            "excerpt": "Base de datos completa implementada desde cero con 5 tipos de índices (Sequential File, Extended Hashing, CLI y interfaz gráfica para exportar queries a JSON/CSV.",
-            "jsonFile": "database_system.json",
-            "coverImage": "/assets/images/projects/base_datos_multi.png"
-        },
-        {
             "id": "2",
             "title": "Visualizador de Planetas 3D",
             "date": "10 de octubre, 2024",
@@ -130,21 +145,6 @@
             "excerpt": "Simulador físico avanzado de bípedos con animaciones procedurales para caminar. Implementación completa de física y biomecánica usando Pygame.",
             "jsonFile": "biped_simulator.json",
             "coverImage": "/assets/images/projects/biped_sim.png"
-        },
-        {
-            "id": "9",
-            "title": "Simulación Particle Life",
-            "date": "18 de mayo, 2024",
-            "skills": [
-                "Python",
-                "Physics Simulation",
-                "Cellular Automata",
-                "Web Technologies",
-                "Complex Systems"
-            ],
-            "excerpt": "Simulación de vida artificial con partículas que siguen reglas de atracción/repulsión en una matriz. Implementación de sistemas complejos emergentes.",
-            "jsonFile": "particle_life.json",
-            "coverImage": "/assets/images/projects/particle_life.png"
         },
         {
             "id": "6",

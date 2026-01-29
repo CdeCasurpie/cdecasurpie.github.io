@@ -7,7 +7,7 @@ export class SmokeEffect {
         // Configuración de simulación
         this.simWidth = 256;
         this.simHeight = 256;
-        this.damping = 0.95;
+        this.damping = 0.97;
         this.baseHeight = 120; // Resolución vertical base de la física
 
         // Referencias Three.js

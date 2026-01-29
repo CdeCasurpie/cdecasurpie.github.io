@@ -171,7 +171,7 @@
 
 /* --- RESPONSIVE DESIGN (Tu código original + ajustes para botones) --- */
 @media screen and (max-width: 1024px) {
-    .ui-layer {
+    .hero-section {
         flex-direction: column-reverse;
         justify-content: center;
         gap: 40px;
@@ -293,7 +293,7 @@
 
 /* ESTILO ESPECIAL PARA LA PRIMERA LÍNEA */
 .narrative-title {
-    font-size: 1.2rem;       /* Más grande */
+    font-size: 1.6rem;       /* Más grande */
     font-weight: 700;        /* Más grueso */
     letter-spacing: 3px;     /* Más espaciado */
     margin-bottom: 10px;     /* Separación del cuerpo */

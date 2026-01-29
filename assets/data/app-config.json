@@ -26,11 +26,24 @@
       "end": 0.9,
       "text": [
         "SOBRE MÍ",
-        "Soy César Perales, estudiante de CS.",
-        "Combino diseño y tecnología para",
-        "ofrecer soluciones innovadoras,",
-        "enfocándome en sistemas escalables",
+        "Soy César Perales, estudiante de CS. ",
+        "Combino diseño y tecnología para ",
+        "ofrecer soluciones innovadoras, ",
+        "enfocándome en sistemas escalables ",
         "y simulaciones físicas realistas."
+      ]
+    },
+    {
+      "id": "projects",
+      "start": 1.5,
+      "end": 1.9,
+      "text": [
+        "MIS PROYECTOS",
+        "Arquitectura de sistemas modulares",
+        "y algoritmos de alta eficiencia.",
+        "Desde librerías de geometría computacional",
+        "hasta mecánicas complejas en motores",
+        "de videojuegos y herramientas de automatización."
       ]
     }
   ],

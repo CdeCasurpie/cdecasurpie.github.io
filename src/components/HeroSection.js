@@ -59,7 +59,7 @@ export class HeroSection {
      */
     render() {
         return `
-            <div class="ui-layer">
+            <div class="ui-layer hero-section">
                 ${this.renderText()}
                 ${this.renderProfile()}
             </div>

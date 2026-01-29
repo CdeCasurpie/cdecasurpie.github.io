@@ -6,6 +6,7 @@
     "fotoPerfil": "/perfil.jpg"
   },
   "sobreMi": {
+    "mision": "Mi misión es fusionar teoría y práctica en ciencias de la computación para crear sistemas eficientes y escalables, al mismo tiempo que inspiro a otros a través de la enseñanza y el desarrollo de proyectos innovadores.",
     "parrafos": [
       "Computer Science student at UTEC with a strong foundation in algorithms, data structures, and software architecture. I focus on the intersection of theoretical computer science and practical system implementation, particularly in areas of computational graphics and simulation.",
       "Beyond coding, I work as a teaching assistant and private tutor, helping students master complex topics in algorithms, advanced data structures, and system design. I believe in learning by building - my portfolio reflects hands-on projects ranging from physics simulators to full-stack architectures."
@@ -19,10 +20,8 @@
       "periodo": "2023 - Presente",
       "ubicacion": "Lima, Perú",
       "logros": [
-        "Tercio Superior - GPA: 3.8/4.0",
-        "Auxiliar de Cátedra: Estructuras de Datos y Algoritmos",
-        "Proyecto destacado: Implementación de simulador bípedo con física realista",
-        "Especialización en: Arquitectura de Sistemas, Algoritmos Avanzados, Computación Gráfica"
+        "Quinto Superior - GPA: 3.8/4.0",
+        "Proyecto destacado: Optimización de algoritmos de asignación en mapas con CGAL"
       ]
     }
   ],
@@ -120,9 +119,22 @@
         "nivel": "Avanzado"
       },
       {
-        "name": "JavaScript/TypeScript",
+        "name": "JavaScript",
         "icon": "fab fa-js",
         "nivel": "Intermedio"
+      },
+      {
+        "name": "Java",
+        "icon": "fab fa-java",
+        "nivel": "Básico"
+      },
+      {
+        "name": "Next.js/React",
+        "icon": "fab fa-react"
+      },
+      {
+        "name": "Flask",
+        "icon": "fas fa-flask"
       }
     ],
     "sistemas": [
@@ -155,14 +167,6 @@
       {
         "name": "Linux/Unix",
         "icon": "fab fa-linux"
-      },
-      {
-        "name": "Next.js/React",
-        "icon": "fab fa-react"
-      },
-      {
-        "name": "Flask",
-        "icon": "fas fa-flask"
       },
       {
         "name": "Blender",
