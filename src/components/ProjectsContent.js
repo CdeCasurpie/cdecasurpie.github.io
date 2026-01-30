@@ -26,7 +26,7 @@ export class ProjectsContent {
                         
                         <div class="pc-detail-top-bar">
                             <button class="pc-back-button" id="pc-back-btn">
-                                <i class="fas fa-arrow-left"></i> VOLVER
+                                <i class="fas fa-arrow-left"></i>
                             </button>
                             
                             <div class="pc-detail-actions" id="pc-detail-actions"></div>
@@ -148,7 +148,7 @@ export class ProjectsContent {
         if (project.demoUrl) {
             buttonsHTML += `
                 <a href="${project.demoUrl}" target="_blank" class="pc-action-btn primary">
-                    <i class="fas fa-external-link-alt"></i> <span>Ver Demo</span>
+                    <i class="fas fa-external-link-alt"></i> <span>Demo</span>
                 </a>`;
         }
         this.dom.actionsContainer.innerHTML = buttonsHTML;

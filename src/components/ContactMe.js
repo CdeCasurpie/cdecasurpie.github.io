@@ -123,7 +123,7 @@ export class ContactMe {
         const originalIcon = icon.className;
 
         // 1. Estado de carga
-        btnText.innerHTML = 'Enviando...';
+        btnText.innerHTML = 'Sending...';
         icon.className = 'fas fa-spinner fa-spin';
         btn.style.opacity = '0.7';
         btn.disabled = true;
@@ -142,16 +142,16 @@ export class ContactMe {
 
             if (response.ok) {
                 // 3. Éxito
-                alert('¡Mensaje enviado con éxito! Me pondré en contacto pronto.');
+                alert('¡Message sent successfully! I will get back to you soon.');
                 this.dom.form.reset();
             } else {
-                throw new Error(result.message || 'Error en el servidor');
+                throw new Error(result.message || 'Server error');
             }
 
         } catch (error) {
             // 4. Error
             console.error('[ContactMe] Error envío:', error);
-            alert('Hubo un error al enviar el mensaje. Por favor intenta contactarme directamente por email.');
+            alert('There was an error sending your message. Please try again later.');
         } finally {
             // 5. Restaurar botón
             btnText.innerHTML = originalContent;

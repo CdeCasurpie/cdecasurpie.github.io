@@ -22,7 +22,7 @@ export class ExperienceSection {
                     
                     <div class="exp-col-left">
                         <div class="exp-vertical-label-container">
-                            <h2 class="exp-vertical-title">DOCENCIA PARTICULAR</h2>
+                            <h2 class="exp-vertical-title">${this.expData.docenciaTitulo || 'Academic Instructer'}</h2>
                         </div>
                         
                         <div class="exp-teaching-stack">
@@ -63,7 +63,7 @@ export class ExperienceSection {
                     </div>
 
                     <div class="exp-col-right">
-                        <h2 class="exp-horizontal-title">EXPERIENCIA LABORAL</h2>
+                        <h2 class="exp-horizontal-title">${this.expData.trabajosTitulo || 'Professional Experience'}</h2>
                         
                         <div class="exp-jobs-layout">
                             

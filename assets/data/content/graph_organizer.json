@@ -1,7 +1,7 @@
 {
-    "title": "Graph Organizer - Editor de Grafos Jerárquicos",
+    "title": "Graph Organizer - Hierarchical Graph Editor",
     "author": "César Perales",
-    "date": "18 de diciembre, 2024",
+    "date": "December 18, 2024",
     "skills": ["JavaScript", "HTML5", "Canvas API", "Graph Theory", "UI/UX"],
     "repoUrl": "https://github.com/CdeCasurpie/casurpie-graph-editor",
     "demoUrl": "https://cdecasurpie.github.io/casurpie-graph-editor/",
@@ -9,135 +9,135 @@
         {
             "type": "header",
             "level": 2,
-            "content": "Descripción del Proyecto"
+            "content": "Project Description"
         },
         {
             "type": "text",
-            "content": "Graph Organizer es una aplicación web interactiva para crear y gestionar grafos con jerarquías anidadas. El sistema permite que cada nodo contenga su propio subgrafo interno, facilitando la organización de flujos de trabajo complejos, dependencias de proyectos, cursos con módulos, o cualquier estructura que requiera múltiples niveles de organización."
+            "content": "Graph Organizer is an interactive web application for creating and managing graphs with nested hierarchies. The system allows each node to contain its own internal subgraph, facilitating the organization of complex workflows, project dependencies, modular courses, or any structure requiring multiple levels of organization."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/graphEditorWelcome.png",
-            "alt": "Pantalla de bienvenida de Graph Organizer",
-            "caption": "Interfaz de bienvenida con instrucciones de uso"
+            "alt": "Graph Organizer Welcome Screen",
+            "caption": "Welcome interface with usage instructions."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Características Principales"
+            "content": "Key Features"
         },
         {
             "type": "text",
-            "content": "Grafos Jerárquicos: Cada nodo puede contener un subgrafo completo en su interior. Esto permite crear estructuras anidadas de múltiples niveles, ideal para representar sistemas complejos con subsistemas."
+            "content": "Hierarchical Graphs: Each node can house a complete subgraph. This enables the creation of multi-level nested structures, ideal for representing complex systems with subsystems."
         },
         {
             "type": "text",
-            "content": "Interacción Intuitiva: Sistema de controles basado en mouse y teclado. Doble clic para crear nodos, arrastrar para mover, Ctrl + Click para conectar nodos, y navegación fluida por el canvas."
+            "content": "Intuitive Interaction: Control system based on mouse and keyboard inputs. Double-click to create nodes, drag to move, Ctrl + Click to connect nodes, and fluid canvas navigation."
         },
         {
             "type": "text",
-            "content": "Edición de Propiedades: Cada nodo puede editarse con un simple clic, permitiendo modificar nombres, descripciones y otras propiedades personalizadas."
+            "content": "Property Editing: Each node can be edited with a simple click, allowing users to modify names, descriptions, and other custom properties."
         },
         {
             "type": "text",
-            "content": "Sistema de Zoom y Pan: Navegación completa por el canvas con zoom mediante rueda del mouse y movimiento arrastrando el canvas."
+            "content": "Zoom and Pan System: Comprehensive canvas navigation with mouse wheel zoom and click-and-drag panning."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/graphEditorMain.png",
-            "alt": "Vista principal del editor de grafos",
-            "caption": "Editor en acción mostrando un grafo de dependencias con múltiples niveles"
+            "alt": "Main view of the graph editor",
+            "caption": "Editor in action displaying a multi-level dependency graph."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Casos de Uso"
+            "content": "Use Cases"
         },
         {
             "type": "text",
-            "content": "Planificación de Cursos: Organizar programas académicos donde cada curso tiene módulos internos con sus propias dependencias y subtemas."
+            "content": "Course Planning: Organize academic programs where each course has internal modules with their own dependencies and subtopics."
         },
         {
             "type": "text",
-            "content": "Gestión de Proyectos: Estructurar proyectos grandes con subproyectos, donde cada tarea puede contener subtareas y dependencias internas."
+            "content": "Project Management: Structure large projects into subprojects, where each task can contain internal subtasks and dependencies."
         },
         {
             "type": "text",
-            "content": "Flujos de Trabajo: Diseñar procesos complejos donde cada paso puede tener su propio subflujo de actividades."
+            "content": "Workflows: Design complex processes where each step may have its own sub-flow of activities."
         },
         {
             "type": "text",
-            "content": "Programación Modular: Visualizar arquitecturas de software donde cada módulo contiene sus propios componentes y dependencias."
+            "content": "Modular Programming: Visualize software architectures where each module contains its own components and dependencies."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Controles de la Aplicación"
+            "content": "Application Controls"
         },
         {
             "type": "text",
-            "content": "Crear Nodos: Doble click en el canvas para añadir un nuevo nodo.\n\nMover Nodos: Arrastrar nodos con el mouse para reposicionarlos.\n\nConectar Nodos: Ctrl + Click en un nodo origen, luego Ctrl + Click en el nodo destino para crear una conexión.\n\nEditar Propiedades: Click simple en un nodo para abrir el panel de edición.\n\nCrear Subgrafos: Doble click en un nodo contenedor para entrar a su subgrafo interno.\n\nZoom: Rueda del mouse para acercar o alejar la vista.\n\nMover Vista: Arrastrar el canvas para navegar por el espacio de trabajo.\n\nNavegación: Botón de retroceso para volver al grafo padre."
+            "content": "Create Nodes: Double-click on the canvas to add a new node.\n\nMove Nodes: Drag nodes with the mouse to reposition them.\n\nConnect Nodes: Ctrl + Click on a source node, then Ctrl + Click on a target node to create a connection.\n\nEdit Properties: Single-click on a node to open the editing panel.\n\nCreate Subgraphs: Double-click on a container node to enter its internal subgraph.\n\nZoom: Use the mouse wheel to zoom in or out.\n\nMove View: Drag the canvas to navigate the workspace.\n\nNavigation: Use the back button to return to the parent graph."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Implementación Técnica"
+            "content": "Technical Implementation"
         },
         {
             "type": "text",
-            "content": "Canvas API: Renderizado completo usando HTML5 Canvas para máximo rendimiento y flexibilidad visual."
+            "content": "Canvas API: Complete rendering using HTML5 Canvas for maximum performance and visual flexibility."
         },
         {
             "type": "text",
-            "content": "Estructura de Datos: Sistema de grafos anidados implementado con objetos JavaScript, permitiendo navegación recursiva entre niveles."
+            "content": "Data Structure: Nested graph system implemented with JavaScript objects, allowing recursive navigation between levels."
         },
         {
             "type": "text",
-            "content": "Sistema de Eventos: Manejo sofisticado de eventos de mouse y teclado para interacciones fluidas y detección de estados (hover, drag, connect)."
+            "content": "Event System: Sophisticated handling of mouse and keyboard events for fluid interactions and state detection (hover, drag, connect)."
         },
         {
             "type": "text",
-            "content": "Persistencia: Sistema de importación/exportación de grafos en formato JSON para guardar y cargar proyectos completos."
+            "content": "Persistence: Import/export system for graphs in JSON format to save and load complete projects."
         },
         {
             "type": "code",
             "language": "javascript",
-            "content": "// Estructura de un nodo con subgrafo\nconst node = {\n    id: 'node-1',\n    title: 'Programación Básica',\n    x: 100,\n    y: 100,\n    connections: ['node-2', 'node-3'],\n    subgraph: {\n        nodes: [\n            { id: 'sub-1', title: 'Variables' },\n            { id: 'sub-2', title: 'Condicionales' },\n            { id: 'sub-3', title: 'Bucles' }\n        ],\n        connections: [...]\n    }\n};"
+            "content": "// Structure of a node with a subgraph\nconst node = {\n    id: 'node-1',\n    title: 'Basic Programming',\n    x: 100,\n    y: 100,\n    connections: ['node-2', 'node-3'],\n    subgraph: {\n        nodes: [\n            { id: 'sub-1', title: 'Variables' },\n            { id: 'sub-2', title: 'Conditionals' },\n            { id: 'sub-3', title: 'Loops' }\n        ],\n        connections: [...]\n    }\n};"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Stack Tecnológico"
+            "content": "Technological Stack"
         },
         {
             "type": "text",
-            "content": "Frontend: HTML5, CSS3, JavaScript puro (vanilla JS)\n\nRenderizado: Canvas API para gráficos 2D de alto rendimiento\n\nTeoría de Grafos: Implementación de estructuras de datos de grafos dirigidos con soporte para anidación\n\nUI/UX: Sistema de controles intuitivo con feedback visual en tiempo real"
+            "content": "Frontend: HTML5, CSS3, Pure JavaScript (Vanilla JS)\n\nRendering: Canvas API for high-performance 2D graphics\n\nGraph Theory: Implementation of directed graph data structures with nesting support\n\nUI/UX: Intuitive control system with real-time visual feedback"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Funcionalidades de Exportación"
+            "content": "Export Functionalities"
         },
         {
             "type": "text",
-            "content": "Exportar Grafo: Guarda toda la estructura del grafo en formato JSON, incluyendo todos los subgrafos anidados."
+            "content": "Export Graph: Saves the entire graph structure in JSON format, including all nested subgraphs."
         },
         {
             "type": "text",
-            "content": "Importar Grafo: Carga grafos previamente guardados, restaurando toda la jerarquía y conexiones."
+            "content": "Import Graph: Loads previously saved graphs, restoring the entire hierarchy and connections."
         },
         {
             "type": "text",
-            "content": "Limpiar Todo: Opción para resetear el canvas y comenzar desde cero con un nuevo grafo."
+            "content": "Clear All: Option to reset the canvas and start a new graph from scratch."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Conclusión"
+            "content": "Conclusion"
         },
         {
             "type": "text",
-            "content": "Graph Organizer es una herramienta poderosa para visualizar y organizar estructuras jerárquicas complejas. Su capacidad de anidar grafos dentro de nodos la hace única para casos de uso donde se necesita representar múltiples niveles de abstracción. La aplicación es completamente funcional en el navegador sin necesidad de instalación, y el sistema de exportación permite guardar y compartir proyectos fácilmente."
+            "content": "Graph Organizer is a powerful tool for visualizing and organizing complex hierarchical structures. Its ability to nest graphs within nodes makes it unique for use cases requiring multiple levels of abstraction. The application is fully functional in the browser without installation, and the export system allows for easy project saving and sharing."
         }
     ]
 }

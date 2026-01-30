@@ -1,123 +1,123 @@
 {
-    "title": "Diversify: Sistema de búsqueda con diversificación inteligente",
+    "title": "Diversify: Intelligent Search System with Smart Diversification",
     "author": "César Perales",
-    "date": "18 de diciembre, 2024",
-    "skills": ["C++", "Python", "Flask", "Algoritmos de clustering", "Procesamiento de datos", "Embedded representation", "Frontend web"],
+    "date": "December 18, 2024",
+    "skills": ["C++", "Python", "Flask", "Clustering Algorithms", "Data Processing", "Embedded Representation", "Web Frontend"],
     "repoUrl": "https://github.com/D4rkMn/ProyectoEDA.git",
     "content": [
         {
             "type": "header",
             "level": 2,
-            "content": "Descripción del proyecto"
+            "content": "Project Description"
         },
         {
             "type": "text",
-            "content": "Diversify es un sistema de búsqueda que implementa una métrica avanzada para la clasificación de resultados diversificados llamada DFM (Diversity Features Model). Este proyecto combina algoritmos de diversidad y clustering para ofrecer resultados de búsqueda que equilibran relevancia y variedad, evitando la redundancia típica de los buscadores convencionales."
+            "content": "Diversify is a search system that implements an advanced metric for classifying diversified results called DFM (Diversity Features Model). This project integrates diversity and clustering algorithms to deliver search results that balance relevance and variety, avoiding the typical redundancy found in conventional search engines."
         },
         {
             "type": "text",
-            "content": "El sistema está diseñado con una arquitectura modular que incluye un backend robusto en C++ y una interfaz web interactiva desarrollada con Flask y JavaScript. Diversify utiliza embeddings vectoriales para representar el contenido y aplicar diversos algoritmos de clustering que permiten encontrar resultados tanto similares como diversos a una consulta dada."
+            "content": "The system is designed with a modular architecture that includes a robust C++ backend and an interactive web interface developed with Flask and JavaScript. Diversify utilizes vector embeddings to represent content and applies various clustering algorithms to find results that are both similar and diverse relative to a given query."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/diversify-dashboard.png",
-            "alt": "Dashboard de Diversify mostrando resultados y métricas",
-            "caption": "Interfaz de usuario de Diversify con visualización de métricas DFM"
+            "alt": "Diversify Dashboard showing results and metrics",
+            "caption": "Diversify user interface with visualization of DFM metrics."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Características principales"
+            "content": "Key Features"
         },
         {
             "type": "text",
-            "content": "• Implementación genérica usando templates de C++ para máxima flexibilidad\n• Múltiples algoritmos de clustering y diversidad (Motley, BRID, Swap, MMR)\n• Métricas de evaluación integradas para medir la calidad de los resultados\n• Visualización interactiva de métricas como Dunn*, Davies-Bouldin* y Silhouette*\n• API REST para integración con otras aplicaciones\n• Interfaz web intuitiva con gráficos dinámicos para visualizar las métricas"
+            "content": "• Generic implementation using C++ templates for maximum flexibility\n• Multiple clustering and diversity algorithms (Motley, BRID, Swap, MMR)\n• Integrated evaluation metrics to measure result quality\n• Interactive visualization of metrics such as Dunn*, Davies-Bouldin*, and Silhouette*\n• REST API for integration with other applications\n• Intuitive web interface with dynamic charts for metric visualization"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Arquitectura del sistema"
+            "content": "System Architecture"
         },
         {
             "type": "text",
-            "content": "El proyecto está estructurado en dos componentes principales: un potente backend en C++ que implementa los algoritmos de clustering y cálculo de métricas, y un frontend web que permite interactuar con el sistema de forma intuitiva."
+            "content": "The project is structured into two primary components: a powerful C++ backend that implements clustering algorithms and metric calculations, and a web frontend that allows users to interact with the system intuitively."
         },
         {
             "type": "code",
             "language": "cpp",
-            "content": "// Ejemplo de implementación de un algoritmo de diversidad (Motley)\nstd::vector<Data<T>> Motley<T>::execute(size_t k, const Data<T>& q, DataSet<T>& O,\nstd::vector<Cluster<T>>& C, DataSet<T>& query_set) {\n    \n    auto content = O.getAllData();\n    //ordenar por similutud con q\n    std::sort(content.begin(), content.end(), [&q, this](const Data<T>& a, const Data<T>& b) -> bool {\n        return this->distance(a, q) < this->distance(b, q);\n    });\n\n    //inicializar conjunto Resultado\n    std::vector<Data<T>> R;\n    R.push_back(content[0]); \n    \n    // Seleccionar elementos diversos usando radio r\n    // ...\n    \n    return R;\n}"
+            "content": "// Example implementation of a diversity algorithm (Motley)\nstd::vector<Data<T>> Motley<T>::execute(size_t k, const Data<T>& q, DataSet<T>& O,\nstd::vector<Cluster<T>>& C, DataSet<T>& query_set) {\n    \n    auto content = O.getAllData();\n    // Sort by similarity to q\n    std::sort(content.begin(), content.end(), [&q, this](const Data<T>& a, const Data<T>& b) -> bool {\n        return this->distance(a, q) < this->distance(b, q);\n    });\n\n    // Initialize result set\n    std::vector<Data<T>> R;\n    R.push_back(content[0]); \n    \n    // Select diverse elements using radius r\n    // ...\n    \n    return R;\n}"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Métricas DFM (Diversity Features Model)"
+            "content": "DFM Metrics (Diversity Features Model)"
         },
         {
             "type": "text",
-            "content": "Una de las contribuciones más importantes de este proyecto es la implementación del modelo DFM, que permite evaluar la calidad de los resultados de búsqueda en base a siete métricas complementarias:"
+            "content": "One of the most significant contributions of this project is the implementation of the DFM model, which evaluates the quality of search results based on seven complementary metrics:"
         },
         {
             "type": "text",
-            "content": "• Dunn*: Mide la compacidad de los clusters y su separación\n• Davies-Bouldin*: Evalúa la similitud entre clusters\n• Silhouette*: Calcula qué tan bien están agrupados los elementos\n• Sigma-sim: Desviación estándar de la similitud\n• Sigma-div: Desviación estándar de la diversidad\n• U-sim: Media de similitud entre elementos\n• U-div: Media de diversidad entre elementos"
+            "content": "• Dunn*: Measures cluster compactness and separation\n• Davies-Bouldin*: Evaluates similarity between clusters\n• Silhouette*: Calculates how well elements are grouped\n• Sigma-sim: Standard deviation of similarity\n• Sigma-div: Standard deviation of diversity\n• U-sim: Mean similarity between elements\n• U-div: Mean diversity between elements"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Algoritmos implementados"
+            "content": "Implemented Algorithms"
         },
         {
             "type": "text",
-            "content": "El sistema implementa cuatro algoritmos diferentes para diversificar resultados, cada uno con sus propias características:"
+            "content": "The system implements four different algorithms to diversify results, each with unique characteristics:"
         },
         {
             "type": "text",
-            "content": "• Motley: Utiliza un enfoque basado en medoides y un radio de diversidad para seleccionar elementos diversos pero relevantes.\n\n• BRID (Bidirectional Retrieval for Information Diversification): Algoritmo de clustering bidireccional que optimiza distancias entre elementos.\n\n• Swap: Algoritmo de intercambio que realiza optimización local para mejorar incrementalmente la diversidad.\n\n• MMR (Maximal Marginal Relevance): Selección iterativa con un balance configurable entre relevancia y diversidad."
+            "content": "• Motley: Uses a medoid-based approach and a diversity radius to select elements that are diverse yet relevant.\n\n• BRID (Bidirectional Retrieval for Information Diversification): A bidirectional clustering algorithm that optimizes distances between elements.\n\n• Swap: An exchange algorithm that performs local optimization to incrementally improve diversity.\n\n• MMR (Maximal Marginal Relevance): Iterative selection with a configurable balance between relevance and diversity."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Interfaz de usuario"
+            "content": "User Interface"
         },
         {
             "type": "text",
-            "content": "La interfaz web de Diversify está diseñada para ser intuitiva y funcional. Permite a los usuarios realizar búsquedas, seleccionar el algoritmo de diversificación y visualizar tanto los resultados como las métricas de calidad. Los resultados se presentan en un formato atractivo inspirado en plataformas de streaming, mientras que las métricas se muestran en gráficos interactivos que pueden alternarse entre vista de radar y barras."
+            "content": "The Diversify web interface is designed for functionality and ease of use. It allows users to perform searches, select a diversification algorithm, and visualize both the results and quality metrics. Results are presented in an attractive format inspired by streaming platforms, while metrics are displayed in interactive charts that can toggle between radar and bar views."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/algorithm_visualizer_brin.png",
-            "alt": "Resultados de búsqueda diversificados en visualizer",
-            "caption": "Resultados de búsqueda diversificados en un Plano"
+            "alt": "Diversified search results in visualizer",
+            "caption": "Diversified search results mapped on a 2D plane."
         },
         {
             "type": "text",
-            "content": "El frontend utiliza Chart.js para renderizar gráficos dinámicos que muestran las métricas DFM, permitiendo a los usuarios entender la calidad de los resultados de forma visual y directa."
+            "content": "The frontend utilizes Chart.js to render dynamic charts showing the DFM metrics, enabling users to understand the quality of the results visually and directly."
         },
         {
             "type": "code",
             "language": "javascript",
-            "content": "// Código para crear gráficos de métricas dinámicos\nfunction createChart(data) {\n  if (currentChart) {\n    currentChart.destroy();\n  }\n\n  const ctx = document.getElementById(\"metricsChart\").getContext(\"2d\");\n  const labels = [\n    \"Dunn*\",\n    \"DB*\",\n    \"Sil*\",\n    \"Sigma-sim\",\n    \"Sigma-div\",\n    \"U-sim\",\n    \"U-div\",\n  ];\n  let values = data || [0, 0, 0, 0, 0, 0, 0];\n\n  // Configuración del gráfico según el tipo seleccionado\n  // ...\n}"
+            "content": "// Code to create dynamic metrics charts\nfunction createChart(data) {\n  if (currentChart) {\n    currentChart.destroy();\n  }\n\n  const ctx = document.getElementById(\"metricsChart\").getContext(\"2d\");\n  const labels = [\n    \"Dunn*\",\n    \"DB*\",\n    \"Sil*\",\n    \"Sigma-sim\",\n    \"Sigma-div\",\n    \"U-sim\",\n    \"U-div\",\n  ];\n  let values = data || [0, 0, 0, 0, 0, 0, 0];\n\n  // Chart configuration based on selected type\n  // ...\n}"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Detalles técnicos"
+            "content": "Technical Details"
         },
         {
             "type": "text",
-            "content": "Backend:\n- C++17 para los algoritmos core\n- Templates para soporte de diferentes tipos de datos\n- Estructura modular con clases como Point, Data, DataSet, Cluster\n- Métricas implementadas como clases reutilizables"
+            "content": "Backend:\n- C++17 for core algorithms\n- Templates for supporting various data types\n- Modular structure with classes such as Point, Data, DataSet, and Cluster\n- Metrics implemented as reusable classes"
         },
         {
             "type": "text",
-            "content": "Frontend:\n- Flask para el servidor web\n- API REST para comunicación entre frontend y backend\n- Sentence Transformers para generación de embeddings\n- Chart.js para visualización de métricas\n- Diseño responsive basado en CSS moderno"
+            "content": "Frontend:\n- Flask for the web server\n- REST API for frontend-backend communication\n- Sentence Transformers for embedding generation\n- Chart.js for metric visualization\n- Responsive design based on modern CSS"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Conclusiones"
+            "content": "Conclusions"
         },
         {
             "type": "text",
-            "content": "Diversify demuestra cómo los algoritmos de clustering y diversidad pueden mejorar significativamente la experiencia de búsqueda al ofrecer resultados que balancean similitud y diversidad. El modelo DFM proporciona una forma objetiva de evaluar la calidad de estos resultados a través de múltiples dimensiones."
+            "content": "Diversify demonstrates how clustering and diversity algorithms can significantly enhance the search experience by providing results that balance similarity and variety. The DFM model offers an objective way to evaluate the quality of these results across multiple dimensions."
         }
     ]
 }

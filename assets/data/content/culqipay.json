@@ -1,7 +1,7 @@
 {
-    "title": "CulqiPay - Pasarela de Pagos con Herramientas Gratuitas",
+    "title": "CulqiPay - Payment Gateway Implementation using Open-Source Tools",
     "author": "César Perales",
-    "date": "19 de diciembre, 2024",
+    "date": "December 19, 2024",
     "skills": ["Next.js", "TypeScript", "Supabase", "Culqi API", "Tailwind CSS"],
     "repoUrl": "https://github.com/CdeCasurpie/CulquiPasarela",
     "demoUrl": "https://cdecasurpie.github.io/CulquiPasarela/",
@@ -9,97 +9,125 @@
         {
             "type": "header",
             "level": 2,
-            "content": "Descripción del Proyecto"
+            "content": "Project Description"
         },
         {
             "type": "text",
-            "content": "Demostración de una plataforma de comercio electrónico funcional construida 100% con herramientas gratuitas. Implementa autenticación de usuarios, catálogo de productos y procesamiento de pagos mediante Culqi, todo desplegado en GitHub Pages sin costo de hosting."
+            "content": "A demonstration of a functional e-commerce platform built 100% with free-tier tools. It implements user authentication, a product catalog, and payment processing via Culqi, all deployed on GitHub Pages with zero hosting costs."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/coverCulqiPay.png",
-            "alt": "CulqiPay portada",
-            "caption": "Plataforma de pagos con stack gratuito"
+            "alt": "CulqiPay Cover",
+            "caption": "Payment platform utilizing a free-tier stack."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Stack Tecnológico"
+            "content": "Technological Stack"
         },
         {
             "type": "text",
-            "content": "Frontend: Next.js 15, TypeScript, Tailwind CSS\n\nBackend: Supabase (Auth + PostgreSQL + Edge Functions)\n\nPasarela de Pagos: Culqi API v2\n\nHosting: GitHub Pages (100% gratuito)"
+            "content": "Frontend: Next.js 15, TypeScript, Tailwind CSS"
+        },
+        {
+            "type": "text",
+            "content": "Backend: Supabase (Auth + PostgreSQL + Edge Functions)"
+        },
+        {
+            "type": "text",
+            "content": "Payment Gateway: Culqi API v2"
+        },
+        {
+            "type": "text",
+            "content": "Hosting: GitHub Pages (100% free)"
         },
         {
             "type": "image",
             "url": "/assets/images/projects/mainPageCulqiPay.png",
-            "alt": "Catálogo de productos",
-            "caption": "Carrusel de productos con integración a Culqi"
+            "alt": "Product Catalog",
+            "caption": "Product carousel with integrated Culqi processing."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Componentes del Sistema"
+            "content": "System Components"
         },
         {
             "type": "text",
-            "content": "Supabase Auth: Sistema de registro y login con manejo de sesiones JWT."
+            "content": "Supabase Auth: Registration and login system featuring JWT session management."
         },
         {
             "type": "text",
-            "content": "PostgreSQL: Base de datos con dos tablas principales: `demo_pay_products` (catálogo) y `demo_pay_purchases` (transacciones)."
+            "content": "PostgreSQL: Database with two primary tables: `demo_pay_products` (catalog) and `demo_pay_purchases` (transactions)."
         },
         {
             "type": "text",
-            "content": "Edge Functions: Tres funciones serverless en Deno:\n- `get-products`: Obtiene productos y estado de compra del usuario\n- `get-purchased-products`: Lista productos comprados\n- `create-payment`: Procesa pagos con Culqi API"
+            "content": "Edge Functions: Three serverless functions written in Deno:\n- `get-products`: Retrieves products and the user's purchase status\n- `get-purchased-products`: Lists products already purchased\n- `create-payment`: Processes payments using the Culqi API"
         },
         {
             "type": "text",
-            "content": "Culqi Checkout v4: Modal de pago integrado para captura segura de datos de tarjeta."
+            "content": "Culqi Checkout v4: Integrated payment modal for secure credit card data capture."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/culquiModalCulqiPay.png",
-            "alt": "Modal de Culqi funcionando",
-            "caption": "Checkout de Culqi integrado en la aplicación"
+            "alt": "Active Culqi Modal",
+            "caption": "Culqi Checkout integrated within the application."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Flujo de Pago"
+            "content": "Payment Workflow"
         },
         {
             "type": "code",
             "language": "plaintext",
-            "content": "1. Usuario selecciona producto\n2. Frontend abre Culqi Checkout (llave pública)\n3. Usuario ingresa datos de tarjeta\n4. Culqi genera token temporal\n5. Token se envía a Edge Function\n6. Edge Function:\n   - Valida autenticación\n   - Obtiene precio real de DB\n   - Verifica compra duplicada\n   - Usa llave secreta para crear cargo en Culqi\n   - Guarda transacción en DB\n7. Frontend actualiza UI"
+            "content": "1. User selects a product\n2. Frontend initializes Culqi Checkout (Public Key)\n3. User enters card details\n4. Culqi generates a temporary token\n5. Token is transmitted to an Edge Function\n6. Edge Function:\n   - Validates authentication\n   - Retrieves real-time pricing from the database\n   - Verifies against duplicate purchases\n   - Utilizes Secret Key to create a charge in Culqi\n   - Records the transaction in the database\n7. Frontend updates UI state"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Arquitectura de Seguridad"
+            "content": "Security Architecture"
         },
         {
             "type": "text",
-            "content": "Separación Frontend/Backend: El frontend solo maneja UI, las operaciones críticas están en Edge Functions.\n\nLlaves Públicas vs Secretas: El cliente usa llaves públicas de Culqi, las secretas solo existen en el servidor.\n\nValidación en Servidor: Precios y verificación de compras se hacen en el backend, no en el cliente."
+            "content": "Frontend/Backend Separation: The frontend handles only the UI, while critical operations are isolated in Edge Functions."
+        },
+        {
+            "type": "text",
+            "content": "Public vs. Secret Keys: The client utilizes Culqi's public keys; secret keys reside exclusively on the server."
+        },
+        {
+            "type": "text",
+            "content": "Server-Side Validation: Pricing and purchase verification are executed on the backend to prevent client-side tampering."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Base de Datos"
+            "content": "Database Schema"
         },
         {
             "type": "code",
             "language": "sql",
-            "content": "-- Tabla de productos\nCREATE TABLE demo_pay_products (\n  id UUID PRIMARY KEY,\n  name TEXT NOT NULL,\n  description TEXT,\n  price_cents INTEGER NOT NULL,\n  currency TEXT DEFAULT 'PEN',\n  active BOOLEAN DEFAULT true\n);\n\n-- Tabla de compras\nCREATE TABLE demo_pay_purchases (\n  id UUID PRIMARY KEY,\n  user_id UUID REFERENCES auth.users(id),\n  product_id UUID REFERENCES demo_pay_products(id),\n  amount_cents INTEGER NOT NULL,\n  status TEXT NOT NULL,\n  culqi_charge_id TEXT\n);"
+            "content": "-- Product table\nCREATE TABLE demo_pay_products (\n  id UUID PRIMARY KEY,\n  name TEXT NOT NULL,\n  description TEXT,\n  price_cents INTEGER NOT NULL,\n  currency TEXT DEFAULT 'PEN',\n  active BOOLEAN DEFAULT true\n);\n\n-- Purchase table\nCREATE TABLE demo_pay_purchases (\n  id UUID PRIMARY KEY,\n  user_id UUID REFERENCES auth.users(id),\n  product_id UUID REFERENCES demo_pay_products(id),\n  amount_cents INTEGER NOT NULL,\n  status TEXT NOT NULL,\n  culqi_charge_id TEXT\n);"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Despliegue"
+            "content": "Deployment"
         },
         {
             "type": "text",
-            "content": "GitHub Actions: Pipeline automático que construye y despliega en GitHub Pages.\n\nVariables de Entorno: Configuradas como Secrets en GitHub para seguridad.\n\nExportación Estática: Next.js genera archivos estáticos (`out/`) compatibles con GitHub Pages."
+            "content": "GitHub Actions: Automated pipeline for building and deploying to GitHub Pages."
+        },
+        {
+            "type": "text",
+            "content": "Environment Variables: Configured as GitHub Secrets for security."
+        },
+        {
+            "type": "text",
+            "content": "Static Export: Next.js generates static assets (`out/`) compatible with GitHub Pages hosting."
         },
         {
             "type": "header",
@@ -108,16 +136,28 @@
         },
         {
             "type": "text",
-            "content": "Tarjeta de prueba: 4111 1111 1111 1111\n\nCVV: 123\n\nFecha: Cualquier fecha futura\n\nModo: Sandbox de Culqi (sin cargos reales)"
+            "content": "Test Card: 4111 1111 1111 1111"
+        },
+        {
+            "type": "text",
+            "content": "CVV: 123"
+        },
+        {
+            "type": "text",
+            "content": "Date: Any future date"
+        },
+        {
+            "type": "text",
+            "content": "Mode: Culqi Sandbox (no real charges incurred)"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Conclusión"
+            "content": "Conclusion"
         },
         {
             "type": "text",
-            "content": "Demostración práctica de cómo construir una plataforma de pagos funcional sin costos de infraestructura. Usa Supabase para backend, Culqi para procesamiento de pagos y GitHub Pages para hosting, todo completamente gratuito y escalable para proyectos pequeños y medianos."
+            "content": "This project serves as a practical demonstration of building a functional payment platform with zero infrastructure costs. By leveraging Supabase for the backend, Culqi for payment processing, and GitHub Pages for hosting, the architecture remains entirely free and scalable for small to medium-sized projects."
         }
     ]
 }

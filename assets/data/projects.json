@@ -2,35 +2,35 @@
     "projects": [
         {
             "id": "1",
-            "title": "Sistema de Base de Datos Multimodal",
-            "date": "26 de mayo, 2024",
+            "title": "Multimodal Database Management System",
+            "date": "May 26, 2024",
             "skills": [
                 "Python",
                 "Database Systems",
-                "GUI PyQT"
+                "PyQt GUI"
             ],
-            "excerpt": "Base de datos completa implementada desde cero con 5 tipos de índices (Sequential File, Extended Hashing, CLI y interfaz gráfica para exportar queries a JSON/CSV.",
+            "excerpt": "A comprehensive database system engineered from scratch, implementing five distinct indexing structures (including Sequential File and Extended Hashing). Features both a Command Line Interface (CLI) and a Graphical User Interface (GUI) for query execution and data export to JSON/CSV formats.",
             "jsonFile": "database_system.json",
             "coverImage": "/assets/images/projects/base_datos_multi.png"
         },
         {
             "id": "5",
-            "title": "Gato Procedural en Godot",
-            "date": "04 de mayo, 2025",
+            "title": "Procedural Feline Locomotion in Godot",
+            "date": "May 04, 2025",
             "skills": [
                 "Godot",
                 "Procedural Animation",
                 "Game Development",
                 "3D Modeling"
             ],
-            "excerpt": "Proyecto de animación procedural de un gato en Godot con movimientos realistas y comportamientos naturales implementados programáticamente.",
+            "excerpt": "A procedural animation project developed within the Godot Engine, simulating realistic feline kinematics and naturalistic behaviors through programmatic implementation rather than pre-baked assets.",
             "jsonFile": "procedural_cat.json",
             "coverImage": "/assets/images/projects/coverGato.png"
         },
         {
             "id": "9",
-            "title": "Simulación Particle Life",
-            "date": "18 de mayo, 2024",
+            "title": "Particle Life Simulation",
+            "date": "May 18, 2024",
             "skills": [
                 "Python",
                 "Physics Simulation",
@@ -38,14 +38,14 @@
                 "Web Technologies",
                 "Complex Systems"
             ],
-            "excerpt": "Simulación de vida artificial con partículas que siguen reglas de atracción/repulsión en una matriz. Implementación de sistemas complejos emergentes.",
+            "excerpt": "An artificial life simulation modeling emergent complex systems through particle interaction. Implements attraction/repulsion laws within a matrix to demonstrate self-organizing behaviors.",
             "jsonFile": "particle_life.json",
             "coverImage": "/assets/images/projects/particle_life.png"
         },
         {
             "id": "11",
-            "title": "P&R Arquitectos - Sitio Web Corporativo",
-            "date": "15 de diciembre, 2024",
+            "title": "P&R Architects - Corporate Web Portal",
+            "date": "December 15, 2024",
             "skills": [
                 "HTML5",
                 "CSS3",
@@ -53,14 +53,14 @@
                 "Responsive Design",
                 "UI/UX"
             ],
-            "excerpt": "Sitio web corporativo profesional para firma de arquitectura con 20 años de experiencia. Incluye carrusel dinámico, gestión de proyectos con modales, sistema de temas y integración de WhatsApp.",
+            "excerpt": "A professional corporate web portal designed for an architectural firm with two decades of industry presence. Features include a dynamic carousel, modal-based project management, a thematic styling system, and seamless WhatsApp integration.",
             "jsonFile": "pyr_arquitectos.json",
             "coverImage": "/assets/images/projects/pyr_coverImage.png"
         },
         {
             "id": "10",
-            "title": "Rinder - Plataforma de Citas con IA",
-            "date": "12 de junio, 2024",
+            "title": "Rinder - AI-Driven Matchmaking Platform",
+            "date": "June 12, 2024",
             "skills": [
                 "Python",
                 "Flask",
@@ -69,14 +69,14 @@
                 "TensorFlow",
                 "Machine Learning"
             ],
-            "excerpt": "Plataforma de citas innovadora que utiliza redes neuronales para matchmaking inteligente. Monolito en Flask con implementación experimental en Vue.js y demo en React/Next.js con mocks.",
+            "excerpt": "An innovative dating platform utilizing neural networks for intelligent user matchmaking. Architected as a Flask monolith, featuring experimental frontend implementations in Vue.js and a demonstration interface built with React/Next.js.",
             "jsonFile": "rinder.json",
             "coverImage": "/assets/images/projects/coverRinder.png"
         },
         {
             "id": "13",
-            "title": "CulqiPay - Pasarela de Pagos con Herramientas Gratuitas",
-            "date": "19 de diciembre, 2024",
+            "title": "CulqiPay - Zero-Cost Payment Gateway Implementation",
+            "date": "December 19, 2024",
             "skills": [
                 "Next.js",
                 "TypeScript",
@@ -84,14 +84,14 @@
                 "Culqi API",
                 "Tailwind CSS"
             ],
-            "excerpt": "Plataforma de comercio electrónico 100% funcional construida con herramientas gratuitas. Implementa autenticación, catálogo de productos y procesamiento de pagos con Culqi, desplegada en GitHub Pages.",
+            "excerpt": "A fully functional e-commerce platform engineered using exclusively open-source and free-tier tools. Implements secure authentication, product catalog management, and payment processing via the Culqi API, deployed via GitHub Pages.",
             "jsonFile": "culqipay.json",
             "coverImage": "/assets/images/projects/coverCulqiPay.png"
         },
         {
             "id": "12",
-            "title": "Graph Organizer - Editor de Grafos Jerárquicos",
-            "date": "18 de diciembre, 2024",
+            "title": "Graph Organizer - Hierarchical Graph Editor",
+            "date": "December 18, 2024",
             "skills": [
                 "JavaScript",
                 "HTML5",
@@ -99,28 +99,28 @@
                 "Graph Theory",
                 "UI/UX"
             ],
-            "excerpt": "Aplicación web interactiva para crear grafos con jerarquías anidadas. Cada nodo puede contener su propio subgrafo interno, ideal para organizar flujos de trabajo complejos, dependencias de cursos o arquitecturas de software.",
+            "excerpt": "An interactive web application for constructing nested hierarchical graphs. Enables nodes to encapsulate internal subgraphs, facilitating the organization of complex workflows, curriculum dependencies, or software architecture.",
             "jsonFile": "graph_organizer.json",
             "coverImage": "/assets/images/projects/graphEditorMain.png"
         },
         {
             "id": "3",
-            "title": "Generador de Informes con IA",
-            "date": "25 noviembre, 2024",
+            "title": "AI-Powered Report Generator",
+            "date": "November 25, 2024",
             "skills": [
                 "Python",
                 "AI",
                 "Flask",
                 "React"
             ],
-            "excerpt": "Sistema completo de generación de informes usando IA. Backend en Python con Flask y frontend moderno, procesamiento de imágenes y conversión automática a documentos.",
+            "excerpt": "A comprehensive system for automated report generation utilizing Artificial Intelligence. Features a Python/Flask backend for image processing and document synthesis, paired with a modern frontend interface.",
             "jsonFile": "ai_report_generator.json",
             "coverImage": "/assets/images/projects/gpt_generator.png"
         },
         {
             "id": "2",
-            "title": "Visualizador de Planetas 3D",
-            "date": "10 de octubre, 2024",
+            "title": "3D Planetary Visualizer",
+            "date": "October 10, 2024",
             "skills": [
                 "WebGL",
                 "Three.js",
@@ -129,34 +129,34 @@
                 "Frontend",
                 "Backend"
             ],
-            "excerpt": "Visualizador web 3D de planetas usando la API de la NASA. Arquitectura completa con frontend y backend para renderizado de datos astronómicos en tiempo real.",
+            "excerpt": "A web-based 3D visualization tool rendering planetary bodies utilizing NASA API data. Features a full-stack architecture designed for the real-time rendering and visualization of astronomical datasets.",
             "jsonFile": "planet_visualizer.json",
             "coverImage": "/assets/images/projects/sun_plantets.png"
         },
         {
             "id": "4",
-            "title": "Simulador Físico de Bípedos",
-            "date": "26 de marzo, 2025",
+            "title": "Bipedal Physics Simulator",
+            "date": "March 26, 2025",
             "skills": [
                 "Pygame",
                 "Physics Simulation",
                 "Procedural Animation"
             ],
-            "excerpt": "Simulador físico avanzado de bípedos con animaciones procedurales para caminar. Implementación completa de física y biomecánica usando Pygame.",
+            "excerpt": "An advanced physics simulation focusing on bipedal locomotion using procedural animation techniques. Implements rigid body physics and biomechanical constraints using the Pygame library.",
             "jsonFile": "biped_simulator.json",
             "coverImage": "/assets/images/projects/biped_sim.png"
         },
         {
             "id": "6",
-            "title": "Búsqueda por Similitud Musical",
-            "date": "12 de septiembre, 2024",
+            "title": "Music Similarity Search Engine",
+            "date": "September 12, 2024",
             "skills": [
                 "C++",
                 "Clustering",
                 "Data Visualization",
-                "Algorithms Metrics"
+                "Algorithmic Metrics"
             ],
-            "excerpt": "Implementación de múltiples algoritmos de búsqueda por similitud aplicados a Spotify. Incluye visualización de métricas y buscador de estilos musicales similares.",
+            "excerpt": "Implementation of high-dimensional similarity search algorithms applied to Spotify datasets. Includes visualization of performance metrics and a query engine for identifying stylistically similar musical compositions.",
             "jsonFile": "music_similarity.json",
             "coverImage": "/assets/images/projects/diversify_busqueda.png"
         }

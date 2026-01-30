@@ -2,111 +2,114 @@
   "personal": {
     "nombres": ["César Aarón Perales Rosales"],
     "tagline": "Computer Science Student & Systems Architect",
-    "descripcionCorta": "CS student specializing in algorithms, system design, and computational graphics. Passionate about building scalable architectures and teaching complex concepts.",
-    "fotoPerfil": "/perfil.jpg"
+    "descripcionCorta": "Computer Science undergraduate specializing in algorithmic optimization, systems design, and computational graphics. Dedicated to architecting scalable solutions and disseminating complex technical concepts through academic instruction.",
+    "fotoPerfil": "/perfil.jpg",
+    "contactMeButton": "Contact Me",
+    "downloadCVButton": "Download CV"
   },
   "sobreMi": {
-    "mision": "Mi misión es fusionar teoría y práctica en ciencias de la computación para crear sistemas eficientes y escalables, al mismo tiempo que inspiro a otros a través de la enseñanza y el desarrollo de proyectos innovadores.",
+    "mision": "My objective is to bridge the gap between theoretical computer science and practical application to engineer efficient, scalable systems, while simultaneously fostering intellectual growth in others through mentorship and innovative technical development.",
     "parrafos": [
-      "Computer Science student at UTEC with a strong foundation in algorithms, data structures, and software architecture. I focus on the intersection of theoretical computer science and practical system implementation, particularly in areas of computational graphics and simulation.",
-      "Beyond coding, I work as a teaching assistant and private tutor, helping students master complex topics in algorithms, advanced data structures, and system design. I believe in learning by building - my portfolio reflects hands-on projects ranging from physics simulators to full-stack architectures."
+      "I am a Computer Science student at UTEC with a rigorous foundation in algorithms, data structures, and software architecture. My academic and professional focus lies at the intersection of theoretical computation and practical system implementation, with a specialization in computational graphics and simulation modeling.",
+      "In addition to software engineering, I actively serve as a Teaching Assistant and private instructor, guiding students through advanced topics such as algorithm analysis, complex data structures, and system design. I advocate for a constructionist learning methodology; my portfolio evidences this through projects ranging from physics simulators to comprehensive full-stack architectures."
     ],
-    "enseñanza": "Teaching reinforces my own understanding. As a TA for Data Structures & Algorithms at UTEC, I've developed pedagogical methods to make abstract concepts concrete through visualization and interactive examples."
+    "enseñanza": "Instruction serves as a mechanism to solidify theoretical mastery. In my capacity as a Teaching Assistant for Data Structures & Algorithms at UTEC, I have developed pedagogical methodologies to render abstract concepts tangible through visualization and interactive demonstrations."
   },
   "educacion": [
     {
       "institucion": "Universidad de Ingeniería y Tecnología (UTEC)",
-      "grado": "Computer Science (In Progress)",
-      "periodo": "2023 - Presente",
-      "ubicacion": "Lima, Perú",
+      "grado": "B.S. in Computer Science (In Progress)",
+      "periodo": "2023 - Present",
+      "ubicacion": "Lima, Peru",
       "logros": [
-        "Quinto Superior - GPA: 3.8/4.0",
-        "Proyecto destacado: Optimización de algoritmos de asignación en mapas con CGAL"
+        "Upper Fifth (Top 20%) - GPA: 3.8/4.0",
+        "Distinguished Project: Algorithmic optimization for map allocation utilizing CGAL"
       ]
     }
   ],
   "experiencia": {
-    "titulo": "Mi Trayectoria Profesional",
-    "subtitulo": "Un vistazo a mi recorrido laboral",
+    "titulo": "Professional Trajectory",
+    "docenciaTitulo": "Academic Instructer",
+    "trabajosTitulo": "Professional Experience",
     "docencia": [
       {
         "id": "caps",
         "empresa": "CAPS - UTEC",
-        "cargo": "Profesor Particular",
-        "periodo": "2025 (enero) - 2025 (diciembre)",
-        "descripcion": "Actualmente doy enseñanza a estudiantes de programación y desarrollo web, no solo en CAPS sino de forma particular. Me enfoco en crear un ambiente de aprendizaje inclusivo y motivador, adaptando mis métodos a las necesidades de cada estudiante.",
+        "cargo": "Private Instructor / Academic Tutor",
+        "periodo": "January 2025 - December 2025",
+        "descripcion": "Provided specialized instruction to students in programming and web development, both within the CAPS framework and independently. Focused on establishing an inclusive, rigorous learning environment, tailoring pedagogical strategies to individual student requirements.",
         "logo": "https://static.wixstatic.com/media/2d543e_fb5ff8f60e094a4aa5a200d16a7b3cf5~mv2.png/v1/fill/w_282,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/CAPS.png",
-        "stack": ["Diseño de algoritmos", "Python", "BD"],
+        "stack": ["Algorithm Design", "Python", "Database Systems"],
         "hitos": [
-          "Creación de material para las asesorías de programación",
-          "Contacto con más estudiantes por el boca a boca"
+          "Developed comprehensive curricular materials for programming advisory sessions.",
+          "Expanded student base significantly through peer recommendations and academic results."
         ]
       },
       {
         "id": "superprof",
-        "empresa": "INDEPENDIENTE",
+        "empresa": "FREELANCE",
         "subtitulo": "<superprof>",
-        "cargo": "Profesor Particular",
-        "periodo": "2022 - Presente",
-        "descripcion": "Desde 2022, he estado ofreciendo clases particulares de programación y desarrollo web a estudiantes de diversos niveles. Mi enfoque se centra en adaptar las lecciones a las necesidades individuales de cada estudiante, fomentando un aprendizaje práctico y efectivo.",
+        "cargo": "Private Instructor",
+        "periodo": "2022 - Present",
+        "descripcion": "Since 2022, I have provided private instruction in programming and web development across various proficiency levels. My methodology centers on adapting curricula to individual learning curves, fostering both theoretical understanding and practical application.",
         "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX-tgUHvmTrZOMI7oLXBkPAUieru7eaC8qeQ&s",
-        "stack": ["Python", "Algoritmos Avanzados", "Estructuras de Datos", "Computación Gráfica"],
+        "stack": ["Python", "Advanced Algorithms", "Data Structures", "Computer Graphics"],
         "hitos": [
-          "Más de 50 estudiantes asesorados con éxito",
-          "Desarrollo de planes de estudio personalizados",
-          "Alta tasa de satisfacción y recomendación entre estudiantes"
+          "Successfully mentored over 50 students.",
+          "Designed personalized study plans tailored to specific academic goals.",
+          "Maintained a high retention rate and student satisfaction score."
         ]
       }
     ],
     "trabajos": [
       {
         "empresa": "BenjiOr",
-        "cargo": "Desarrollador de Software",
+        "cargo": "Software Developer",
         "periodo": "2023 - 2025",
-        "descripcion": "Se desarrollaron varias aplicaciones web, de escritorio y móviles para la empresa, incluyendo un sistema de gestión de inventarios y ventas.",
+        "descripcion": "Engineered multiple web, desktop, and mobile solutions for enterprise use, including a comprehensive inventory and sales management system.",
         "stack": ["JavaScript", "HTML/CSS", "Python", "Flask", "SQLite"],
         "hitos": [
-          "Desarrollo de un sistema de gestión de inventarios y ventas",
-          "Optimización del rendimiento del sistema con técnicas avanzadas de programación",
-          "Desarrollo de aplicaciones de escritorio y móviles para la empresa"
+          "Architected a full-stack inventory and sales management system.",
+          "Optimized system performance utilizing advanced programming paradigms.",
+          "Developed cross-platform desktop and mobile applications to meet business requirements."
         ]
       },
       {
         "empresa": "Mastery Five",
-        "cargo": "Desarrollador Full Stack",
+        "cargo": "Full Stack Developer",
         "periodo": "2023 - 2024",
-        "descripcion": "Colaboración en el proceso de creación de un software para gestionar el tiempo de las personas.",
+        "descripcion": "Contributed to the full-stack development lifecycle of a productivity and time-management software suite.",
         "logo": "assets/images/projects/logo-masteryfive.svg",
         "stack": ["Next.js", "Tailwind CSS", "Google Cloud"],
         "hitos": [
-          "Desarrollo de un sistema de gestión de tiempo y productividad",
-          "Implementación de un sistema de notificaciones en tiempo real",
-          "Creación de componentes reutilizables y escalables con Next.js"
+          "Developed core modules for time management and productivity tracking.",
+          "Implemented a real-time notification architecture.",
+          "Engineered reusable, scalable frontend components using Next.js."
         ]
       },
       {
         "empresa": "Haramara",
-        "cargo": "Desarrollador Full Stack",
-        "periodo": "2024-2025",
-        "descripcion": "Desarrollo de una aplicación web para la venta, compra y reserva de actividades acuáticas.",
+        "cargo": "Full Stack Developer",
+        "periodo": "2024 - 2025",
+        "descripcion": "Developed a web application for the reservation, purchase, and sale of aquatic activities.",
         "stack": ["Next.js", "Node.js", "Tailwind CSS", "OVH Cloud"],
         "hitos": [
-          "Implementación de un sistema de reservas",
-          "Front-end complejo y responsivo con Next.js",
-          "Integración de un sistema Usuario-Empresa para gestión de actividades"
+          "Implemented a robust booking and reservation system.",
+          "Designed a complex, responsive front-end interface using Next.js.",
+          "Integrated a User-Enterprise model for activity management."
         ]
       },
       {
         "empresa": "Cults - Sketchfab",
-        "cargo": "Modelador 3D",
+        "cargo": "3D Modeler",
         "periodo": "2021 - 2022",
-        "descripcion": "Creación de modelos 3D para la plataforma Cults, incluyendo modelos de alta calidad para impresión 3D y visualización en línea.",
+        "descripcion": "Designed high-fidelity 3D models for the Cults platform, optimized for both 3D printing and real-time online visualization.",
         "logo": "assets/images/projects/cults_logo.png",
         "stack": ["Blender", "Cults3D", "Sketchfab"],
         "hitos": [
-          "Desarrollo de modelos 3D para la plataforma Cults",
-          "Optimización de modelos para impresión 3D y visualización en línea",
-          "Ventas de varios modelos 3D en la plataforma"
+          "Created commercial-grade 3D assets for the Cults platform.",
+          "Optimized topology for additive manufacturing (3D printing) and web rendering.",
+          "Achieved consistent sales volume for various models on the platform."
         ]
       }
     ]
@@ -116,22 +119,22 @@
       {
         "name": "Python",
         "icon": "fab fa-python",
-        "nivel": "Avanzado"
+        "nivel": "Advanced"
       },
       {
         "name": "C++",
         "icon": "fas fa-code",
-        "nivel": "Avanzado"
+        "nivel": "Advanced"
       },
       {
         "name": "JavaScript",
         "icon": "fab fa-js",
-        "nivel": "Intermedio"
+        "nivel": "Intermediate"
       },
       {
         "name": "Java",
         "icon": "fab fa-java",
-        "nivel": "Básico"
+        "nivel": "Basic"
       },
       {
         "name": "Next.js/React",
@@ -184,9 +187,9 @@
     ]
   },
   "contacto": {
-    "titulo": "Contáctame",
-    "subtitulo": "¿Tienes una idea o proyecto en mente?",
-    "mensaje": "Estoy siempre abierto a nuevas oportunidades y colaboraciones. No dudes en ponerte en contacto conmigo para discutir cualquier idea o proyecto.",
+    "titulo": "Contact",
+    "subtitulo": "Collaboration & Inquiries",
+    "mensaje": "I am amenable to new professional opportunities and academic collaborations. Please do not hesitate to contact me to discuss potential projects or research initiatives.",
     "items": [
       {
         "titulo": "Email",
@@ -194,18 +197,18 @@
         "icono": "fas fa-envelope"
       },
       {
-        "titulo": "Teléfono",
+        "titulo": "Phone",
         "contenido": "+51 988 770 244",
         "icono": "fas fa-phone"
       },
       {
-        "titulo": "Ubicación",
-        "contenido": "Perú, Lima",
+        "titulo": "Location",
+        "contenido": "Lima, Peru",
         "icono": "fas fa-map-marker-alt"
       },
       {
-        "titulo": "Disponibilidad",
-        "contenido": "Lunes a Viernes, 9:00 - 22:00",
+        "titulo": "Availability",
+        "contenido": "Monday to Friday, 9:00 - 22:00",
         "icono": "fas fa-clock"
       }
     ],
@@ -213,38 +216,38 @@
       "campos": [
         {
           "id": "nombre",
-          "label": "Nombre",
+          "label": "Name",
           "tipo": "text",
-          "placeholder": "Tu nombre"
+          "placeholder": "Your Name"
         },
         {
           "id": "email",
           "label": "Email",
           "tipo": "email",
-          "placeholder": "tu@email.com"
+          "placeholder": "your@email.com"
         },
         {
           "id": "asunto",
-          "label": "Asunto",
+          "label": "Subject",
           "tipo": "text",
-          "placeholder": "Asunto de tu mensaje"
+          "placeholder": "Subject of inquiry"
         },
         {
           "id": "mensaje",
-          "label": "Mensaje",
+          "label": "Message",
           "tipo": "textarea",
-          "placeholder": "Escribe tu mensaje aquí..."
+          "placeholder": "Type your message here..."
         }
       ],
-      "botonTexto": "Enviar Mensaje",
+      "botonTexto": "Send Message",
       "botonIcono": "fas fa-paper-plane"
     }
   },
   "footer": {
     "nombre": "César Perales | CdeCasurpie",
-    "descripcion": "Soy César Perales, programador y educador dedicado a crear experiencias digitales memorables y compartir conocimiento.",
-    "copyright": "César Perales | Todos los derechos reservados",
-    "fraseFooter": "Hecho con {corazon} y mucho café."
+    "descripcion": "César Perales: Programmer and educator dedicated to engineering memorable digital experiences and disseminating knowledge.",
+    "copyright": "César Perales | All Rights Reserved",
+    "fraseFooter": "Engineered with passion and precision."
   },
   "social": [
     {

@@ -34,8 +34,8 @@ export class HeroSection {
                     </div>
 
                     <div class="hero-actions">
-                        <a href="#contacto" class="btn btn-primary">Contáctame</a>
-                        <button id="btn-download-cv" class="btn btn-outline">Descargar CV</button>
+                        <a href="#contacto" class="btn btn-primary">${this.personal.contactMeButton || 'Contact Me'}</a>
+                        <button id="btn-download-cv" class="btn btn-outline">${this.personal.downloadCVButton || 'Download CV'}</button>
                     </div>
                 </div>
             </div>

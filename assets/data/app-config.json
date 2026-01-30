@@ -4,13 +4,13 @@
     "cursorEffect": true
   },
   "navbar": {
-    "logoText": "COMPUTER SCIENTIST | WEB DEVELOPER",
+    "logoText": "COMPUTER SCIENTIST | SYSTEMS ENGINEER",
     "links": [
-      { "id": "home", "text": "Inicio", "path": "/#home" },
-      { "id": "about", "text": "Sobre Mí", "path": "/#about" },
-      { "id": "projects", "text": "Proyectos", "path": "/#projects" },
-      { "id": "experience", "text": "Experiencia", "path": "/#experience" },
-      { "id": "contacto", "text": "Contacto", "path": "/#contacto" }
+      { "id": "home", "text": "Home", "path": "/#home" },
+      { "id": "about", "text": "About", "path": "/#about" },
+      { "id": "projects", "text": "Projects", "path": "/#projects" },
+      { "id": "experience", "text": "Experience", "path": "/#experience" },
+      { "id": "contacto", "text": "Contact", "path": "/#contacto" }
     ]
   },
   "scrollNarrative": [
@@ -27,12 +27,12 @@
       "start": 0.45,
       "end": 0.9,
       "text": [
-        "SOBRE MÍ",
-        "Soy César Perales, estudiante de CS. ",
-        "Combino diseño y tecnología para ",
-        "ofrecer soluciones innovadoras, ",
-        "enfocándome en sistemas escalables ",
-        "y simulaciones físicas realistas."
+        "ABOUT ME",
+        "I am César Perales, a Computer Science scholar.",
+        "Synthesizing theoretical design and technology to",
+        "engineer innovative computational solutions,",
+        "specializing in scalable system architectures",
+        "and high-fidelity physical simulations."
       ]
     },
     {
@@ -40,19 +40,19 @@
       "start": 1.5,
       "end": 2.0,
       "text": [
-        "MIS PROYECTOS",
-        "Arquitectura de sistemas modulares",
-        "y algoritmos de alta eficiencia.",
-        "Desde librerías de geometría computacional",
-        "hasta mecánicas complejas en motores",
-        "de videojuegos y herramientas de automatización."
+        "SELECTED PROJECTS",
+        "Modular systems architecture",
+        "and high-efficiency algorithmic optimization.",
+        "From computational geometry libraries",
+        "to advanced mechanics within game engines",
+        "and automated instrumentation tools."
       ]
     }
   ],
   "footer": {
-    "copyrightText": "© 2026 César Perales. Hecho con código y café.",
+    "copyrightText": "© 2026 César Perales. Engineered with precision and dedication.",
     "sections": [
-      { "title": "Navegación", "links": ["home", "projects", "about"] }
+      { "title": "Navigation", "links": ["home", "projects", "about"] }
     ]
   }
 }

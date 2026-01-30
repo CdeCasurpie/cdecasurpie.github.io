@@ -1,117 +1,117 @@
 {
-    "title": "Sistema de Base de Datos Multimodal con Soporte Avanzado para Índices Espaciales",
+    "title": "Multimodal Database System with Advanced Spatial Indexing Support",
     "author": "César Perales",
-    "date": "18 de diciembre, 2024",
-    "skills": ["Python", "PyQt5", "Estructuras de Datos Avanzadas", "Algoritmos de Indexación", "Bases de Datos", "Procesamiento Espacial", "Desarrollo de Interfaces", "Manejo de Archivos Binarios"],
+    "date": "December 18, 2024",
+    "skills": ["Python", "PyQt5", "Advanced Data Structures", "Indexing Algorithms", "Database Systems", "Spatial Processing", "UI Development", "Binary File Handling"],
     "repoUrl": "https://github.com/Fabryzzio-Meza-Torres/Sistema-de-Base-de-Datos-Multimodal",
     "content": [
         {
             "type": "header",
             "level": 2,
-            "content": "Visión General del Proyecto"
+            "content": "Project Overview"
         },
         {
             "type": "text",
-            "content": "Desarrollamos un innovador sistema de gestión de bases de datos con capacidades multimodales, implementando desde cero cinco técnicas avanzadas de indexación, incluyendo soporte completo para datos espaciales. Este proyecto representa una solución completa que abarca la implementación de estructuras de datos complejas, serialización eficiente, procesamiento espacial, una interfaz SQL personalizada y una aplicación gráfica intuitiva desarrollada en PyQt5."
+            "content": "I developed an innovative multimodal database management system, implementing five advanced indexing techniques from the ground up, including comprehensive support for spatial data. This project represents a holistic solution encompassing the implementation of complex data structures, efficient serialization, spatial processing, a custom SQL interface, and an intuitive graphical application developed in PyQt5."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/db-multimodal-gui.png",
-            "alt": "Interfaz gráfica del Sistema de Base de Datos Multimodal",
-            "caption": "Interfaz principal del sistema con panel de consulta SQL"
+            "alt": "Graphical Interface of the Multimodal Database System",
+            "caption": "Primary system interface featuring the SQL query panel."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Características Técnicas Destacadas"
+            "content": "Technical Highlights"
         },
         {
             "type": "text",
-            "content": "La característica más distintiva del sistema es su capacidad de cambiar dinámicamente entre cinco algoritmos de indexación avanzados: B+ Tree, Hash Extensible, Archivo Secuencial con Overflow, ISAM Sparse y R-Tree espacial. Cada algoritmo está implementado con optimizaciones específicas para maximizar rendimiento en diferentes casos de uso y patrones de acceso a datos."
+            "content": "The system's most distinctive feature is its capability to dynamically switch between five advanced indexing algorithms: B+ Tree, Extendible Hashing, Sequential File with Overflow, Sparse ISAM, and Spatial R-Tree. Each algorithm is implemented with specific optimizations to maximize performance across diverse use cases and data access patterns."
         },
         {
             "type": "code",
             "language": "python",
-            "content": "# Ejemplo de creación de una tabla con índice espacial\nquery = '''\nCREATE TABLE restaurants (\n    id INT KEY,\n    name VARCHAR(100),\n    location POINT SPATIAL INDEX,\n    rating FLOAT,\n    area POLYGON\n) using index bplus_tree(id);\n'''\n\ndatabase.execute_query(query)"
+            "content": "# Example of table creation with a spatial index\nquery = '''\nCREATE TABLE restaurants (\n    id INT KEY,\n    name VARCHAR(100),\n    location POINT SPATIAL INDEX,\n    rating FLOAT,\n    area POLYGON\n) using index bplus_tree(id);\n'''\n\ndatabase.execute_query(query)"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Innovaciones en Indexación Espacial"
+            "content": "Innovations in Spatial Indexing"
         },
         {
             "type": "text",
-            "content": "Se implementó un potente sistema de indexación espacial basado en R-Tree que permite realizar consultas geoespaciales complejas con alto rendimiento. El sistema es capaz de procesar cuatro tipos de consultas espaciales: búsqueda por radio, intersecciones geométricas, k-vecinos más cercanos y búsqueda por rango rectangular. Esta funcionalidad permite trabajar con geometrías complejas representadas en formato WKT (Well-Known Text) y realizar análisis espacial avanzado."
+            "content": "A high-performance spatial indexing system based on R-Trees was implemented to facilitate complex geospatial queries. The system processes four types of spatial queries: radius search, geometric intersections, k-nearest neighbors (k-NN), and rectangular range searches. This functionality enables the handling of complex geometries represented in WKT (Well-Known Text) format for advanced spatial analysis."
         },
         {
             "type": "code",
             "language": "sql",
-            "content": "-- Búsqueda por radio: encuentra restaurantes en un radio de 5km\nSELECT * FROM restaurants WHERE location WITHIN ((10.5, 20.3), 5.0);\n\n-- Búsqueda por intersección geométrica\nSELECT * FROM restaurants WHERE area INTERSECTS \"POLYGON((0 0, 10 0, 10 10, 0 10, 0 0))\";\n\n-- Búsqueda de 3 vecinos más cercanos\nSELECT * FROM restaurants WHERE location NEAREST (0, 0) LIMIT 3;\n\n-- Búsqueda por rango espacial rectangular\nSELECT * FROM restaurants WHERE location IN_RANGE ((0, 0), (10, 10));"
+            "content": "-- Radius search: find restaurants within a 5km radius\nSELECT * FROM restaurants WHERE location WITHIN ((10.5, 20.3), 5.0);\n\n-- Geometric intersection search\nSELECT * FROM restaurants WHERE area INTERSECTS \"POLYGON((0 0, 10 0, 10 10, 0 10, 0 0))\";\n\n-- 3-Nearest Neighbors search\nSELECT * FROM restaurants WHERE location NEAREST (0, 0) LIMIT 3;\n\n-- Rectangular spatial range search\nSELECT * FROM restaurants WHERE location IN_RANGE ((0, 0), (10, 10));"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Análisis de Rendimiento y Algoritmos Implementados"
+            "content": "Performance Analysis and Implemented Algorithms"
         },
         {
             "type": "text",
-            "content": "Se realizó un análisis de rendimiento de las cinco técnicas de indexación implementadas, utilizando conjuntos de datos de hasta 100,000 registros. El sistema B+ Tree demostró ser el más equilibrado para operaciones generales, con una complejidad O(log n) consistente. El Hash Extensible destacó en inserciones y búsquedas puntuales con complejidad promedio O(1). El R-Tree, aunque más lento en inserciones (18,112ms/registro para 100k), superó exponencialmente a otras estructuras en consultas espaciales complejas."
+            "content": "A performance analysis was conducted across the five indexing techniques using datasets of up to 100,000 records. The B+ Tree proved to be the most balanced for general operations, maintaining consistent O(log n) complexity. Extendible Hashing excelled in point insertions and lookups with an average O(1) complexity. While the R-Tree exhibited slower insertion times (18,112ms/record for 100k), it exponentially outperformed other structures in complex spatial queries."
         },
         {
             "type": "image",
             "url": "/assets/images/projects/grafica_db.png",
-            "alt": "Gráfica de comparación de rendimiento entre técnicas de indexación",
-            "caption": "Comparativa de rendimiento en operaciones de inserción para diferentes volúmenes de datos"
+            "alt": "Performance comparison chart between indexing techniques",
+            "caption": "Performance comparison of insertion operations across varying data volumes."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Arquitectura y Diseño"
+            "content": "Architecture and Design"
         },
         {
             "type": "text",
-            "content": "El sistema implementa una arquitectura modular basada en el patrón Strategy para la selección dinámica de algoritmos de indexación. La clase Table actúa como coordinador central que encapsula la estructura de datos, el esquema y el índice primario seleccionado. Para la interfaz gráfica, apliqué el patrón Model-View-Controller con señales y slots de PyQt5, separando completamente la lógica de negocio de la presentación."
+            "content": "The system implements a modular architecture based on the Strategy pattern for dynamic indexing algorithm selection. The 'Table' class acts as the central coordinator, encapsulating the data structure, schema, and the selected primary index. For the graphical interface, I applied the Model-View-Controller (MVC) pattern utilizing PyQt5 signals and slots to decouple business logic from the presentation layer."
         },
         {
             "type": "code",
             "language": "python",
-            "content": "class Table:\n    \"\"\"Clase principal que coordina estructura de datos y algoritmos de indexación.\"\"\"\n    \n    def __init__(self, name, columns, primary_key, page_size=4096, index_type=\"sequential\", spatial_columns=None):\n        self.name = name\n        self.columns = columns\n        self.primary_key = primary_key\n        self.page_size = page_size\n        self.index_type = index_type\n        self.spatial_columns = spatial_columns or []\n        \n        # Crear índice primario según tipo seleccionado (patrón Strategy)\n        self.index = self._create_index(index_type, primary_key)\n        \n        # Crear índices espaciales adicionales si se especifican\n        if spatial_columns:\n            self._create_spatial_indexes()"
+            "content": "class Table:\n    \"\"\"Primary class coordinating data structures and indexing algorithms.\"\"\"\n    \n    def __init__(self, name, columns, primary_key, page_size=4096, index_type=\"sequential\", spatial_columns=None):\n        self.name = name\n        self.columns = columns\n        self.primary_key = primary_key\n        self.page_size = page_size\n        self.index_type = index_type\n        self.spatial_columns = spatial_columns or []\n        \n        # Create primary index based on selected type (Strategy pattern)\n        self.index = self._create_index(index_type, primary_key)\n        \n        # Create additional spatial indexes if specified\n        if spatial_columns:\n            self._create_spatial_indexes()"
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Parser SQL Personalizado"
+            "content": "Custom SQL Parser"
         },
         {
             "type": "text",
-            "content": "Se implementó un parser SQL personalizado que soporta tanto operaciones estándar como las extensiones espaciales del sistema. El parser utiliza un enfoque descendente recursivo basado en expresiones regulares complejas para interpretar consultas de creación de tablas, inserción, selección, eliminación y consultas espaciales especializadas. Este componente permite al usuario interactuar con el motor de base de datos mediante una sintaxis SQL familiar extendida con capacidades espaciales."
+            "content": "A custom SQL parser was implemented to support standard operations and the system's spatial extensions. The parser utilizes a recursive descent approach driven by complex regular expressions to interpret queries for table creation, insertion, selection, deletion, and specialized spatial lookups. This component allows users to interact with the database engine through a familiar SQL syntax extended with spatial capabilities."
         },
         {
             "type": "code",
             "language": "python",
-            "content": "def parse_query(query):\n    \"\"\"Parser SQL con soporte para consultas espaciales.\"\"\"\n    query = query.strip()\n    \n    # Reconocer consulta CREATE TABLE\n    create_match = re.match(r'(?i)CREATE\\s+TABLE\\s+([\\w_]+)\\s*\\((.+?)\\)(\\s+using\\s+index\\s+([\\w_]+)\\(([\\w_]+)\\))?', query, re.DOTALL)\n    if create_match:\n        # Procesar definición de tabla...\n        \n    # Reconocer consulta espacial\n    spatial_match = re.match(r'(?i)SELECT\\s+(.+?)\\s+FROM\\s+([\\w_]+)\\s+WHERE\\s+([\\w_]+)\\s+(WITHIN|INTERSECTS|NEAREST|IN_RANGE)\\s+\\((.+?)\\)', query)\n    if spatial_match:\n        # Procesar consulta espacial..."
+            "content": "def parse_query(query):\n    \"\"\"SQL Parser with spatial query support.\"\"\"\n    query = query.strip()\n    \n    # Recognize CREATE TABLE query\n    create_match = re.match(r'(?i)CREATE\\s+TABLE\\s+([\\w_]+)\\s*\\((.+?)\\)(\\s+using\\s+index\\s+([\\w_]+)\\(([\\w_]+)\\))?', query, re.DOTALL)\n    if create_match:\n        # Process table definition...\n        \n    # Recognize spatial query\n    spatial_match = re.match(r'(?i)SELECT\\s+(.+?)\\s+FROM\\s+([\\w_]+)\\s+WHERE\\s+([\\w_]+)\\s+(WITHIN|INTERSECTS|NEAREST|IN_RANGE)\\s+\\((.+?)\\)', query)\n    if spatial_match:\n        # Process spatial query..."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Conclusiones y Aprendizajes"
+            "content": "Conclusions and Learnings"
         },
         {
             "type": "text",
-            "content": "Este proyecto me permitió aplicar y profundizar en conceptos avanzados de estructuras de datos, algoritmos de indexación, serialización binaria y desarrollo de interfaces. La implementación desde cero de algoritmos complejos como el B+ Tree fortaleció significativamente mi comprensión de estas estructuras y su comportamiento en situaciones de datos reales."
+            "content": "This project facilitated the application and deepening of advanced concepts in data structures, indexing algorithms, binary serialization, and interface development. Implementing complex algorithms like the B+ Tree from scratch significantly strengthened my understanding of these structures and their behavior with real-world data."
         },
         {
             "type": "text",
-            "content": "Entre los desafíos más interesantes estuvo la optimización de rendimiento para grandes volúmenes de datos, la implementación eficiente de las consultas, y el diseño de una interfaz gráfica que expusiera toda la potencia del sistema manteniendo una experiencia de usuario intuitiva. Las pruebas de rendimiento revelaron comportamientos fascinantes de las diferentes estructuras de indexación con diversos patrones de datos y consultas, proporcionando una comprensión práctica que complementa el conocimiento teórico."
+            "content": "Key challenges included performance optimization for large datasets, efficient query implementation, and designing a GUI that exposed the system's full power while maintaining an intuitive user experience. Performance testing revealed fascinating behaviors of different indexing structures under various data patterns, providing practical insights that complement theoretical knowledge."
         },
         {
             "type": "header",
             "level": 2,
-            "content": "Tecnologías Utilizadas"
+            "content": "Technologies Used"
         },
         {
             "type": "text",
-            "content": "• Python 3.7+: Lenguaje principal de desarrollo • PyQt5: Framework para la interfaz gráfica • Shapely: Biblioteca para procesamiento de geometrías espaciales • RTree: Implementación eficiente de índices espaciales\n• SQLite (como referencia para el diseño del parser SQL) • Matplotlib: Visualización de resultados de análisis de rendimiento"
+            "content": "• Python 3.7+: Primary development language • PyQt5: GUI framework • Shapely: Library for spatial geometry processing • RTree: Efficient implementation of spatial indexes\n• SQLite: (Used as a reference for SQL parser design) • Matplotlib: Visualization for performance analysis results"
         }
     ]
 }

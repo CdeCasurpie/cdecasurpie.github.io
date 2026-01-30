@@ -1,82 +1,86 @@
 {
-    "title": "GeneradorInformes: Creación automática de informes técnicos con IA",
-    "author": "César Perales",
-    "date": "29 de mayo, 2025",
-    "skills": ["Python", "Flask", "React", "Inteligencia Artificial", "Procesamiento de documentos", "API REST"],
-    "repoUrl": "https://github.com/CdeCasurpie/GeneradorInformes-Frontend.git",
-    "content": [
-        {
-            "type": "header",
-            "level": 2,
-            "content": "Descripción del Proyecto"
-        },
-        {
-            "type": "text",
-            "content": "GeneradorInformes es una aplicación web full-stack diseñada para simplificar y automatizar la creación de informes técnicos utilizando inteligencia artificial. El sistema permite a los usuarios cargar plantillas de documentos y archivos de conocimiento en formato PDF, analiza su estructura, y facilita la generación de informes personalizados con asistencia de IA para el análisis de imágenes y contenido."
-        },
-        {
-            "type": "header",
-            "level": 2,
-            "content": "Backend (Flask)"
-        },
-        {
-            "type": "text",
-            "content": "El backend está desarrollado en Python utilizando el framework Flask, proporcionando una API RESTful para el procesamiento de documentos. Entre sus características principales encontramos:\n\n- Análisis de documentos PDF para extraer su estructura y contenido\n- Procesamiento y almacenamiento de imágenes en base64\n- Integración con servicios de IA para análisis de imágenes\n- Generación de documentos en formato Markdown a partir de plantillas\n- Sistema de autenticación y gestión de usuarios\n- Almacenamiento organizado de conocimiento por usuario"
-        },
-        {
-            "type": "code",
-            "language": "python",
-            "content": "# Ejemplo de análisis de documentos en el backend\n@app.route('/api/v1/document/analyze', methods=['POST'])\n@login_required\ndef analyze_document():\n    \"\"\"\n    Analiza los archivos iniciales (plantilla y PDF de conocimiento)\n    \"\"\"\n    if 'template_file' not in request.files or 'knowledge_file' not in request.files:\n        return jsonify({'error': 'Faltan archivos requeridos'}), 400\n        \n    # Proceso de análisis de documentos\n    json_structure, markdown_template = analyze_pdf(str(template_path), str(knowledge_path))\n    \n    # Guardar resultados\n    with open(structure_path, 'w', encoding='utf-8') as f:\n        json.dump(json_structure, f, ensure_ascii=False, indent=2)"
-        },
-        {
-            "type": "header",
-            "level": 2,
-            "content": "Frontend (React)"
-        },
-        {
-            "type": "text",
-            "content": "El frontend está construido con React y proporciona una interfaz de usuario moderna y responsiva que permite a los usuarios interactuar con todas las funcionalidades del sistema. Características destacadas:\n\n- Vista dual con panel de edición y previsualización en tiempo real\n- Editor de Markdown integrado para modificar informes\n- Soporte para carga de archivos PDF y visualización de resultados\n- Interfaz para chat asistido con IA para generar contenido\n- Exportación de informes a PDF\n- Sistema de autenticación y gestión de sesiones de usuario"
-        },
-        {
-            "type": "code",
-            "language": "jsx",
-            "content": "// Componente principal de la aplicación React\nexport default function App() {\n  const [view, setView] = useState('Plantilla');\n  const [isEditorMode, setIsEditorMode] = useState(false);\n  const [markdown, setMarkdown] = useState('<div>...</div>');\n\n  // Navegación entre vistas\n  return (\n    <div className=\"main-container\">\n      <header>\n        <h1>GPT - Document generator</h1>\n        {/* ... Controles de navegación ... */}\n      </header>\n\n      <main className=\"flex relative\">\n        {/* Panel de edición y panel de previsualización */}\n        {/* ... */}\n      </main>\n    </div>\n  );\n}"
-        },
-        {
-            "type": "header",
-            "level": 2,
-            "content": "Flujo de trabajo"
-        },
-        {
-            "type": "text",
-            "content": "El flujo de trabajo típico en el GeneradorInformes sigue estos pasos:\n\n1. El usuario carga una plantilla de informe y un documento de conocimiento en PDF\n2. El sistema analiza los documentos y extrae su estructura\n3. El usuario completa el formulario generado, incluyendo textos e imágenes\n4. El sistema analiza automáticamente las imágenes cargadas para sugerir descripciones\n5. Se genera un documento final en formato Markdown con todo el contenido procesado\n6. El usuario puede editar el resultado final y exportarlo como PDF"
-        },
-        {
-            "type": "header",
-            "level": 2,
-            "content": "Tecnologías utilizadas"
-        },
-        {
-            "type": "text",
-            "content": "El proyecto integra una variedad de tecnologías modernas:\n\n- Backend: Python, Flask, SQLAlchemy, Base de datos SQLite\n- Frontend: React, JavaScript/JSX, CSS moderno\n- Procesamiento de documentos: Bibliotecas de análisis de PDF, procesamiento de imágenes\n- Inteligencia Artificial: Integración con servicios de IA para análisis de imágenes y documentos\n- Seguridad: Sistema de autenticación, gestión de sesiones, protección de rutas"
-        },
-        {
-            "type": "header",
-            "level": 2,
-            "content": "Seguridad y gestión de usuarios"
-        },
-        {
-            "type": "text",
-            "content": "El sistema implementa un completo sistema de autenticación y autorización que permite:\n\n- Registro y autenticación de usuarios\n- Roles diferenciados (usuario normal y administrador)\n- Almacenamiento seguro de contraseñas\n- Protección de rutas mediante decoradores de autorización\n- Separación de recursos por usuario para garantizar privacidad"
-        },
-        {
-            "type": "header",
-            "level": 2,
-            "content": "Conclusión"
-        },
-        {
-            "type": "text",
-            "content": "GeneradorInformes representa una solución innovadora para la creación de informes técnicos, combinando tecnologías web modernas con capacidades de inteligencia artificial. El sistema facilita significativamente el proceso de documentación técnica, ahorrando tiempo y recursos mientras mantiene un alto nivel de personalización y calidad en los informes generados. La arquitectura modular y bien estructurada permite futuras ampliaciones y mejoras, como la integración con más servicios de IA o la implementación de funciones colaborativas."
-        }
-    ]
+    "type": "uploaded file",
+    "fileName": "ai_report_generator.json",
+    "fullContent": {
+        "title": "ReportGenerator: Automatic Creation of Technical Reports with AI",
+        "author": "César Perales",
+        "date": "May 29, 2025",
+        "skills": ["Python", "Flask", "React", "Artificial Intelligence", "Document Processing", "REST API"],
+        "repoUrl": "https://github.com/CdeCasurpie/GeneradorInformes-Frontend.git",
+        "content": [
+            {
+                "type": "header",
+                "level": 2,
+                "content": "Project Description"
+            },
+            {
+                "type": "text",
+                "content": "ReportGenerator is a full-stack web application designed to streamline and automate the creation of technical reports using artificial intelligence. The system allows users to upload document templates and knowledge files in PDF format, analyzes their structure, and facilitates the generation of personalized reports with AI assistance for image and content analysis."
+            },
+            {
+                "type": "header",
+                "level": 2,
+                "content": "Backend (Flask)"
+            },
+            {
+                "type": "text",
+                "content": "The backend is developed in Python utilizing the Flask framework, providing a RESTful API for document processing. Key features include:\n\n- PDF document analysis for structure and content extraction\n- Base64 image processing and storage\n- Integration with AI services for image analysis\n- Markdown document generation from templates\n- Authentication system and user management\n- Organized knowledge storage per user"
+            },
+            {
+                "type": "code",
+                "language": "python",
+                "content": "# Example of document analysis in the backend\n@app.route('/api/v1/document/analyze', methods=['POST'])\n@login_required\ndef analyze_document():\n    \"\"\"\n    Analyzes initial files (template and knowledge PDF)\n    \"\"\"\n    if 'template_file' not in request.files or 'knowledge_file' not in request.files:\n        return jsonify({'error': 'Missing required files'}), 400\n        \n    # Document analysis process\n    json_structure, markdown_template = analyze_pdf(str(template_path), str(knowledge_path))\n    \n    # Save results\n    with open(structure_path, 'w', encoding='utf-8') as f:\n        json.dump(json_structure, f, ensure_ascii=False, indent=2)"
+            },
+            {
+                "type": "header",
+                "level": 2,
+                "content": "Frontend (React)"
+            },
+            {
+                "type": "text",
+                "content": "The frontend is constructed with React, providing a modern and responsive user interface that allows users to interact with all system functionalities. Highlighted features:\n\n- Dual view with editing panel and real-time preview\n- Integrated Markdown editor for report modification\n- Support for PDF file upload and result visualization\n- AI-assisted chat interface for content generation\n- Report export to PDF\n- Authentication system and user session management"
+            },
+            {
+                "type": "code",
+                "language": "jsx",
+                "content": "// Main React application component\nexport default function App() {\n  const [view, setView] = useState('Template');\n  const [isEditorMode, setIsEditorMode] = useState(false);\n  const [markdown, setMarkdown] = useState('<div>...</div>');\n\n  // Navigation between views\n  return (\n    <div className=\"main-container\">\n      <header>\n        <h1>GPT - Document generator</h1>\n        {/* ... Navigation controls ... */}\n      </header>\n\n      <main className=\"flex relative\">\n        {/* Editing panel and preview panel */}\n        {/* ... */}\n      </main>\n    </div>\n  );\n}"
+            },
+            {
+                "type": "header",
+                "level": 2,
+                "content": "Workflow"
+            },
+            {
+                "type": "text",
+                "content": "The typical workflow in ReportGenerator follows these steps:\n\n1. The user uploads a report template and a knowledge PDF document.\n2. The system analyzes the documents and extracts their structure.\n3. The user completes the generated form, including text and images.\n4. The system automatically analyzes uploaded images to suggest descriptions.\n5. A final document in Markdown format is generated with all processed content.\n6. The user can edit the final result and export it as a PDF."
+            },
+            {
+                "type": "header",
+                "level": 2,
+                "content": "Technologies Used"
+            },
+            {
+                "type": "text",
+                "content": "The project integrates a variety of modern technologies:\n\n- Backend: Python, Flask, SQLAlchemy, SQLite Database\n- Frontend: React, JavaScript/JSX, modern CSS\n- Document Processing: PDF analysis libraries, image processing\n- Artificial Intelligence: Integration with AI services for image and document analysis\n- Security: Authentication system, session management, route protection"
+            },
+            {
+                "type": "header",
+                "level": 2,
+                "content": "Security and User Management"
+            },
+            {
+                "type": "text",
+                "content": "The system implements a comprehensive authentication and authorization system that enables:\n\n- User registration and authentication\n- Differentiated roles (standard user and administrator)\n- Secure password storage\n- Route protection via authorization decorators\n- Resource separation by user to ensure privacy"
+            },
+            {
+                "type": "header",
+                "level": 2,
+                "content": "Conclusion"
+            },
+            {
+                "type": "text",
+                "content": "ReportGenerator represents an innovative solution for technical report creation, combining modern web technologies with artificial intelligence capabilities. The system significantly facilitates the technical documentation process, conserving time and resources while maintaining a high level of customization and quality in the generated reports. The modular and well-structured architecture allows for future expansions and improvements, such as integration with additional AI services or the implementation of collaborative functions."
+            }
+        ]
+    }
 }
