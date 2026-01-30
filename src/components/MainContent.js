@@ -5,14 +5,14 @@ import DataManager from "../core/DataManager.js";
 
 /**
  * Configuración de animaciones.
- * PARALLAX_SPEED se eliminó porque ahora es dinámico.
  */
 const ANIMATION_CONFIG = {
     FADE_START: 0.05,            // Inicio desvanecimiento elementos secundarios
     FADE_END: 0.35,              // Fin desvanecimiento elementos secundarios
     COMPRESSION_FACTOR: 0.2,     // Factor de aplastamiento visual
     EXIT_BUFFER: 0.15,           // Anticipación de salida para evitar solapamiento
-    PARALLAX_FACTOR: 0.1         // % del espacio libre que usaremos para el movimiento (10%)
+    PARALLAX_FACTOR: 0.1,        // % del espacio libre que usaremos para el movimiento
+    MOBILE_BREAKPOINT: 1024
 };
 
 export class MainLayout {
@@ -36,7 +36,7 @@ export class MainLayout {
             heroActions: null
         };
 
-        // Estado interno para cálculos de geometría (Optimización de FPS)
+        // Estado interno para cálculos de geometría
         this.metrics = {
             windowHeight: 0,
             contentHeight: 0,
@@ -78,12 +78,12 @@ export class MainLayout {
         if (!sectionData || !sectionData.text) return '';
 
         const title = sectionData.text[0] || '';
-        const description = sectionData.text.slice(1).map(t => `${t}`).join('');
+        const description = sectionData.text.slice(1).map(t => `<p>${t}</p>`).join('');
 
         return `
             <div class="section-header show-on-mobile">
                 <h2 class="narrative-title" style="text-align: center; font-size: 2.3rem;">${title}</h2>
-                <div class="section-description"><p>${description}</p></div>
+                <div class="section-description">${description}</div>
             </div>
         `;
     }
@@ -95,7 +95,7 @@ export class MainLayout {
 
         this.cacheDOMSelectors();
         
-        // Medición inicial de geometría
+        // Medición inicial
         this.updateMetrics();
         
         this.setupControlLogic();
@@ -113,22 +113,20 @@ export class MainLayout {
         }
     }
 
-    /**
-     * Calcula las dimensiones críticas para la animación.
-     * Se llama en Resize y cuando cambia el contenido del texto.
-     * Evita leer offsetHeight en cada frame de scroll.
-     */
     updateMetrics() {
         if (!this.dom.stickyText) return;
 
         this.metrics.windowHeight = window.innerHeight;
         this.metrics.contentHeight = this.dom.stickyText.offsetHeight;
-        // Calculamos cuánto espacio libre vertical hay en pantalla
-        this.metrics.availableSpace = this.metrics.windowHeight - this.metrics.contentHeight;
+        this.metrics.availableSpace = Math.max(0, this.metrics.windowHeight - this.metrics.contentHeight);
     }
 
     setupControlLogic() {
         const handleFrame = () => {
+            // En móvil desactivamos la lógica compleja de sticky
+            if (window.innerWidth <= ANIMATION_CONFIG.MOBILE_BREAKPOINT) return;
+            
+            // Progreso global (0 = top, 1 = 1 viewport scrolleado, etc.)
             const progress = window.scrollY / this.metrics.windowHeight;
 
             this.updateHeroParallax(progress);
@@ -139,7 +137,7 @@ export class MainLayout {
         window.addEventListener('scroll', handleFrame, { passive: true });
         
         window.addEventListener('resize', () => {
-            this.updateMetrics(); // Recalcular límites al redimensionar
+            this.updateMetrics();
             handleFrame();
         });
 
@@ -147,23 +145,35 @@ export class MainLayout {
     }
 
     /**
-     * Mueve el bloque sticky verticalmente (Parallax).
-     * El límite de movimiento se calcula dinámicamente según la altura del contenido
-     * para asegurar que siempre se mantenga visualmente centrado/visible.
+     * Mueve el bloque sticky.
+     * Si llegamos al final de la narrativa, permite que el texto haga scroll con la página.
      */
     updateHeroParallax(progress) {
         if (this.dom.stickyText && this.metrics.availableSpace > 0) {
             
-            // Calculamos el límite máximo de movimiento.
-            // Usamos un factor (ej. 30% del espacio libre) para que el movimiento sea sutil
-            // y el texto nunca toque los bordes de la pantalla.
+            // 1. Calcular posición "Sticky" normal (baja ligeramente)
             const maxParallax = this.metrics.availableSpace * ANIMATION_CONFIG.PARALLAX_FACTOR;
-
-            // Calculamos la posición actual
             let yPos = progress * maxParallax;
             
-            // Clamp estricto para seguridad
+            // Clamp: No bajar más del límite visual permitido
             if (yPos > maxParallax) yPos = maxParallax;
+
+            // 2. Lógica "Scroll Away" al final
+            // Obtenemos el punto final de la última narrativa configurada
+            const lastSegment = this.narrativeConfig[this.narrativeConfig.length - 1];
+            
+            if (lastSegment) {
+                const finalEnd = lastSegment.end;
+
+                // Si hemos pasado el final de la última narrativa...
+                if (progress > finalEnd) {
+                    // Calculamos cuántos píxeles nos hemos pasado
+                    const pixelsPast = (progress - finalEnd) * this.metrics.windowHeight;
+                    
+                    // Restamos esos píxeles para que el texto suba visualmente (scrollee con la página)
+                    yPos -= pixelsPast;
+                }
+            }
 
             this.dom.stickyText.style.transform = `translate3d(0, ${yPos}px, 0)`;
         }
@@ -216,10 +226,11 @@ export class MainLayout {
 
         const activeSegment = this.narrativeConfig[activeIndex];
         
-        // 2. Identificar el siguiente segmento para calcular salida anticipada
+        // 2. Identificar el SIGUIENTE segmento (si existe)
         const nextSegment = this.narrativeConfig[activeIndex + 1];
         const nextStart = nextSegment ? nextSegment.start : null;
 
+        // 3. ¿Es la intro?
         const isIntro = (activeIndex === 0);
 
         if (activeSegment) {
@@ -228,7 +239,7 @@ export class MainLayout {
     }
 
     renderSegment(container, config, globalProgress, isIntro, nextStart) {
-        // A. Inyección de contenido con medición de altura
+        // A. Inyección de contenido
         if (container.dataset.activeId !== config.id) {
             container.dataset.activeId = config.id;
             
@@ -247,22 +258,23 @@ export class MainLayout {
             } else {
                 container.style.height = 'auto';
             }
-
-            // CRÍTICO: Recalcular métricas de parallax porque la altura del texto cambió
+            // Recalcular métricas al cambiar contenido
             this.updateMetrics();
         }
 
-        // B. Cálculo de Opacidad de Entrada
+        // B. Opacidad de Entrada
         const lines = Array.from(container.children);
         let entranceOpacity = 1;
 
         if (isIntro) {
+            // La intro solo tiene lógica de salida
             if (globalProgress > config.end) {
                  const fadeOutZone = 0.15;
                  const p = (globalProgress - config.end) / fadeOutZone;
                  entranceOpacity = 1 - Math.min(1, p);
             }
         } else {
+            // Secciones normales
             const zoneLength = config.end - config.start;
             const segmentP = zoneLength > 0 
                 ? Math.max(0, (globalProgress - config.start) / zoneLength)
@@ -270,9 +282,11 @@ export class MainLayout {
             entranceOpacity = segmentP; 
         }
 
-        // C. Cálculo de Opacidad de Salida (Pre-Fade)
-        // El texto empieza a desaparecer EXIT_BUFFER antes de que inicie el siguiente
+        // C. Opacidad de Salida (Pre-Fade)
         let exitOpacity = 1;
+        
+        // IMPORTANTE: Solo calculamos salida si HAY un siguiente segmento.
+        // Si nextStart es null (es el último), exitOpacity se queda en 1.
         if (nextStart !== null) {
             const exitStartPoint = nextStart - ANIMATION_CONFIG.EXIT_BUFFER;
             
@@ -283,13 +297,12 @@ export class MainLayout {
             }
         }
 
-        // D. Aplicación de estilos
+        // D. Aplicar estilos
         const step = 1 / lines.length;
         lines.forEach((line, index) => {
             let lineAlpha;
 
             if (isIntro) {
-                // La intro se ve afectada uniformemente por la salida
                 lineAlpha = entranceOpacity * exitOpacity;
             } else {
                 const lineStart = index * (step * 0.8);
@@ -297,7 +310,6 @@ export class MainLayout {
                 let p = (entranceOpacity - lineStart) / (lineEnd - lineStart);
                 p = Math.max(0, Math.min(1, p));
                 
-                // Combina entrada en cascada con salida uniforme
                 lineAlpha = p * exitOpacity;
             }
 

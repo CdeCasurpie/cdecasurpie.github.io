@@ -60,11 +60,6 @@ export class ProjectsContent {
         if (this.dom.backBtn) {
             this.dom.backBtn.addEventListener('click', () => this.closeDetail());
         }
-
-        // 3. Parallax Mouse (Solo Desktop)
-        if (window.innerWidth > 1024) {
-            this.dom.wrapper.addEventListener('mousemove', (e) => this.handleMouseParallax(e));
-        }
     }
 
     renderCards() {
@@ -117,24 +112,6 @@ export class ProjectsContent {
             card.addEventListener('click', () => {
                 this.openDetail(card.dataset.id, card.dataset.json);
             });
-        });
-    }
-
-    handleMouseParallax(e) {
-        if (this.dom.wrapper.classList.contains('view-mode-detail')) return;
-
-        const cards = this.dom.gridContainer.querySelectorAll('.pc-card-compact');
-        // Calculamos posición relativa al centro de la pantalla
-        const mouseX = (e.clientX / window.innerWidth) - 0.5;
-        const mouseY = (e.clientY / window.innerHeight) - 0.5;
-
-        cards.forEach((card, index) => {
-            // Profundidad variable según el índice para efecto 3D
-            const depth = (index + 1) * 12; 
-            const moveX = mouseX * depth;
-            const moveY = mouseY * depth;
-            
-            card.style.transform = `translate(${moveX}px, ${moveY}px)`;
         });
     }
 

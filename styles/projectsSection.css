@@ -59,13 +59,13 @@
 
 /* --- ASIMETRÍA ZIG-ZAG (El "Desfase en X") --- */
 .pc-card-compact:nth-child(1) {
-    margin-right: 0px; /* Pegado a la derecha */
+    margin-right: -10%; /* Pegado a la derecha */
 }
 .pc-card-compact:nth-child(2) {
-    margin-right: 150px; /* MUY a la izquierda */
+    margin-right: 10%; /* MUY a la izquierda */
 }
 .pc-card-compact:nth-child(3) {
-    margin-right: 50px; /* Intermedio */
+    margin-right: 0; /* Intermedio */
 }
 
 .pc-card-compact:hover {
@@ -397,7 +397,7 @@
     .pc-detail-view {
         position: fixed; /* Fixed para tapar todo */
         z-index: 1000;
-        margin-top: 100px;
+        margin-top: 50px;
     }
     
     .pc-detail-glass-panel {
