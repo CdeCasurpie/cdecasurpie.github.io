@@ -9,7 +9,8 @@
       { "id": "home", "text": "Inicio", "path": "/#home" },
       { "id": "about", "text": "Sobre Mí", "path": "/#about" },
       { "id": "projects", "text": "Proyectos", "path": "/#projects" },
-      { "id": "experience", "text": "Experiencia", "path": "/#experience" }
+      { "id": "experience", "text": "Experiencia", "path": "/#experience" },
+      { "id": "contacto", "text": "Contacto", "path": "/#contacto" }
     ]
   },
   "scrollNarrative": [

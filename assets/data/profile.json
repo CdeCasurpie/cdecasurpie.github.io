@@ -25,7 +25,7 @@
       ]
     }
   ],
-"experiencia": {
+  "experiencia": {
     "titulo": "Mi Trayectoria Profesional",
     "subtitulo": "Un vistazo a mi recorrido laboral",
     "docencia": [
@@ -194,13 +194,18 @@
         "icono": "fas fa-envelope"
       },
       {
+        "titulo": "Teléfono",
+        "contenido": "+51 988 770 244",
+        "icono": "fas fa-phone"
+      },
+      {
         "titulo": "Ubicación",
         "contenido": "Perú, Lima",
         "icono": "fas fa-map-marker-alt"
       },
       {
         "titulo": "Disponibilidad",
-        "contenido": "Lunes a Viernes, 9:00 - 18:00",
+        "contenido": "Lunes a Viernes, 9:00 - 22:00",
         "icono": "fas fa-clock"
       }
     ],
@@ -236,9 +241,10 @@
     }
   },
   "footer": {
+    "nombre": "César Perales | CdeCasurpie",
     "descripcion": "Soy César Perales, programador y educador dedicado a crear experiencias digitales memorables y compartir conocimiento.",
     "copyright": "César Perales | Todos los derechos reservados",
-    "fraseFooter": "Hecho con {corazon} y mucho café en Madrid"
+    "fraseFooter": "Hecho con {corazon} y mucho café."
   },
   "social": [
     {

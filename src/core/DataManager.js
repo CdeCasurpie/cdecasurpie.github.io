@@ -55,7 +55,7 @@ class DataManager {
 
     getFooterData() {
         return {
-            config: this.data.config?.footer || {},
+            config: this.data.profile?.footer || {},
             personal: this.data.profile?.personal || {},
             social: this.data.profile?.social || []
         };

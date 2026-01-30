@@ -2,6 +2,8 @@ import { HeroSection } from "./HeroSection.js";
 import { AboutContent } from "./AboutContent.js";
 import { ProjectsContent } from "./ProjectsContent.js";
 import { ExperienceSection } from "./ExperienceSection.js";
+import { ContactMe } from "./ContactMe.js";
+import { Footer } from "./Footer.js";
 import DataManager from "../core/DataManager.js";
 
 /**
@@ -22,6 +24,8 @@ export class MainLayout {
         this.aboutContent = new AboutContent();
         this.projectsContent = new ProjectsContent();
         this.experienceSection = new ExperienceSection();
+        this.contactMeSection = new ContactMe();
+        this.footer = new Footer();
 
         // Carga de datos y ordenamiento lógico
         this.narrativeConfig = DataManager.getScrollNarrative() || [];
@@ -74,6 +78,10 @@ export class MainLayout {
 
 
                 ${this.experienceSection.render()}
+
+                ${this.contactMeSection.render()}
+
+                ${this.footer.render()}
             </div>
         `;
     }
@@ -94,7 +102,7 @@ export class MainLayout {
     }
 
     mount() {
-        [this.heroSection, this.aboutContent, this.projectsContent].forEach(comp => {
+        [this.heroSection, this.aboutContent, this.projectsContent, this.experienceSection, this.contactMeSection, this.footer].forEach(comp => {
             if (typeof comp.mount === 'function') comp.mount();
         });
 

@@ -15,6 +15,8 @@ injectCSS('./styles/heroSection.css');
 injectCSS('./styles/aboutSection.css');
 injectCSS('./styles/projectsSection.css');
 injectCSS('./styles/experienceSection.css');
+injectCSS('./styles/contactMe.css');
+injectCSS('./styles/footer.css');
 
 // 2. Renderizar Componentes (Esperando datos)
 document.addEventListener('DOMContentLoaded', async () => {

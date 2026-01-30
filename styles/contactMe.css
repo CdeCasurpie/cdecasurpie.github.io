@@ -1,0 +1,218 @@
+/* --- CONFIGURACIÓN BASE --- */
+.contact-me-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 5%; /* Padding vertical reducido */
+    
+    background: rgba(15, 10, 10, 0.629);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 5;
+}
+
+/* --- WRAPPER INTERNO --- */
+.cm-wrapper {
+    width: 100%;
+    max-width: 1000px; /* Ancho máximo reducido para que se vea más compacto */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Menos separación entre header y contenido */
+}
+
+/* --- HEADER DE SECCIÓN --- */
+.cm-header {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.cm-title {
+    font-family: var(--text-font);
+    font-size: 2rem; /* Reducido de 2.5rem */
+    color: #fff;
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.cm-subtitle {
+    font-family: var(--text-font);
+    color: var(--primary-pink);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.cm-message {
+    font-size: 0.9rem; /* Texto más pequeño */
+    color: #ccc;
+    line-height: 1.5;
+}
+
+/* --- GRID DE CONTENIDO --- */
+.cm-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr; /* Proporción ajustada */
+    gap: 30px; /* Gap reducido de 50px */
+    align-items: stretch; /* Estirar para que tengan misma altura */
+}
+
+/* --- COLUMNA IZQUIERDA: INFO CARDS --- */
+.cm-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Menos espacio entre cards */
+    justify-content: center;
+}
+
+.cm-info-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    padding: 15px 20px; /* Padding más compacto */
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.cm-info-card:hover {
+    transform: translateX(5px);
+    border-color: var(--primary-pink);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cm-icon-box {
+    width: 40px; /* Icono más pequeño */
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 204, 203, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--primary-pink);
+    flex-shrink: 0;
+}
+
+.cm-info-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.cm-label {
+    font-family: var(--text-font);
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.cm-value {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* --- COLUMNA DERECHA: FORMULARIO GLASS --- */
+.cm-form-column {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px; /* Padding reducido de 40px */
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.cm-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Menos espacio entre inputs */
+}
+
+.cm-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cm-label-text {
+    font-size: 0.8rem;
+    color: #bbb;
+    margin-left: 2px;
+}
+
+.cm-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 10px 12px; /* Input más delgado */
+    color: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.cm-input:focus {
+    outline: none;
+    border-color: var(--primary-pink);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 10px rgba(255, 204, 203, 0.1);
+}
+
+.cm-input::placeholder { color: #555; }
+
+/* Textarea más compacta por defecto */
+textarea.cm-input {
+    resize: vertical;
+    min-height: 80px; /* Altura inicial reducida */
+}
+
+/* Botón de Envío */
+.cm-submit-btn {
+    margin-top: 5px;
+    padding: 12px 20px;
+    background: var(--primary-pink);
+    color: #000;
+    font-family: var(--text-font);
+    font-weight: bold;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.cm-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 204, 203, 0.4);
+}
+
+.cm-submit-btn:active { transform: translateY(0); }
+
+/* --- RESPONSIVE MOBILE --- */
+@media screen and (max-width: 1024px) {
+    .contact-me-section {
+        padding: 40px 5%;
+    }
+
+    .cm-content-grid {
+        grid-template-columns: 1fr; /* Una sola columna */
+        gap: 30px;
+    }
+
+    .cm-header {
+        margin-bottom: 20px;
+    }
+
+    .cm-title { font-size: 1.8rem; }
+
+    .cm-form-column { padding: 20px; }
+}

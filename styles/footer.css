@@ -1,0 +1,145 @@
+/* --- FOOTER CONTAINER --- */
+.site-footer {
+    width: 100%;
+    background: #050505; /* Fondo casi negro sólido para cerrar la página */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 60px 5% 30px 5%;
+    position: relative;
+    z-index: 10;
+    font-family: var(--text-font, 'Courier New', monospace);
+}
+
+/* --- CONTENIDO SUPERIOR (Columnas) --- */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+/* Columna Identidad */
+.footer-col.identity {
+    flex: 1;
+    min-width: 280px;
+}
+
+.footer-logo {
+    font-size: 2rem;
+    color: #fff;
+    margin: 0 0 20px 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.footer-desc {
+    color: #888;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    max-width: 400px;
+}
+
+/* Columna Redes */
+.footer-col.social {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Alinear a la derecha en desktop */
+}
+
+.footer-subtitle {
+    color: #fff;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.footer-social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.social-link:hover {
+    background: rgba(255, 204, 203, 0.1); /* Tinte rosado sutil */
+    color: var(--primary-pink, #ffcccb);
+    border-color: var(--primary-pink, #ffcccb);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 204, 203, 0.2);
+}
+
+/* --- BARRA INFERIOR (Copyright) --- */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.made-with {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Animación del Corazón */
+.footer-heart {
+    color: var(--primary-pink, #ffcccb);
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media screen and (max-width: 768px) {
+    .site-footer {
+        padding: 40px 20px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .footer-col.social {
+        align-items: center; /* Centrar redes en móvil */
+    }
+
+    .footer-desc {
+        margin: 0 auto; /* Centrar texto descripción */
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
