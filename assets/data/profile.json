@@ -25,53 +25,46 @@
       ]
     }
   ],
-  "experiencia": {
+"experiencia": {
     "titulo": "Mi Trayectoria Profesional",
     "subtitulo": "Un vistazo a mi recorrido laboral",
-    "trabajos": [
+    "docencia": [
       {
-        "empresa": "Independiente",
-        "cargo": "Profesor Particular",
-        "periodo": "2022 - Presente",
-        "descripcion": "Desde 2022, he estado ofreciendo clases particulares de programación y desarrollo web a estudiantes de diversos niveles. Mi enfoque se centra en adaptar las lecciones a las necesidades individuales de cada estudiante, fomentando un aprendizaje práctico y efectivo.",
-        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX-tgUHvmTrZOMI7oLXBkPAUieru7eaC8qeQ&s",
-        "tecnologias": ["Python", "Algoritmos Avanzados", "Estructuras de Datos", "Computación Gráfica"],
-        "hitos": [
-          "Más de 50 estudiantes asesorados con éxito",
-          "Desarrollo de planes de estudio personalizados",
-          "Alta tasa de satisfacción y recomendación entre estudiantes"
-        ]
-      },
-      {
+        "id": "caps",
         "empresa": "CAPS - UTEC",
         "cargo": "Profesor Particular",
         "periodo": "2025 (enero) - 2025 (diciembre)",
-        "descripcion": "Actualmente doy enseñansa a estudiantes de programación y desarrollo web, no solo en CAPS sino de forma particular. Me enfoco en crear un ambiente de aprendizaje inclusivo y motivador, adaptando mis métodos a las necesidades de cada estudiante.",
+        "descripcion": "Actualmente doy enseñanza a estudiantes de programación y desarrollo web, no solo en CAPS sino de forma particular. Me enfoco en crear un ambiente de aprendizaje inclusivo y motivador, adaptando mis métodos a las necesidades de cada estudiante.",
         "logo": "https://static.wixstatic.com/media/2d543e_fb5ff8f60e094a4aa5a200d16a7b3cf5~mv2.png/v1/fill/w_282,h_218,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/CAPS.png",
-        "tecnologias": ["Diseño de algoritmos", "Python", "BD"],
+        "stack": ["Diseño de algoritmos", "Python", "BD"],
         "hitos": [
           "Creación de material para las asesorías de programación",
           "Contacto con más estudiantes por el boca a boca"
         ]
       },
       {
-        "empresa": "Haramara",
-        "cargo": "Desarrollador Full Stack",
-        "periodo": "2024-2025",
-        "descripcion": "Desarrollo de una aplicación web para la venta, compra y reserva de actividades acuáticas",
-        "tecnologias": ["Next.js", "Node.js", "Tailwind CSS", "OVH Cloud"],
+        "id": "superprof",
+        "empresa": "INDEPENDIENTE",
+        "subtitulo": "<superprof>",
+        "cargo": "Profesor Particular",
+        "periodo": "2022 - Presente",
+        "descripcion": "Desde 2022, he estado ofreciendo clases particulares de programación y desarrollo web a estudiantes de diversos niveles. Mi enfoque se centra en adaptar las lecciones a las necesidades individuales de cada estudiante, fomentando un aprendizaje práctico y efectivo.",
+        "logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX-tgUHvmTrZOMI7oLXBkPAUieru7eaC8qeQ&s",
+        "stack": ["Python", "Algoritmos Avanzados", "Estructuras de Datos", "Computación Gráfica"],
         "hitos": [
-          "Implementación de un sistema de reservas",
-          "Front-end complejo y responsivo con Next.js",
-          "Integración de un sistema Usuario-Empresa para gestión de actividades"
+          "Más de 50 estudiantes asesorados con éxito",
+          "Desarrollo de planes de estudio personalizados",
+          "Alta tasa de satisfacción y recomendación entre estudiantes"
         ]
-      },
+      }
+    ],
+    "trabajos": [
       {
         "empresa": "BenjiOr",
         "cargo": "Desarrollador de Software",
         "periodo": "2023 - 2025",
         "descripcion": "Se desarrollaron varias aplicaciones web, de escritorio y móviles para la empresa, incluyendo un sistema de gestión de inventarios y ventas.",
-        "tecnologias": ["JavaScript", "HTML/CSS", "Python", "Flask", "SQLite", "etc"],
+        "stack": ["JavaScript", "HTML/CSS", "Python", "Flask", "SQLite"],
         "hitos": [
           "Desarrollo de un sistema de gestión de inventarios y ventas",
           "Optimización del rendimiento del sistema con técnicas avanzadas de programación",
@@ -82,13 +75,25 @@
         "empresa": "Mastery Five",
         "cargo": "Desarrollador Full Stack",
         "periodo": "2023 - 2024",
-        "descripcion": "Colaboración en el proceso de creación de un software para gestionar el tiempo de las personas",
+        "descripcion": "Colaboración en el proceso de creación de un software para gestionar el tiempo de las personas.",
         "logo": "assets/images/projects/logo-masteryfive.svg",
-        "tecnologias": ["Next.js", "Tailwind CSS", "Google Cloud"],
+        "stack": ["Next.js", "Tailwind CSS", "Google Cloud"],
         "hitos": [
           "Desarrollo de un sistema de gestión de tiempo y productividad",
           "Implementación de un sistema de notificaciones en tiempo real",
           "Creación de componentes reutilizables y escalables con Next.js"
+        ]
+      },
+      {
+        "empresa": "Haramara",
+        "cargo": "Desarrollador Full Stack",
+        "periodo": "2024-2025",
+        "descripcion": "Desarrollo de una aplicación web para la venta, compra y reserva de actividades acuáticas.",
+        "stack": ["Next.js", "Node.js", "Tailwind CSS", "OVH Cloud"],
+        "hitos": [
+          "Implementación de un sistema de reservas",
+          "Front-end complejo y responsivo con Next.js",
+          "Integración de un sistema Usuario-Empresa para gestión de actividades"
         ]
       },
       {
@@ -97,7 +102,7 @@
         "periodo": "2021 - 2022",
         "descripcion": "Creación de modelos 3D para la plataforma Cults, incluyendo modelos de alta calidad para impresión 3D y visualización en línea.",
         "logo": "assets/images/projects/cults_logo.png",
-        "tecnologias": ["Blender", "Cults3D", "Sketchfab"],
+        "stack": ["Blender", "Cults3D", "Sketchfab"],
         "hitos": [
           "Desarrollo de modelos 3D para la plataforma Cults",
           "Optimización de modelos para impresión 3D y visualización en línea",

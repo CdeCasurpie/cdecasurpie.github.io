@@ -7,8 +7,9 @@
     "logoText": "COMPUTER SCIENTIST | WEB DEVELOPER",
     "links": [
       { "id": "home", "text": "Inicio", "path": "/#home" },
+      { "id": "about", "text": "Sobre Mí", "path": "/#about" },
       { "id": "projects", "text": "Proyectos", "path": "/#projects" },
-      { "id": "about", "text": "Sobre Mí", "path": "/#about" }
+      { "id": "experience", "text": "Experiencia", "path": "/#experience" }
     ]
   },
   "scrollNarrative": [
