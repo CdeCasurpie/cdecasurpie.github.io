@@ -76,6 +76,20 @@ export class HeroSection {
                 profile.style.transform = `translate(${x}px, ${y}px)`;
             });
         }
+
+        const downloadCVBtn = document.getElementById('btn-download-cv');
+        this.setupDownloadCV(downloadCVBtn);
+        
         console.log('[HeroSection] Montado logicamente');
+    }
+
+
+    setupDownloadCV(buttonElement) {
+        if (!buttonElement) return;
+
+        buttonElement.addEventListener('click', () => {
+            const cvUrl = this.personal.cvUrl || 'assets/docs/CV_Cesar_Perales.pdf';
+            window.open(cvUrl, '_blank');
+        });
     }
 }
