@@ -1,13 +1,6 @@
 /**
  * SmokeEffect Component
- * * Renders an interactive smoke effect using Three.js and GLSL.
- * Implements a hybrid CPU/GPU approach:
- * - CPU: Solves fluid dynamics (wave equation) for mouse interaction.
- * - GPU: Renders fractal noise (FBM) distorted by the CPU simulation data.
- * * Features:
- * - Lazy Loading: Three.js is imported only on mount and only for desktop.
- * - Mobile Optimization: Disables fluid physics on mobile devices to save battery/CPU.
- * - Retina Support: Clamps pixel ratio to optimize performance on high-DPI screens.
+ * FIX: Soluciona el problema de mapeo de texturas en pantallas con Zoom/HighDPI.
  */
 export class SmokeEffect {
     constructor() {
@@ -38,33 +31,20 @@ export class SmokeEffect {
         this.animationId = null;
         this.lastMouse = { x: 0, y: 0 };
         this.isMounted = false;
-        this.isLiteMode = false; // True if mobile/tablet
+        this.isLiteMode = false;
     }
 
-    /**
-     * Determines if the current environment requires the simplified rendering mode.
-     * @returns {boolean}
-     */
     _shouldRunLiteMode() {
         return (window.innerWidth <= this.config.mobileBreakpoint) || ('ontouchstart' in window);
     }
 
-    /**
-     * Public render method returning the container markup.
-     * @returns {string} HTML string
-     */
     render() {
         return `<div id="${this.containerId}"></div>`;
     }
 
-    /**
-     * Initializes the component lifecycle.
-     * Handles lazy loading of dependencies and environment detection.
-     */
     async mount() {
         this.isLiteMode = this._shouldRunLiteMode();
 
-        // Optimization: Abort heavy library download on mobile devices
         if (this.isLiteMode) {
             console.info('[SmokeEffect] Lite mode active: Physics engine disabled.');
             return; 
@@ -74,13 +54,12 @@ export class SmokeEffect {
         if (!container) return;
 
         try {
-            // Dynamic Import: Load Three.js only when strictly necessary
             this.THREE = await import('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js');
             
             this.isMounted = true;
             this._initializeScene(container);
             this._initializeSimulation();
-            this._createCompositeMesh();
+            this._createCompositeMesh(); // <--- Aquí aplicamos el fix inicial
             this._bindEventListeners();
             this._startAnimationLoop();
 
@@ -89,14 +68,8 @@ export class SmokeEffect {
         }
     }
 
-    /**
-     * Sets up the Three.js Orthographic Camera and WebGL Renderer.
-     * @param {HTMLElement} container 
-     */
     _initializeScene(container) {
         this.scene = new this.THREE.Scene();
-        
-        // Orthographic camera for 2D post-processing effect
         this.camera = new this.THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
         
         this.renderer = new this.THREE.WebGLRenderer({ 
@@ -108,26 +81,18 @@ export class SmokeEffect {
         });
         
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        
-        // Performance Optimization: Cap DPR at 1.5 to avoid overhead on 4K/Retina screens
         this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5)); 
         
         container.appendChild(this.renderer.domElement);
     }
 
-    /**
-     * Allocates buffers for the wave equation simulation.
-     */
     _initializeSimulation() {
         const aspect = window.innerWidth / window.innerHeight;
-        
-        // Adjust grid width based on aspect ratio to maintain square cells
         this.config.simHeight = 128;
         this.config.simWidth = Math.floor(128 * aspect);
 
         const size = this.config.simWidth * this.config.simHeight;
         
-        // Memory pooling: Reallocate only if size changes
         if (!this.buffer1 || this.buffer1.length !== size) {
             this.buffer1 = new Float32Array(size);
             this.buffer2 = new Float32Array(size);
@@ -149,12 +114,19 @@ export class SmokeEffect {
     }
 
     /**
-     * Compiles shaders and adds the full-screen quad to the scene.
+     * FIX APLICADO: Calculamos la resolución física real (con DPR) para el shader.
      */
     _createCompositeMesh() {
+        // Obtenemos el Pixel Ratio configurado en el renderer
+        const dpr = this.renderer.getPixelRatio();
+
         this.uniforms = {
             u_time: { value: 0.0 },
-            u_resolution: { value: new this.THREE.Vector2(window.innerWidth, window.innerHeight) },
+            // MULTIPLICAMOS POR DPR AQUÍ
+            u_resolution: { value: new this.THREE.Vector2(
+                window.innerWidth * dpr, 
+                window.innerHeight * dpr
+            )},
             u_displacementMap: { value: this.dataTexture },
             u_color_base: { value: new this.THREE.Color(0.015, 0.01, 0.015) },
             u_color_fluid: { value: new this.THREE.Color(0.99, 0.73, 0.78) }
@@ -170,10 +142,6 @@ export class SmokeEffect {
         this.scene.add(new this.THREE.Mesh(geometry, material));
     }
 
-    /**
-     * Solves the wave equation for fluid propagation on the CPU.
-     * Uses neighbor sampling to propagate energy across the grid.
-     */
     _updateFluidDynamics() {
         const width = this.config.simWidth;
         const height = this.config.simHeight;
@@ -181,7 +149,6 @@ export class SmokeEffect {
         const b2 = this.buffer2;
         const damping = this.config.damping;
 
-        // Inner loop optimization: Avoid boundary checks for performance
         for (let y = 1; y < height - 1; y++) {
             for (let x = 1; x < width - 1; x++) {
                 const i = x + y * width;
@@ -192,21 +159,12 @@ export class SmokeEffect {
             }
         }
 
-        // Swap buffers
         this.buffer1 = b2;
         this.buffer2 = b1;
-
-        // Upload to GPU
         this.dataTexture.image.data = this.buffer1;
         this.dataTexture.needsUpdate = true;
     }
 
-    /**
-     * Injects energy into the simulation grid at specific coordinates.
-     * @param {number} x - Normalized X coordinate (0-1)
-     * @param {number} y - Normalized Y coordinate (0-1)
-     * @param {number} strength - Amplitude of the disturbance
-     */
     _addSimulationDisturbance(x, y, strength) {
         let gx = Math.floor(x * this.config.simWidth);
         let gy = Math.floor((1.0 - y) * this.config.simHeight);
@@ -215,7 +173,6 @@ export class SmokeEffect {
         const height = this.config.simHeight;
         const radius = this.config.cursorRadius;
 
-        // Boundary check
         if (gx <= radius || gx >= width - radius || gy <= radius || gy >= height - radius) return;
 
         for (let i = -radius; i <= radius; i++) {
@@ -223,7 +180,6 @@ export class SmokeEffect {
                 const dist = Math.sqrt(i * i + j * j);
                 if (dist <= radius) {
                     const index = (gx + i) + (gy + j) * width;
-                    // Cosine falloff for smooth ripples
                     this.buffer1[index] += strength * (Math.cos(dist / radius * Math.PI / 2));
                 }
             }
@@ -233,33 +189,40 @@ export class SmokeEffect {
     _bindEventListeners() {
         window.addEventListener('resize', this._handleResize.bind(this));
         
-        // Interactive listeners only required for Desktop physics
         if (!this.isLiteMode) {
             document.addEventListener('mousemove', this._handleMouseMove.bind(this));
         }
     }
 
+    /**
+     * FIX APLICADO: Actualizamos el shader también al redimensionar.
+     */
     _handleResize() {
         if (!this.renderer) return;
         
+        // Ajustamos tamaño renderer
         this.renderer.setSize(window.innerWidth, window.innerHeight);
-        this.uniforms.u_resolution.value.set(window.innerWidth, window.innerHeight);
         
+        // Recalculamos el aspect ratio interno de la simulación
         this._initializeSimulation();
         this.uniforms.u_displacementMap.value = this.dataTexture;
+
+        // IMPORTANTE: Actualizar u_resolution con el nuevo tamaño * DPR
+        const dpr = this.renderer.getPixelRatio();
+        this.uniforms.u_resolution.value.set(
+            window.innerWidth * dpr, 
+            window.innerHeight * dpr
+        );
     }
 
     _handleMouseMove(e) {
         if (!this.renderer) return;
 
-        // Viewport Calculation: Using getBoundingClientRect ensures coordinates 
-        // are relative to the rendered canvas size, correcting zoom offsets.
         const rect = this.renderer.domElement.getBoundingClientRect();
         
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
 
-        // Velocity Calculation
         const aspect = rect.width / rect.height;
         const dx = (x - this.lastMouse.x) * aspect;
         const dy = y - this.lastMouse.y;
@@ -267,7 +230,6 @@ export class SmokeEffect {
         const velocity = Math.sqrt(dx*dx + dy*dy);
         const strength = Math.min(velocity * 150.0, 4.0);
 
-        // Threshold to avoid micro-calculations on static mouse
         if (strength > 0.05) {
             this._addSimulationDisturbance(x, y, strength);
         }
@@ -279,18 +241,15 @@ export class SmokeEffect {
         const render = () => {
             if (!this.isMounted) return;
 
-            // Pause if tab is inactive
             if (document.hidden) {
                 this.animationId = requestAnimationFrame(render);
                 return;
             }
 
-            // Physics Update (Desktop Only)
             if (!this.isLiteMode) {
                 this._updateFluidDynamics();
             }
 
-            // Render Update
             this.uniforms.u_time.value += 0.005;
             this.renderer.render(this.scene, this.camera);
             
@@ -300,10 +259,6 @@ export class SmokeEffect {
         this.animationId = requestAnimationFrame(render);
     }
 
-    /**
-     * Returns the GLSL Fragment Shader source code.
-     * Includes Fractal Brownian Motion (FBM) and domain warping logic.
-     */
     _getFragmentShaderSource() {
         return `
             uniform float u_time;
@@ -312,12 +267,10 @@ export class SmokeEffect {
             uniform vec3 u_color_base;
             uniform vec3 u_color_fluid;
 
-            // --- Pseudo-random generation ---
             float random (in vec2 _st) { 
                 return fract(sin(dot(_st.xy, vec2(12.9898,78.233))) * 43758.5453123); 
             }
             
-            // --- 2D Noise Function ---
             float noise (in vec2 _st) {
                 vec2 i = floor(_st); vec2 f = fract(_st);
                 float a = random(i); float b = random(i + vec2(1.0, 0.0));
@@ -326,7 +279,6 @@ export class SmokeEffect {
                 return mix(a, b, u.x) + (c - a)* u.y * (1.0 - u.x) + (d - b) * u.x * u.y;
             }
             
-            // --- Fractal Brownian Motion ---
             #define NUM_OCTAVES 4
             float fbm ( in vec2 _st) {
                 float v = 0.0; float a = 0.5; vec2 shift = vec2(100.0);
@@ -338,18 +290,16 @@ export class SmokeEffect {
             }
 
             void main() {
+                // st ahora irá correctamente de 0.0 a 1.0 gracias al fix del u_resolution
                 vec2 st = gl_FragCoord.xy / u_resolution.xy;
                 
-                // Physics Sampling
                 float waveHeight = texture2D(u_displacementMap, st).r;
                 vec2 displacement = vec2(waveHeight) * 0.05; 
                 
-                // Domain Warping
                 vec2 distortedST = st - displacement;
                 vec2 aspectST = distortedST;
                 aspectST.x *= u_resolution.x / u_resolution.y;
 
-                // FBM Layering
                 vec2 q = vec2(0.);
                 q.x = fbm( aspectST + 0.01 * u_time);
                 q.y = fbm( aspectST + vec2(1.0));
@@ -360,14 +310,11 @@ export class SmokeEffect {
 
                 float smokeIntensity = fbm(aspectST + r);
                 
-                // Post-processing
                 float finalIntensity = pow(smokeIntensity, 3.0) * 0.6;
                 vec3 color = mix(u_color_base, u_color_fluid, clamp(finalIntensity, 0.0, 1.0));
                 
-                // Interactive Highlight
                 color += u_color_fluid * smoothstep(0.05, 0.6, waveHeight) * 0.15;
 
-                // Vignette
                 float vignette = 1.0 - smoothstep(0.5, 1.5, length(gl_FragCoord.xy / u_resolution.xy - 0.5));
                 color *= vignette;
 
