@@ -9,9 +9,9 @@
     align-items: center; /* Alineación superior */
     padding: 90px 10% 30px 10%; /* Más margen lateral para centrar la vista */
     
-    background: rgba(15, 10, 12, 0.4); /* Fondo sutil */
+    background: rgba(15, 10, 10, 0.629); /* Fondo sutil */
     backdrop-filter: blur(20px);
-    border-top: 1px solid;
+    border-top: 2px solid;
     z-index: 5;
 }
 
