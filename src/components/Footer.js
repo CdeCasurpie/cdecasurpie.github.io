@@ -36,7 +36,7 @@ export class Footer {
                     </div>
 
                     <div class="footer-col social">
-                        <h4 class="footer-subtitle">CONECTEMOS</h4>
+                        <h4 class="footer-subtitle">${this.config.redesTitulo || "Let's Connect"}</h4>
                         <div class="footer-social-links">
                             ${this.renderSocialLinks()}
                         </div>
